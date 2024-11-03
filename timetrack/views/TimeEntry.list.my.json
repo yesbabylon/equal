@@ -5,9 +5,27 @@
     "domain": [
         ["object_class", "=", "timetrack\\Project"],
         ["creator", "=", "user.id"],
-        ["status", "<>", "billed"],
-        ["date", ">=", "date.this.month.first()"],
-        ["date", "<=", "date.this.month.last()"]
+        ["status", "<>", "billed"]
+    ],
+    "filters": [
+        {
+            "id": "period.current_month",
+            "label": "This month",
+            "description": "My time entries for this month.",
+            "domain": [
+                ["date", ">=", "date.this.month.first()"],
+                ["date", "<=", "date.this.month.last()"]
+            ]
+        },
+        {
+            "id": "period.previous_month",
+            "label": "Last month",
+            "description": "My time entries for last month.",
+            "domain": [
+                ["date", ">=", "date.prev.month.first()"],
+                ["date", "<=", "date.prev.month.last()"]
+            ]
+        }
     ],
     "order": "date,time_start",
     "sort": "desc",
