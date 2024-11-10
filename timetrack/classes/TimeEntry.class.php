@@ -6,11 +6,8 @@
 */
 namespace timetrack;
 
-use DateTime;
-use DateTimeZone;
 use sale\SaleEntry;
 use core\setting\Setting;
-use Exception;
 
 class TimeEntry extends SaleEntry {
 
@@ -233,11 +230,11 @@ class TimeEntry extends SaleEntry {
         $time_zone = Setting::get_value('core', 'locale', 'time_zone');
         if(!is_null($time_zone)) {
             try {
-                $timezone = new DateTimeZone($time_zone);
-                $dateTime = new DateTime('now', $timezone);
+                $timezone = new \DateTimeZone($time_zone);
+                $dateTime = new \DateTime('now', $timezone);
                 $current_hour = (int) $dateTime->format('H');
             }
-            catch(Exception $e) {
+            catch(\Exception $e) {
                 trigger_error('PHP::error getting time zone current hour', EQ_REPORT_WARNING);
             }
         }
@@ -318,8 +315,9 @@ class TimeEntry extends SaleEntry {
 
         if(isset($event['project_id'])) {
             $project = Project::id($event['project_id'])
-                ->read(['product_id', 'customer_id' => ['name']])
+                ->read(['product_id', 'is_internal', 'customer_id' => ['name']])
                 ->first();
+            $result['is_internal'] = $project['is_internal'];
             $result['customer_id'] = $project['customer_id'];
             $result['inventory_product_id'] = $project['product_id'];
         }
