@@ -246,8 +246,8 @@ class ProductModel extends Model {
         foreach($self as $mid => $model) {
             $products = Product::ids($model['products_ids'])->read('groups_ids')->get();
             foreach($products as $pid => $product) {
-                $groups_ids = array_map(function($a) {return "-$a";}, $product['groups_ids']);
-                $groups_ids = array_merge($groups_ids, $model['groups_ids']);
+                $groups_ids = array_map(function($a) {return "-$a";}, (array) $product['groups_ids']);
+                $groups_ids = array_merge($groups_ids, (array) $model['groups_ids']);
                 Product::id($pid)->update(['groups_ids' => $groups_ids]);
             }
         }

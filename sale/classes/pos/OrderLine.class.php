@@ -193,7 +193,7 @@ class OrderLine extends Model {
     public static function _resetPrice($om, $ids, $values, $lang) {
         $lines = $om->read(get_called_class(), $ids, ['order_id'], $lang);
         if($lines > 0) {
-            $orders_ids = array_map(function ($a) {return $a['order_id'];}, $lines);
+            $orders_ids = array_map(function ($a) {return $a['order_id'];}, (array) $lines);
             $om->write('sale\pos\Order', $orders_ids, ['total' => null, 'price' => null], $lang);
         }
         $om->write(get_called_class(), $ids, ['total' => null, 'price' => null], $lang);
