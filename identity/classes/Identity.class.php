@@ -633,10 +633,11 @@ class Identity extends Model {
     public static function onupdateReferencePartnerId($self) {
         $self->read(['reference_partner_id', 'reference_partner_id' => 'partner_identity_id', 'contacts_ids' => 'partner_identity_id']);
         foreach($self as $id => $identity) {
-            if(!$identity['contacts_ids']) {
-                continue;
+            $contacts_ids = [];
+            if($identity['contacts_ids'] && count($identity['contacts_ids'])) {
+                $contacts_ids = $identity['contacts_ids']->get(true);
             }
-            if(!in_array($identity['reference_partner_id']['partner_identity_id'], array_map( function($a) { return $a['partner_identity_id']; }, $identity['contacts_ids']))) {
+            if(!in_array($identity['reference_partner_id']['partner_identity_id'], array_map( function($a) { return $a['partner_identity_id']; }, $contacts_ids))) {
                 // create a contact with the customer as 'booking' contact
                 Contact::create([
                         'owner_identity_id'     => $id,
