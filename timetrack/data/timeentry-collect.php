@@ -25,10 +25,13 @@ list($params, $providers) = eQual::announce([
             'type'           => 'many2one',
             'foreign_object' => 'core\User'
         ],
-        'date' => [
-            'description'    => 'Display only entries that occurred on selected date',
+        'date_from' => [
+            'description'    => 'Display only entries that occurred after selected date',
             'type'           => 'date',
-            'default'        => null
+        ],
+        'date_to' => [
+            'description'    => 'Display only entries that occurred before selected date',
+            'type'           => 'date',
         ],
         'customer_id' => [
             'description'    => 'Display only entries of selected customer',
@@ -100,8 +103,14 @@ if(isset($params['customer_id']) && $params['customer_id'] > 0) {
     $domain[] = ['customer_id', '=', $params['customer_id']];
 }
 
-if(isset($params['date']) && $params['date'] > 0) {
-    $domain[] = ['date', '=', $params['date']];
+if(isset($params['date_from']) && $params['date_from'] > 0) {
+    if(isset($params['date_to']) && $params['date_fto'] > 0) {
+        $domain[] = ['date', '>=', $params['date_from']];
+        $domain[] = ['date', '<=', $params['date_to']];
+    }
+    else {
+        $domain[] = ['date', '=', $params['date_from']];
+    }
 }
 
 if(isset($params['project_id']) && $params['project_id'] > 0) {

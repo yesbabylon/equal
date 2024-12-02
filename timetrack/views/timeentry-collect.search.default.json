@@ -16,19 +16,25 @@
                                                 "type": "field",
                                                 "value": "description",
                                                 "label": "Description",
-                                                "width": "33%"
+                                                "width": "25%"
                                             },
                                             {
                                                 "type": "field",
                                                 "value": "user_id",
                                                 "label": "Performed by",
-                                                "width": "33%"
+                                                "width": "25%"
                                             },
                                             {
                                                 "type": "field",
-                                                "value": "date",
-                                                "label": "Date",
-                                                "width": "33%"
+                                                "value": "date_from",
+                                                "label": "Date From",
+                                                "width": "25%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "date_to",
+                                                "label": "Date To",
+                                                "width": "25%"
                                             }
                                         ]
                                     }

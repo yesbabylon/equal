@@ -5,7 +5,7 @@
     "domain": ["object_class", "=", "timetrack\\Project"],
     "order": "date,time_start",
     "sort": "desc",
-    "limit": 500,
+    "limit": 100,
     "operations": {
         "total": {
             "duration": {
