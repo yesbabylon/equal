@@ -514,7 +514,7 @@ class TimeEntry extends SaleEntry {
                 'transitions' => [
                     'bill' => [
                         'description' => 'Create receivable, from time entry, who will be billed to the customer.',
-                        'onafter' => 'doCreateReceivable',
+                        'onbefore' => 'doCreateReceivable',
                         'policies' => [
                             'billable',
                         ],
