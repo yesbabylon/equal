@@ -326,7 +326,7 @@
                                                 "label": "Has Receivable",
                                                 "readonly": true,
                                                 "width": "25%",
-                                                "visible": false
+                                                "visible": ["is_billable", "=", true]
                                             },
                                             {
                                                 "type": "field",
