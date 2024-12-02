@@ -273,22 +273,16 @@ class TimeEntry extends SaleEntry {
             }
 
             $editable_fields = ['description', 'detailed_description', 'status'];
-            $sale_fields = ['product_id', 'price_id', 'unit_price', 'is_billable'];
 
             if($entry['status'] === 'validated') {
-                $editable_fields = array_merge($editable_fields, $sale_fields);
+                $editable_fields = array_merge($editable_fields, ['product_id', 'price_id', 'unit_price', 'is_billable', 'has_receivable', 'receivable_id']);
             }
 
             foreach($values as $field => $value) {
                 if(!in_array($field, $editable_fields)) {
                     return [
                             $field => [
-                                'non_editable' => sprintf(
-                                    'Time entry %s can only be updated from %s to %s.',
-                                    $field,
-                                    'pending',
-                                    !in_array($field, $sale_fields) ? 'ready' : 'validated'
-                                )
+                                'non_editable' => "Field '$field' cannot be updated Time entry at '{$entry['status']}'."
                             ]
                         ];
                 }
