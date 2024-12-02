@@ -83,15 +83,15 @@
                             {
                                 "id": "sales.to_bill",
                                 "type": "entry",
-                                "label": "To bill",
+                                "label": "To invoice",
                                 "icon": "payments",
-                                "description": "Display sale entries ready to be billed.",
+                                "description": "Display sale entries ready to be invoiced (through a receivable).",
                                 "context": {
                                     "entity": "sale\\SaleEntry",
                                     "view": "list.billable",
                                     "order": "id",
                                     "sort": "asc",
-                                    "domain": [ ["status", "=", "validated"] ]
+                                    "domain": [ ["status", "=", "billed"], ["has_receivable", "=", false] ]
                                 }
                             },
                             {
@@ -105,7 +105,7 @@
                                     "view": "list.default",
                                     "order": "id",
                                     "sort": "asc",
-                                    "domain": [ ["status", "=", "billed"] ]
+                                    "domain": [ ["status", "=", "billed"], ["has_receivable", "=", true] ]
                                 }
                             },
                             {
