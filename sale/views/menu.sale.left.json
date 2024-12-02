@@ -81,16 +81,17 @@
                                 }
                             },
                             {
-                                "id": "sales.subscription",
+                                "id": "sales.to_bill",
                                 "type": "entry",
                                 "label": "To bill",
                                 "icon": "payments",
                                 "description": "Display sale entries ready to be billed.",
                                 "context": {
-                                    "entity": "sale\\subscription\\Subscription",
-                                    "view": "list.default",
+                                    "entity": "sale\\SaleEntry",
+                                    "view": "list.billable",
                                     "order": "id",
-                                    "sort": "asc"
+                                    "sort": "asc",
+                                    "domain": [ ["status", "=", "validated"] ]
                                 }
                             },
                             {
