@@ -361,7 +361,7 @@ class SaleEntry extends Model {
                 'transitions' => [
                     'bill' => [
                         'description' => 'Create receivable, from sale entry, who will be invoiced to the customer.',
-                        'onafter' => 'doCreateReceivable',
+                        'onbefore' => 'doCreateReceivable',
                         'policies' => [
                             'billable',
                         ],
