@@ -104,7 +104,7 @@ if(isset($params['customer_id']) && $params['customer_id'] > 0) {
 }
 
 if(isset($params['date_from']) && $params['date_from'] > 0) {
-    if(isset($params['date_to']) && $params['date_fto'] > 0) {
+    if(isset($params['date_to']) && $params['date_to'] > 0) {
         $domain[] = ['date', '>=', $params['date_from']];
         $domain[] = ['date', '<=', $params['date_to']];
     }
