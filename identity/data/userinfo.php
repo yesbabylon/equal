@@ -17,9 +17,12 @@ list($params, $providers) = eQual::announce([
     'providers'     => ['context', 'auth']
 ]);
 
-list($context, $auth) = [$providers['context'], $providers['auth']];
+['context' => $context, 'auth' => $auth] = $providers;
 
-$result = eQual::run('get', 'core_userinfo');
+$userinfo = eQual::run('get', 'core_userinfo');
+
+// retrieve current User identifier (HTTP headers lookup through Authentication Manager)
+$user_id = $auth->userId();
 
 // user has always READ right on its own object
 $user = User::id($user_id)
@@ -30,7 +33,7 @@ $user = User::id($user_id)
     ->adapt('json')
     ->first(true);
 
-$result = array_merge($result, [
+$result = array_merge($userinfo, [
         'identity_id'       => $user['identity_id'],
         'organisation_id'   => $user['organisation_id']
     ]);
