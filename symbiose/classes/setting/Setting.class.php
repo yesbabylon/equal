@@ -76,8 +76,21 @@ class Setting extends \core\setting\Setting {
         return $result;
     }
 
+
     /**
      * Retrieve the value of a given setting.
+     * This is a shorthand alias for `get_value()`
+     *
+     * @return  mixed       Returns the value of the target setting or null if the setting parameter is not found. The type of the returned var depends on the setting's `type` field.
+     */
+    public static function get(string $package, string $section, string $code, $default=null, array $selector=[], string $lang=null) {
+        return self::get($package, $section, $code, $default, $selector, $lang);
+    }
+
+    /**
+     * Retrieve the value of a given setting.
+     *
+     * In addition to `user_id`, this method also supports `organisation_id`.
      *
      * @param   $package    Package to which the setting relates to.
      * @param   $section    Specific section within the package.
@@ -132,7 +145,10 @@ class Setting extends \core\setting\Setting {
                     // #memo - by default settings values are sorted on user_id (which can be null), so first value is the default one
                     foreach($setting_values as $setting_value) {
                         $value = $setting_value['value'];
-                        if(isset($selector['user_id']) && $setting_value['user_id'] == $selector['user_id']) {
+                        if(isset($selector['user_id']) && isset($setting_value['user_id']) && $setting_value['user_id'] == $selector['user_id']) {
+                            break;
+                        }
+                        if(isset($selector['organisation_id']) && isset($setting_value['organisation_id']) && $setting_value['organisation_id'] == $selector['organisation_id']) {
                             break;
                         }
                     }
