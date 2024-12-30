@@ -47,7 +47,8 @@ class Customer extends \identity\Partner {
                 'foreign_object'    => 'sale\customer\CustomerType',
                 'description'       => "Type of customer (map with rate classes). Defaults to 'individual'.",
                 'help'              => "If partner is a customer, it can be assigned a customer type",
-                'default'           => 1
+                'default'           => 1,
+                'onupdate'          => 'onupdateCustomerTypeId'
             ],
 
             'relationship' => [
@@ -163,8 +164,8 @@ class Customer extends \identity\Partner {
         foreach($self as $id => $customer) {
             if($customer['customer_nature_id']) {
                 self::id($id)->update([
-                        'rate_class_id' => $customer['customer_nature_id']['rate_class_id'],
-                        'customer_type_id' => $customer['customer_nature_id']['customer_type_id']
+                        'rate_class_id'     => $customer['customer_nature_id']['rate_class_id'],
+                        'customer_type_id'  => $customer['customer_nature_id']['customer_type_id']
                     ]);
             }
         }
@@ -179,12 +180,22 @@ class Customer extends \identity\Partner {
         return $result;
     }
 
+    public static function onupdateCustomerTypeId($self) {
+        $self->read(['customer_type_id']);
+
+        foreach($self as $id => $customer) {
+            // #memo - there is a strict equivalence between identity type and customer type (the only distinction is in the presentation)
+            self::id($id)->update(['type_id' => $customer['customer_type_id']]);
+        }
+    }
+
     public static function onafterupdate($self, $values) {
+        // this must be done after general sync (which creates an Identity if necessary, and prevents updating the `customer_id` of the target Identity)
         parent::onafterupdate($self, $values);
 
         $self->read(['partner_identity_id' => ['id', 'customer_id']]);
         foreach($self as $id => $customer) {
-            if(is_null($customer['partner_identity_id']['customer_id'])) {
+            if($customer['partner_identity_id']['customer_id'] != $id) {
                 Identity::id($customer['partner_identity_id']['id'])->update(['customer_id' => $id]);
             }
         }
