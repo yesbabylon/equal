@@ -26,7 +26,7 @@ class Document extends Model {
 
             'data' => [
                 'type'              => 'binary',
-                'dependents'        => ['size', 'readable_size', 'preview_image']
+                'dependents'        => ['uuid', 'hash', 'size', 'readable_size', 'preview_image']
             ],
 
             'type' => [
@@ -55,8 +55,20 @@ class Document extends Model {
             ],
 
             'hash' => [
-                'type'              => 'string',
-                'dependents'        => ['link']
+                'type'              => 'computed',
+                'result_type'       => 'string',
+                'store'             => true,
+                'dependents'        => ['link'],
+                'function'          => 'calcHash',
+                'description'       => 'MD5 hash of the document.'
+            ],
+
+            'uuid' => [
+                'type'              => 'computed',
+                'result_type'       => 'string',
+                'unique'            => true,
+                'store'             => true,
+                'function'          => 'calcUuid'
             ],
 
             'link' => [
@@ -164,17 +176,48 @@ class Document extends Model {
         return $result;
     }
 
+    public static function calcHash($self) {
+        $result = [];
+        $self->read(['data']);
+        foreach($self as $id => $document) {
+            $result[$id] = md5($document['data']);
+        }
+        return $result;
+    }
+
+    /**
+     * @param \equal\orm\Collection $self
+     * @param \equal\orm\ObjectManager $orm
+     */
+    public static function calcUuid($self, $orm) {
+        $result = [];
+        foreach($self as $id => $document) {
+            do {
+                $uuid = sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+                        // 32 bits "time_low"
+                        mt_rand(0, 0xffff), mt_rand(0, 0xffff),
+                        // 16 bits "time_mid"
+                        mt_rand(0, 0xffff),
+                        // 16 bits "time_hi_and_version" (4 first bits with version number "4")
+                        mt_rand(0, 0x0fff) | 0x4000,
+                        // 16 bits: 8 bits "clock_seq_hi_and_reserved"; 8 bits "clock_seq_low"
+                        mt_rand(0, 0x3fff) | 0x8000,
+                        // 64 bits "node"
+                        mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
+                    );
+                $existing = $orm->search(self::getType(), ['uuid', '=', $uuid]);
+            } while( $existing > 0 && count($existing) > 0 );
+            $result[$id] = $uuid;
+        }
+        return $result;
+    }
+
     public static function calcSize($self) {
         $result = [];
-        $self->read(['data', 'hash']);
+        $self->read(['data']);
 
         foreach($self as $id => $document) {
-            $content = $document['data'] ?? '';
-            $result[$id] = strlen($content);
-            // set hash if not assigned yet
-            if(!$document['hash'] || strlen($document['hash']) <= 0) {
-                self::id($id)->update(['hash' => md5($id . substr($content, 0, 128))]);
-            }
+            $result[$id] = strlen($document['data'] ?? '');
         }
 
         return $result;
@@ -202,8 +245,6 @@ class Document extends Model {
         }
         return $result;
     }
-
-
 
     public static function calcType($self) {
         $result = [];
@@ -249,7 +290,7 @@ class Document extends Model {
      *
      * @return string | bool    In case of success, the extension is returned. If no extension matches the content type, the method returns false.
      */
-    public static function computeExtensionFromType($content_type, $name = '') {
+    private static function computeExtensionFromType($content_type, $name = '') {
 
         static $map_extensions = [
             '3g2'   => 'video/3gpp2',
