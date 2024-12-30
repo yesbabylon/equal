@@ -83,7 +83,7 @@
             {
                 "type": "field",
                 "value": "name",
-                "width": "25%",
+                "width": "33%",
                 "sortable": true,
                 "readonly": true
             },
@@ -143,7 +143,7 @@
                 "type": "field",
                 "label": "Date",
                 "value": "date",
-                "width": "10%",
+                "width": "8%",
                 "sortable": true,
                 "widget": {
                     "usage": "date/plain.short"
@@ -153,14 +153,14 @@
                 "type": "field",
                 "label": "Start",
                 "value": "time_start",
-                "width": "10%",
+                "width": "8%",
                 "sortable": true
             },
             {
                 "type": "field",
                 "label": "End",
                 "value": "time_end",
-                "width": "10%",
+                "width": "8%",
                 "sortable": true
             },
             {
