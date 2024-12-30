@@ -141,11 +141,11 @@ class Price extends Model {
             $result['vat_rate'] = $rule['vat_rule_id']['rate'];
         }
 
-        if(isset($event['price']) && isset($values['vat_rate'])) {
-            $result['price_vat'] = self::computePriceVatIncluded($event['price'], $values['vat_rate']);
+        if(isset($event['price'])) {
+            $result['price_vat'] = self::computePriceVatIncluded($event['price'], $values['vat_rate'] ?? 0.0);
         }
-        elseif(isset($event['price_vat']) && isset($values['vat_rate'])) {
-            $result['price'] = self::computePriceVatExcluded($event['price_vat'], $values['vat_rate']);
+        elseif(isset($event['price_vat'])) {
+            $result['price'] = self::computePriceVatExcluded($event['price_vat'], $values['vat_rate'] ?? 0.0);
         }
 
         return $result;
