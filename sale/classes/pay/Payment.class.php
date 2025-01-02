@@ -164,7 +164,6 @@ class Payment extends Model {
      */
     public static function onupdateFundingId($self, $values) {
         trigger_error("ORM::calling sale\pay\Payment::onupdateFundingId", QN_REPORT_DEBUG);
-        file_put_contents(QN_LOG_STORAGE_DIR.'/tmp.log', 'onupdateFundingId'.PHP_EOL, FILE_APPEND | LOCK_EX);
 
         $funding_fields = [
             'funding_type',
