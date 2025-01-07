@@ -144,14 +144,14 @@ foreach($servers as $server) {
 
     $max_repetition = 0;
     foreach($server['alerts_ids'] as $alert) {
-        foreach($server['alert_triggers_ids'] as $alert_trigger) {
+        foreach($alert['alert_triggers_ids'] as $alert_trigger) {
             $max_repetition = max($max_repetition, $alert_trigger['repetition']);
         }
     }
 
     $statuses = Status::search(
         ['server_id', '=', $server['id']],
-        ['sort' => ['created' => 'desc'], 'limit' => $max_repetition]
+        ['sort' => ['created' => 'desc'], 'limit' => $max_repetition + 1]
     )
         ->read(['up', 'server_status'])
         ->get();
