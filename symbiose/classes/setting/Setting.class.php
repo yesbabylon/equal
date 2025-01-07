@@ -84,7 +84,7 @@ class Setting extends \core\setting\Setting {
      * @return  mixed       Returns the value of the target setting or null if the setting parameter is not found. The type of the returned var depends on the setting's `type` field.
      */
     public static function get(string $package, string $section, string $code, $default=null, array $selector=[], string $lang=null) {
-        return self::get($package, $section, $code, $default, $selector, $lang);
+        return self::get_value($package, $section, $code, $default, $selector, $lang);
     }
 
     /**
@@ -162,6 +162,16 @@ class Setting extends \core\setting\Setting {
 
         $GLOBALS['_symbiose_setting_cache'][$index] = $result;
         return $result;
+    }
+
+    /**
+     * Update the value of a given setting.
+     * This is a shorthand alias for `set_value()`
+     *
+     * @return  void
+     */
+    public static function set(string $package, string $section, string $code, $value, array $selector=[], string $lang=null) {
+        self::set_value($package, $section, $code, $value, $selector, $lang);
     }
 
     /**
