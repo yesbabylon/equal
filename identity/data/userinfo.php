@@ -17,6 +17,10 @@ list($params, $providers) = eQual::announce([
     'providers'     => ['context', 'auth']
 ]);
 
+/**
+ * @var \equal\php\Context                  $context
+ * @var \equal\auth\AuthenticationManager   $auth
+ */
 ['context' => $context, 'auth' => $auth] = $providers;
 
 $userinfo = eQual::run('get', 'core_userinfo');
@@ -39,7 +43,7 @@ $result = array_merge($userinfo, [
     ]);
 
 // renew JWT access token
-$access_token = $auth->token($user_id, constant('AUTH_ACCESS_TOKEN_VALIDITY'));
+$access_token = $auth->renewedToken(constant('AUTH_ACCESS_TOKEN_VALIDITY'));
 
 // send back basic info of the User object
 $context->httpResponse()
