@@ -35,7 +35,7 @@ class Server extends Model {
             'server_type' => [
                 'type'              => 'string',
                 'description'       => 'Type of the server.',
-                'selection'         => ['front', 'node', 'storage'],
+                'selection'         => ['front', 'node', 'storage', 'b2', 'tapu_backups', 'sapu_stats', 'seru_admin'],
                 'default'           => 'front'
             ],
 
@@ -91,6 +91,23 @@ class Server extends Model {
                 'foreign_field'     => 'server_id',
                 'ondetach'          => 'delete',
                 'description'       => 'List of Software installed on the server.'
+            ],
+
+            'statuses_ids' => [
+                'type'              => 'one2many',
+                'foreign_object'    => 'inventory\server\Status',
+                'foreign_field'     => 'server_id',
+                'description'       => 'Statuses of the server.'
+            ],
+
+            'alerts_ids' => [
+                'type'              => 'many2many',
+                'foreign_object'    => 'inventory\server\Alert',
+                'foreign_field'     => 'servers_ids',
+                'rel_table'         => 'inventory_server_rel_alert',
+                'rel_foreign_key'   => 'alert_id',
+                'rel_local_key'     => 'server_id',
+                'description'       => 'Alerts of the server.'
             ]
 
         ];

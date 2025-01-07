@@ -1,0 +1,23 @@
+{
+  "name": "Alerts",
+  "description": "Default listing of all alerts.",
+  "order": "name",
+  "layout": {
+    "items": [
+      {
+        "type": "field",
+        "value": "id",
+        "width": "15%",
+        "sortable": true,
+        "readonly": true
+      },
+      {
+        "type": "field",
+        "value": "name",
+        "width": "85%",
+        "sortable": true,
+        "readonly": true
+      }
+    ]
+  }
+}

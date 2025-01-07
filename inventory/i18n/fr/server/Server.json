@@ -19,7 +19,11 @@
             "selection": {
                 "front": "Front",
                 "node": "Nœud",
-                "storage": "Stockage"
+                "storage": "Stockage",
+                "b2": "B2",
+                "tapu_backups": "Tapu Backups",
+                "satu_stats": "Satu Stats",
+                "seru_admin": "Seru Admin"
             },
             "help": ""
         },

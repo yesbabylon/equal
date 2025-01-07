@@ -1,0 +1,46 @@
+{
+  "name": "Alert Triggers",
+  "description": "Default listing of all alert triggers.",
+  "order": "name",
+  "layout": {
+    "items": [
+      {
+        "type": "field",
+        "value": "id",
+        "width": "5%",
+        "sortable": true,
+        "readonly": true
+      },
+      {
+        "type": "field",
+        "value": "name",
+        "width": "20%",
+        "sortable": true
+      },
+      {
+        "type": "field",
+        "value": "key",
+        "width": "20%",
+        "sortable": true
+      },
+      {
+        "type": "field",
+        "value": "operator",
+        "width": "20%",
+        "sortable": true
+      },
+      {
+        "type": "field",
+        "value": "value",
+        "width": "20%",
+        "sortable": true
+      },
+      {
+        "type": "field",
+        "value": "repetition",
+        "width": "20%",
+        "sortable": true
+      }
+    ]
+  }
+}

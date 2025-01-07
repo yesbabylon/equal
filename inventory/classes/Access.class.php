@@ -126,7 +126,11 @@ class Access extends Model {
         ];
     }
 
-    public static function onupdateType($self) {
+    public static function onupdateType($self, $values) {
+        if(isset($values['port'])) {
+            return;
+        }
+
         $self->read(['access_type', 'port']);
         foreach($self as $id => $access) {
             if(isset(self::MAP_PORTS[$access['access_type']])) {
