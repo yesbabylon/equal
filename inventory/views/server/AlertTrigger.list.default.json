@@ -19,6 +19,12 @@
       },
       {
         "type": "field",
+        "value": "server_type",
+        "width": "20%",
+        "sortable": true
+      },
+      {
+        "type": "field",
         "value": "key",
         "width": "20%",
         "sortable": true

@@ -15,7 +15,12 @@
                       {
                         "type": "field",
                         "value": "name",
-                        "width": "100%"
+                        "width": "66%"
+                      },
+                      {
+                        "type": "field",
+                        "value": "server_type",
+                        "width": "33%"
                       }
                     ]
                   },

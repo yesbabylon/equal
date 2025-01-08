@@ -201,7 +201,10 @@
                                                 "type": "field",
                                                 "value": "alerts_ids",
                                                 "width": "100%",
-                                                "label": "Alerts"
+                                                "label": "Alerts",
+                                                "widget": {
+                                                    "view": "list.server-instance"
+                                                }
                                             }
                                         ]
                                     }

@@ -86,46 +86,6 @@
                 ]
               }
             ]
-          },
-          {
-            "label": "Servers",
-            "id": "section.servers",
-            "rows": [
-              {
-                "columns": [
-                  {
-                    "width": "100%",
-                    "items": [
-                      {
-                        "type": "field",
-                        "value": "servers_ids",
-                        "width": "100%"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "label": "Instances",
-            "id": "section.instances",
-            "rows": [
-              {
-                "columns": [
-                  {
-                    "width": "100%",
-                    "items": [
-                      {
-                        "type": "field",
-                        "value": "instances_ids",
-                        "width": "100%"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
           }
         ]
       }

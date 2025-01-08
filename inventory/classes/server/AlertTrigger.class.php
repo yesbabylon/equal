@@ -56,6 +56,12 @@ class AlertTrigger extends Model {
                 'description'       => "Name of the alert."
             ],
 
+            'server_type' => [
+                'type'              => 'string',
+                'description'       => "The type of server this alert is meant for.",
+                'selection'         => ['all', 'b2', 'tapu_backups', 'sapu_stats', 'seru_admin']
+            ],
+
             'alerts_ids' => [
                 'type'              => 'many2many',
                 'foreign_object'    => 'inventory\server\Alert',
@@ -70,7 +76,7 @@ class AlertTrigger extends Model {
                 'type'              => 'string',
                 'description'       => "Name of the server status data used for the check if the alert must be triggered.",
                 'selection'         => [
-                    'up',                    // True if the server was reachable when status created
+                    'up',                    // True if the server was reachable when inventory\server\Status created
 
                     'stats.net.rx',
                     'stats.net.tx',
@@ -129,6 +135,71 @@ class AlertTrigger extends Model {
         ];
     }
 
+    public static function onchange($event, $values) {
+        $result = [];
+
+        $global_keys = [
+            'up',
+            'stats.net.rx',
+            'stats.net.tx',
+            'stats.net.total',
+            'stats.net.avg_rate',
+            'stats.cpu',
+            'stats.uptime',
+            'instant.total_proc',
+            'instant.ram_use',
+            'instant.cpu_use',
+            'instant.disk_use',
+            'instant.usr_active',
+            'instant.usr_total',
+        ];
+
+        if(isset($event['server_type'])) {
+            switch($event['server_type']) {
+                case 'b2':
+                    $result['key'] = [
+                        'selection' => array_merge(
+                            $global_keys,
+                            [
+                                'stats.mysql_mem',
+                                'stats.apache_mem',
+                                'stats.nginx_mem',
+                                'stats.apache_proc',
+                                'stats.nginx_proc',
+                                'stats.mysql_proc',
+                                'maintenance_enabled',
+                                'docker_stats.CPUPerc',
+                                'docker_stats.MemPerc'
+                            ]
+                        )
+                    ];
+                    break;
+                case 'tapu_backups':
+                    $result['key'] = [
+                        'selection' => array_merge(
+                            $global_keys,
+                            [
+                                'instant.backup_tokens_qty',
+                                'stats.backups_disk'
+                            ]
+                        )
+                    ];
+                    break;
+                default:
+                    $result['key'] = [
+                        'selection' => $global_keys
+                    ];
+                    break;
+            }
+
+            if(!in_array($values['key'], $result['key']['selection'])) {
+                $result['key']['value'] = $result['key']['selection'][0];
+            }
+        }
+
+        return $result;
+    }
+
     public static function adaptValue(string $key, string $value) {
         if(!isset(self::MAP_STATUS_KEYS_TYPES[$key])) {
             return $value;
@@ -172,5 +243,56 @@ class AlertTrigger extends Model {
         }
 
         return self::getServerStatusValue(implode('.', $keys), $server_status[$first_key]);
+    }
+
+    public static function getConstraints(): array {
+        return [
+            'key' => [
+                'key_not_allowed_for_server_type' => [
+                    'message'       => 'Not allowed for this server type.',
+                    'function'      => function ($key, $values) {
+                        $allowed_keys = [
+                            'up',
+                            'stats.net.rx',
+                            'stats.net.tx',
+                            'stats.net.total',
+                            'stats.net.avg_rate',
+                            'stats.cpu',
+                            'stats.uptime',
+                            'instant.total_proc',
+                            'instant.ram_use',
+                            'instant.cpu_use',
+                            'instant.disk_use',
+                            'instant.usr_active',
+                            'instant.usr_total'
+                        ];
+
+                        switch($values['server_type']) {
+                            case 'b2':
+                                $allowed_keys = array_merge($allowed_keys, [
+                                    'stats.mysql_mem',
+                                    'stats.apache_mem',
+                                    'stats.nginx_mem',
+                                    'stats.apache_proc',
+                                    'stats.nginx_proc',
+                                    'stats.mysql_proc',
+                                    'maintenance_enabled',
+                                    'docker_stats.CPUPerc',
+                                    'docker_stats.MemPerc'
+                                ]);
+                                break;
+                            case 'tapu_backups':
+                                $allowed_keys = array_merge($allowed_keys, [
+                                    'instant.backup_tokens_qty',
+                                    'stats.backups_disk'
+                                ]);
+                                break;
+                        }
+
+                        return in_array($key, $allowed_keys);
+                    }
+                ]
+            ]
+        ];
     }
 }
