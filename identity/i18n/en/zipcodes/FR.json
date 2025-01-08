@@ -1,0 +1,378 @@
+{
+    "01000": [
+        "Bourg-en-Bresse"
+    ],
+    "02000": [
+        "Laon",
+        "Soissons"
+    ],
+    "03000": [
+        "Moulins",
+        "Vichy"
+    ],
+    "04000": [
+        "Digne-les-Bains",
+        "Manosque"
+    ],
+    "05000": [
+        "Gap",
+        "Briançon"
+    ],
+    "06000": [
+        "Nice",
+        "Antibes",
+        "Cannes"
+    ],
+    "07000": [
+        "Privas",
+        "Aubenas"
+    ],
+    "08000": [
+        "Charleville-Mézières",
+        "Sedan"
+    ],
+    "09000": [
+        "Foix",
+        "Pamiers"
+    ],
+    "10000": [
+        "Troyes",
+        "Bar-sur-Aube"
+    ],
+    "11000": [
+        "Carcassonne",
+        "Narbonne"
+    ],
+    "12000": [
+        "Rodez",
+        "Millau"
+    ],
+    "13000": [
+        "Marseille",
+        "13000",
+        "Martigues"
+    ],
+    "14000": [
+        "Caen",
+        "Bayeux"
+    ],
+    "15000": [
+        "Aurillac",
+        "Saint-Flour"
+    ],
+    "16000": [
+        "Angoulême",
+        "Cognac"
+    ],
+    "17000": [
+        "La Rochelle",
+        "Rochefort"
+    ],
+    "18000": [
+        "Bourges",
+        "Vierzon"
+    ],
+    "19000": [
+        "Tulle",
+        "Brive-la-Gaillarde"
+    ],
+    "21000": [
+        "Dijon",
+        "Beaune"
+    ],
+    "22000": [
+        "Saint-Brieuc",
+        "Lannion"
+    ],
+    "23000": [
+        "Guéret",
+        "La Souterraine"
+    ],
+    "24000": [
+        "Périgueux",
+        "Bergerac"
+    ],
+    "25000": [
+        "Besançon",
+        "Montbéliard"
+    ],
+    "26000": [
+        "Valence",
+        "Montélimar"
+    ],
+    "27000": [
+        "Évreux",
+        "Vernon"
+    ],
+    "28000": [
+        "Chartres",
+        "Dreux"
+    ],
+    "29000": [
+        "Quimper",
+        "Brest"
+    ],
+    "30000": [
+        "Nîmes",
+        "Alès"
+    ],
+    "31000": [
+        "Toulouse",
+        "Colomiers"
+    ],
+    "32000": [
+        "Auch",
+        "Condom"
+    ],
+    "33000": [
+        "Bordeaux",
+        "Libourne"
+    ],
+    "34000": [
+        "Montpellier",
+        "Béziers"
+    ],
+    "35000": [
+        "Rennes",
+        "Saint-Malo"
+    ],
+    "36000": [
+        "Châteauroux",
+        "Issoudun"
+    ],
+    "37000": [
+        "Tours",
+        "Chinon"
+    ],
+    "38000": [
+        "Grenoble",
+        "Voiron"
+    ],
+    "39000": [
+        "Lons-le-Saunier",
+        "Dole"
+    ],
+    "40000": [
+        "Mont-de-Marsan",
+        "Dax"
+    ],
+    "41000": [
+        "Blois",
+        "Vendôme"
+    ],
+    "42000": [
+        "Saint-Étienne",
+        "Roanne"
+    ],
+    "43000": [
+        "Le Puy-en-Velay",
+        "Yssingeaux"
+    ],
+    "44000": [
+        "Nantes",
+        "Saint-Nazaire"
+    ],
+    "45000": [
+        "Orléans",
+        "Montargis"
+    ],
+    "46000": [
+        "Cahors",
+        "Figeac"
+    ],
+    "47000": [
+        "Agen",
+        "Villeneuve-sur-Lot"
+    ],
+    "48000": [
+        "Mende",
+        "Marvejols"
+    ],
+    "49000": [
+        "Angers",
+        "Cholet"
+    ],
+    "50000": [
+        "Saint-Lô",
+        "Cherbourg"
+    ],
+    "51000": [
+        "Châlons-en-Champagne",
+        "Reims"
+    ],
+    "52000": [
+        "Chaumont",
+        "Langres"
+    ],
+    "53000": [
+        "Laval",
+        "Mayenne"
+    ],
+    "54000": [
+        "Nancy",
+        "Lunéville"
+    ],
+    "55000": [
+        "Bar-le-Duc",
+        "Verdun"
+    ],
+    "56000": [
+        "Vannes",
+        "Lorient"
+    ],
+    "57000": [
+        "Metz",
+        "Thionville"
+    ],
+    "58000": [
+        "Nevers",
+        "Cosne-Cours-sur-Loire"
+    ],
+    "59000": [
+        "Lille",
+        "Roubaix",
+        "Tourcoing"
+    ],
+    "60000": [
+        "Beauvais",
+        "Compiègne"
+    ],
+    "61000": [
+        "Alençon",
+        "Flers"
+    ],
+    "62000": [
+        "Arras",
+        "Boulogne-sur-Mer",
+        "Lens"
+    ],
+    "63000": [
+        "Clermont-Ferrand",
+        "Issoire"
+    ],
+    "64000": [
+        "Pau",
+        "Bayonne"
+    ],
+    "65000": [
+        "Tarbes",
+        "Lourdes"
+    ],
+    "66000": [
+        "Perpignan",
+        "Céret"
+    ],
+    "67000": [
+        "Strasbourg",
+        "Haguenau"
+    ],
+    "68000": [
+        "Colmar",
+        "Mulhouse"
+    ],
+    "69000": [
+        "Lyon",
+        "Villeurbanne"
+    ],
+    "70000": [
+        "Vesoul",
+        "Lure"
+    ],
+    "71000": [
+        "Mâcon",
+        "Chalon-sur-Saône"
+    ],
+    "72000": [
+        "Le Mans",
+        "La Flèche"
+    ],
+    "73000": [
+        "Chambéry",
+        "Albertville"
+    ],
+    "74000": [
+        "Annecy",
+        "Thonon-les-Bains"
+    ],
+    "75000": [
+        "Paris"
+    ],
+    "76000": [
+        "Rouen",
+        "Le Havre"
+    ],
+    "77000": [
+        "Melun",
+        "Meaux"
+    ],
+    "78000": [
+        "Versailles",
+        "Mantes-la-Jolie"
+    ],
+    "79000": [
+        "Niort",
+        "Bressuire"
+    ],
+    "80000": [
+        "Amiens",
+        "Abbeville"
+    ],
+    "81000": [
+        "Albi",
+        "Castres"
+    ],
+    "82000": [
+        "Montauban",
+        "Moissac"
+    ],
+    "83000": [
+        "Toulon",
+        "Fréjus"
+    ],
+    "84000": [
+        "Avignon",
+        "Carpentras"
+    ],
+    "85000": [
+        "La Roche-sur-Yon",
+        "Les Sables-d'Olonne"
+    ],
+    "86000": [
+        "Poitiers",
+        "Châtellerault"
+    ],
+    "87000": [
+        "Limoges",
+        "Saint-Junien"
+    ],
+    "88000": [
+        "Épinal",
+        "Saint-Dié-des-Vosges"
+    ],
+    "89000": [
+        "Auxerre",
+        "Sens"
+    ],
+    "90000": [
+        "Belfort",
+        "Montbéliard"
+    ],
+    "91000": [
+        "Évry",
+        "Massy"
+    ],
+    "92000": [
+        "Nanterre",
+        "Boulogne-Billancourt"
+    ],
+    "93000": [
+        "Bobigny",
+        "Saint-Denis"
+    ],
+    "94000": [
+        "Créteil"
+    ],
+    "95000": [
+        "Cergy"
+    ]
+}

@@ -1,0 +1,5049 @@
+{
+    "1030": [
+        "Schaerbeek"
+    ],
+    "1150": [
+        "Woluwe-Saint-Pierre"
+    ],
+    "1210": [
+        "Saint-Josse-Ten-Noode"
+    ],
+    "1300": [
+        "Limal",
+        "Wavre"
+    ],
+    "1315": [
+        "Incourt",
+        "Pi\u00e8trebais",
+        "Roux-Miroir",
+        "Glimes",
+        "Opprebais"
+    ],
+    "1325": [
+        "Bonlez",
+        "Corroy-Le-Grand",
+        "Chaumont-Gistoux",
+        "Dion-Valmont",
+        "Longueville"
+    ],
+    "1340": [
+        "Ottignies-Louvain-La-Neuve",
+        "Ottignies"
+    ],
+    "1350": [
+        "Folx-Les-Caves",
+        "Noduwez",
+        "Orp-Jauche",
+        "Jandrain-Jandrenouille",
+        "Marilles",
+        "Enines",
+        "Jauche",
+        "Orp-Le-Grand"
+    ],
+    "1357": [
+        "Neerheylissem",
+        "Opheylissem",
+        "H\u00e9l\u00e9cine",
+        "Linsmeau"
+    ],
+    "1360": [
+        "Perwez",
+        "Thorembais-Les-B\u00e9guines",
+        "Thorembais-Saint-Trond",
+        "Orbais",
+        "Mal\u00e8ves-Sainte-Marie-Wastines"
+    ],
+    "1370": [
+        "Jodoigne",
+        "Dongelberg",
+        "Jauchelette",
+        "Saint-Jean-Geest",
+        "Lathuy",
+        "Z\u00e9trud-Lumay",
+        "M\u00e9lin",
+        "Saint-Remy-Geest",
+        "Jodoigne-Souveraine",
+        "Pi\u00e9train"
+    ],
+    "1390": [
+        "Biez",
+        "Grez-Doiceau",
+        "Archennes",
+        "Nethen",
+        "Bossut-Gottechain"
+    ],
+    "1401": [
+        "Baulers"
+    ],
+    "1421": [
+        "Ophain-Bois-Seigneur-Isaac"
+    ],
+    "1430": [
+        "Bierghes",
+        "Rebecq-Rognon",
+        "Quenast",
+        "Rebecq"
+    ],
+    "1450": [
+        "Chastre",
+        "Chastre-Villeroux-Blanmont",
+        "Saint-G\u00e9ry",
+        "Cortil-Noirmont",
+        "Gentinnes"
+    ],
+    "1457": [
+        "Nil-Saint-Vincent-Saint-Martin",
+        "Tourinnes-Saint-Lambert",
+        "Walhain-Saint-Paul",
+        "Walhain"
+    ],
+    "1461": [
+        "Haut-Ittre"
+    ],
+    "1470": [
+        "Baisy-Thy",
+        "Bousval",
+        "Genappe"
+    ],
+    "1474": [
+        "Ways"
+    ],
+    "1501": [
+        "Buizingen"
+    ],
+    "1547": [
+        "Bi\u00e9v\u00e8ne"
+    ],
+    "1630": [
+        "Linkebeek"
+    ],
+    "1640": [
+        "Rhode-Saint-Gen\u00e8se"
+    ],
+    "1700": [
+        "Sint-Ulriks-Kapelle",
+        "Dilbeek",
+        "Sint-Martens-Bodegem"
+    ],
+    "1702": [
+        "Groot-Bijgaarden"
+    ],
+    "1731": [
+        "Relegem",
+        "Zellik"
+    ],
+    "1740": [
+        "Ternat"
+    ],
+    "1750": [
+        "Gaasbeek",
+        "Lennik",
+        "Sint-Kwintens-Lennik",
+        "Sint-Martens-Lennik"
+    ],
+    "1780": [
+        "Wemmel"
+    ],
+    "1785": [
+        "Hamme",
+        "Brussegem",
+        "Merchtem"
+    ],
+    "1790": [
+        "Affligem",
+        "Essene",
+        "Teralfene",
+        "Hekelgem"
+    ],
+    "1820": [
+        "Perk",
+        "Melsbroek",
+        "Steenokkerzeel"
+    ],
+    "1860": [
+        "Meise"
+    ],
+    "1910": [
+        "Berg",
+        "Buken",
+        "Nederokkerzeel",
+        "Kampenhout"
+    ],
+    "1930": [
+        "Zaventem",
+        "Nossegem"
+    ],
+    "1932": [
+        "Sint-Stevens-Woluwe"
+    ],
+    "2020": [
+        "Antwerpen"
+    ],
+    "2030": [
+        "Antwerpen"
+    ],
+    "2100": [
+        "Deurne"
+    ],
+    "2220": [
+        "Hallaar",
+        "Heist-Op-Den-Berg"
+    ],
+    "2222": [
+        "Wiekevorst",
+        "Itegem"
+    ],
+    "2230": [
+        "Ramsel",
+        "Herselt"
+    ],
+    "2235": [
+        "Houtvenne",
+        "Westmeerbeek",
+        "Hulshout"
+    ],
+    "2260": [
+        "Zoerle-Parwijs",
+        "Westerlo",
+        "Oevel",
+        "Tongerlo"
+    ],
+    "2280": [
+        "Grobbendonk"
+    ],
+    "2290": [
+        "Vorselaar"
+    ],
+    "2300": [
+        "Turnhout"
+    ],
+    "2360": [
+        "Oud-Turnhout"
+    ],
+    "2380": [
+        "Ravels"
+    ],
+    "2382": [
+        "Poppel"
+    ],
+    "2431": [
+        "Veerle",
+        "Varendonk"
+    ],
+    "2490": [
+        "Balen"
+    ],
+    "2520": [
+        "Broechem",
+        "Oelegem",
+        "Emblem",
+        "Ranst"
+    ],
+    "2560": [
+        "Bevel",
+        "Kessel",
+        "Nijlen"
+    ],
+    "2570": [
+        "Duffel"
+    ],
+    "2800": [
+        "Walem",
+        "Mechelen"
+    ],
+    "2811": [
+        "Leest",
+        "Hombeek"
+    ],
+    "2820": [
+        "Rijmenam",
+        "Bonheiden"
+    ],
+    "2830": [
+        "Tisselt",
+        "Willebroek",
+        "Blaasveld",
+        "Heindonk"
+    ],
+    "2870": [
+        "Ruisbroek",
+        "Puurs",
+        "Breendonk",
+        "Liezele"
+    ],
+    "2890": [
+        "Lippelo",
+        "Sint-Amands",
+        "Oppuurs"
+    ],
+    "2960": [
+        "Brecht",
+        "Sint-Job-In-'t-Goor",
+        "Sint-Lenaarts"
+    ],
+    "2990": [
+        "Wuustwezel",
+        "Loenhout"
+    ],
+    "3020": [
+        "Herent",
+        "Veltem-Beisem",
+        "Winksele"
+    ],
+    "3040": [
+        "Huldenberg",
+        "Loonbeek",
+        "Neerijse",
+        "Ottenburg",
+        "Sint-Agatha-Rode"
+    ],
+    "3051": [
+        "Sint-Joris-Weert"
+    ],
+    "3053": [
+        "Haasrode"
+    ],
+    "3060": [
+        "Bertem",
+        "Korbeek-Dijle"
+    ],
+    "3080": [
+        "Tervuren",
+        "Vossem",
+        "Duisburg"
+    ],
+    "3140": [
+        "Keerbergen"
+    ],
+    "3150": [
+        "Haacht",
+        "Tildonk",
+        "Wespelaar"
+    ],
+    "3210": [
+        "Lubbeek",
+        "Linden"
+    ],
+    "3211": [
+        "Binkom"
+    ],
+    "3220": [
+        "Kortrijk-Dutsel",
+        "Sint-Pieters-Rode",
+        "Holsbeek"
+    ],
+    "3272": [
+        "Testelt",
+        "Messelbroek"
+    ],
+    "3300": [
+        "Hakendover",
+        "Oorbeek",
+        "Tienen",
+        "Vissenaken",
+        "Kumtich",
+        "Oplinter",
+        "Bost",
+        "Goetsenhoven",
+        "Sint-Margriete-Houtem"
+    ],
+    "3350": [
+        "Drieslinter",
+        "Melkwezer",
+        "Overhespen",
+        "Linter",
+        "Neerhespen",
+        "Neerlinter",
+        "Orsmaal-Gussenhoven",
+        "Wommersom"
+    ],
+    "3370": [
+        "Roosbeek",
+        "Vertrijk",
+        "Boutersem",
+        "Kerkom",
+        "Neervelp",
+        "Willebringen"
+    ],
+    "3400": [
+        "Overwinden",
+        "Eliksem",
+        "Rumsdorp",
+        "Wange",
+        "Ezemaal",
+        "Neerwinden",
+        "Laar",
+        "Landen"
+    ],
+    "3401": [
+        "Walshoutem",
+        "Wezeren",
+        "Walsbets",
+        "Waasmont"
+    ],
+    "3440": [
+        "Dormaal",
+        "Zoutleeuw",
+        "Halle-Booienhoven",
+        "Helen-Bos",
+        "Budingen"
+    ],
+    "3450": [
+        "Geetbets",
+        "Grazen"
+    ],
+    "3461": [
+        "Molenbeek-Wersbeek"
+    ],
+    "3470": [
+        "Sint-Margriete-Houtem",
+        "Kortenaken",
+        "Ransberg"
+    ],
+    "3471": [
+        "Hoeleden"
+    ],
+    "3473": [
+        "Waanrode"
+    ],
+    "3500": [
+        "Sint-Lambrechts-Herk",
+        "Hasselt"
+    ],
+    "3511": [
+        "Stokrooie",
+        "Kuringen"
+    ],
+    "3530": [
+        "Houthalen-Helchteren",
+        "Helchteren",
+        "Houthalen"
+    ],
+    "3540": [
+        "Berbroek",
+        "Herk-De-Stad",
+        "Schulen",
+        "Donk"
+    ],
+    "3545": [
+        "Halen",
+        "Loksbergen",
+        "Zelem"
+    ],
+    "3550": [
+        "Heusden",
+        "Heusden-Zolder",
+        "Zolder"
+    ],
+    "3560": [
+        "Lummen",
+        "Linkhout",
+        "Meldert"
+    ],
+    "3581": [
+        "Beverlo"
+    ],
+    "3583": [
+        "Paal"
+    ],
+    "3590": [
+        "Diepenbeek"
+    ],
+    "3620": [
+        "Veldwezelt",
+        "Neerharen",
+        "Lanaken",
+        "Gellik"
+    ],
+    "3630": [
+        "Mechelen-Aan-De-Maas",
+        "Opgrimbie",
+        "Eisden",
+        "Leut",
+        "Maasmechelen",
+        "Meeswijk",
+        "Vucht"
+    ],
+    "3631": [
+        "Uikhoven",
+        "Boorsem"
+    ],
+    "3640": [
+        "Kessenich",
+        "Kinrooi",
+        "Molenbeersel",
+        "Ophoven"
+    ],
+    "3650": [
+        "Dilsen",
+        "Rotem",
+        "Stokkem",
+        "Dilsen-Stokkem",
+        "Elen",
+        "Lanklaar"
+    ],
+    "3670": [
+        "Gruitrode",
+        "Meeuwen-Gruitrode",
+        "Neerglabbeek",
+        "Meeuwen",
+        "Ellikom",
+        "Wijshagen"
+    ],
+    "3700": [
+        "Diets-Heur",
+        "Neerrepen",
+        "Overrepen",
+        "Tongeren",
+        "Vreren",
+        "'s Herenelderen",
+        "Rutten",
+        "Berg",
+        "Widooie",
+        "Haren",
+        "Henis",
+        "Koninksem",
+        "Lauw",
+        "Mal",
+        "Nerem",
+        "Piringen",
+        "Riksingen",
+        "Sluizen",
+        "Kolmont"
+    ],
+    "3723": [
+        "Guigoven"
+    ],
+    "3730": [
+        "Hoeselt",
+        "Romershoven",
+        "Werm",
+        "Sint-Huibrechts-Hern"
+    ],
+    "3740": [
+        "Munsterbilzen",
+        "Grote-Spouwen",
+        "Mopertingen",
+        "Rosmeer",
+        "Eigenbilzen",
+        "Rijkhoven",
+        "Beverst",
+        "Bilzen",
+        "Hees",
+        "Kleine-Spouwen",
+        "Waltwilder"
+    ],
+    "3742": [
+        "Martenslinde"
+    ],
+    "3746": [
+        "Hoelbeek"
+    ],
+    "3790": [
+        "Fourons",
+        "Fouron-Saint-Martin",
+        "Mouland"
+    ],
+    "3798": [
+        "Fouron-Le-Comte"
+    ],
+    "3800": [
+        "Brustem",
+        "Zepperen",
+        "Groot-Gelmen",
+        "Kerkom-Bij-Sint-Truiden",
+        "Halmaal",
+        "Engelmanshoven",
+        "Gelinden",
+        "Aalst",
+        "Ordingen",
+        "Sint-Truiden"
+    ],
+    "3806": [
+        "Velm"
+    ],
+    "3830": [
+        "Wellen",
+        "Berlingen"
+    ],
+    "3840": [
+        "Bommershoven",
+        "Borgloon",
+        "Jesseren",
+        "Kerniel",
+        "Kolmont",
+        "Rijkel",
+        "Voort",
+        "Haren",
+        "Broekom",
+        "Gors-Opleeuw",
+        "Gotem",
+        "Hendrieken",
+        "Kuttekoven",
+        "Groot-Loon",
+        "Hoepertingen"
+    ],
+    "3850": [
+        "Nieuwerkerken",
+        "Kozen",
+        "Wijer",
+        "Binderveld"
+    ],
+    "3870": [
+        "Mettekoven",
+        "Opheers",
+        "Batsheers",
+        "Horpmaal",
+        "Mechelen-Bovelingen",
+        "Rukkelingen-Loon",
+        "Vechmaal",
+        "Heers",
+        "Klein-Gelmen",
+        "Veulen",
+        "Bovelingen",
+        "Heks"
+    ],
+    "3890": [
+        "Vorsen",
+        "Kortijs",
+        "Jeuk",
+        "Boekhout",
+        "Gingelom",
+        "Montenaken",
+        "Niel-Bij-Sint-Truiden"
+    ],
+    "3900": [
+        "Overpelt"
+    ],
+    "3945": [
+        "Ham",
+        "Kwaadmechelen",
+        "Oostham"
+    ],
+    "3960": [
+        "Beek",
+        "Bree",
+        "Gerdingen",
+        "Opitter",
+        "Tongerlo"
+    ],
+    "3990": [
+        "Grote-Brogel",
+        "Wijchmaal",
+        "Peer",
+        "Kleine-Brogel"
+    ],
+    "4020": [
+        "Bressoux",
+        "Jupille-Sur-Meuse",
+        "Wandre",
+        "Li\u00e8ge"
+    ],
+    "4040": [
+        "Herstal"
+    ],
+    "4041": [
+        "Vottem",
+        "Milmort"
+    ],
+    "4051": [
+        "Vaux-Sous-Ch\u00e8vremont"
+    ],
+    "4053": [
+        "Embourg"
+    ],
+    "4120": [
+        "Ehein",
+        "Rotheux-Rimi\u00e8re",
+        "Neupr\u00e9"
+    ],
+    "4210": [
+        "Hann\u00eache",
+        "Marneffe",
+        "Burdinne",
+        "Lamontz\u00e9e",
+        "Oteppe"
+    ],
+    "4219": [
+        "Ambresin",
+        "Acosse",
+        "Meeffe",
+        "Wasseiges"
+    ],
+    "4252": [
+        "Omal"
+    ],
+    "4260": [
+        "Fallais",
+        "Fumal",
+        "Avennes",
+        "Braives",
+        "Ville-En-Hesbaye",
+        "Ciplet"
+    ],
+    "4280": [
+        "Moxhe",
+        "Petit-Hallet",
+        "Thisnes",
+        "Avin",
+        "Crehen",
+        "Trogn\u00e9e",
+        "Villers-Le-Peuplier",
+        "Blehen",
+        "Cras-Avernas",
+        "Wansin",
+        "Abolens",
+        "Avernas-Le-Bauduin",
+        "Lens-Saint-Remy",
+        "Merdorp",
+        "Poucet",
+        "Bertr\u00e9e",
+        "Grand-Hallet",
+        "Hannut"
+    ],
+    "4287": [
+        "Lincent",
+        "Pellaines",
+        "Racour"
+    ],
+    "4300": [
+        "Bettincourt",
+        "Bleret",
+        "Waremme",
+        "Lantremange",
+        "Bovenistier",
+        "Grand-Axhe",
+        "Oleye"
+    ],
+    "4317": [
+        "Celles",
+        "Faimes",
+        "Les Waleffes",
+        "Aineffe",
+        "Borlez",
+        "Viemme"
+    ],
+    "4340": [
+        "Awans",
+        "Villers-L'ev\u00eaque",
+        "Fooz",
+        "Oth\u00e9e"
+    ],
+    "4342": [
+        "Hognoul"
+    ],
+    "4357": [
+        "Jeneffe",
+        "Limont",
+        "Haneffe",
+        "Donceel"
+    ],
+    "4367": [
+        "Thys",
+        "Crisn\u00e9e",
+        "Kemexhe",
+        "Fize-Le-Marsal",
+        "Odeur"
+    ],
+    "4453": [
+        "Villers-Saint-Sim\u00e9on"
+    ],
+    "4460": [
+        "Bierset",
+        "Hollogne-Aux-Pierres",
+        "Velroux",
+        "Gr\u00e2ce-Berleur",
+        "Gr\u00e2ce-Hollogne",
+        "Horion-Hoz\u00e9mont"
+    ],
+    "4470": [
+        "Saint-Georges-Sur-Meuse"
+    ],
+    "4480": [
+        "Hermalle-Sous-Huy",
+        "Clermont-Sous-Huy",
+        "Engis",
+        "Ehein"
+    ],
+    "4500": [
+        "Ben-Ahin",
+        "Huy",
+        "Tihange"
+    ],
+    "4520": [
+        "Vinalmont",
+        "Bas-Oha",
+        "Moha",
+        "Wanze",
+        "Antheit",
+        "Huccorgne"
+    ],
+    "4530": [
+        "Vaux-Et-Borset",
+        "Warnant-Dreye",
+        "Villers-Le-Bouillet",
+        "Fize-Fontaine",
+        "Vieux-Waleffe"
+    ],
+    "4540": [
+        "Amay",
+        "Ombret",
+        "Jehay",
+        "Ampsin",
+        "Fl\u00f4ne"
+    ],
+    "4557": [
+        "Soheit-Tinlot",
+        "Tinlot",
+        "Ab\u00e9e",
+        "Ramelot",
+        "Seny",
+        "Fraiture"
+    ],
+    "4560": [
+        "Terwagne",
+        "Les Avins",
+        "Ocquier",
+        "Bois-Et-Borsu",
+        "Pailhe",
+        "Clavier"
+    ],
+    "4577": [
+        "Outrelouxhe",
+        "Str\u00e9e-Lez-Huy",
+        "Modave",
+        "Vierset-Barse"
+    ],
+    "4590": [
+        "Ellemelle",
+        "Warz\u00e9e",
+        "Ouffet"
+    ],
+    "4600": [
+        "Lixhe",
+        "Richelle",
+        "Vis\u00e9",
+        "Lanaye"
+    ],
+    "4607": [
+        "Mortroux",
+        "Feneur",
+        "Bombaye",
+        "Berneau",
+        "Dalhem"
+    ],
+    "4610": [
+        "Queue-Du-Bois",
+        "Bellaire",
+        "Beyne-Heusay"
+    ],
+    "4620": [
+        "Fl\u00e9ron"
+    ],
+    "4630": [
+        "Ayeneux",
+        "Soumagne",
+        "Tign\u00e9e",
+        "Micheroux"
+    ],
+    "4631": [
+        "Evegn\u00e9e"
+    ],
+    "4654": [
+        "Charneux"
+    ],
+    "4670": [
+        "Mortier",
+        "Trembleur",
+        "Bl\u00e9gny"
+    ],
+    "4671": [
+        "Housse",
+        "Saive",
+        "Barchon"
+    ],
+    "4680": [
+        "Oupeye",
+        "Herm\u00e9e"
+    ],
+    "4802": [
+        "Heusy"
+    ],
+    "4830": [
+        "Limbourg"
+    ],
+    "4834": [
+        "Go\u00e9"
+    ],
+    "4845": [
+        "Sart-Lez-Spa",
+        "Jalhay"
+    ],
+    "4850": [
+        "Plombi\u00e8res",
+        "Montzen",
+        "Moresnet"
+    ],
+    "4851": [
+        "Sippenaeken",
+        "Gemmenich"
+    ],
+    "4852": [
+        "Hombourg"
+    ],
+    "4870": [
+        "Fraipont",
+        "Trooz",
+        "For\u00eat",
+        "Nessonvaux"
+    ],
+    "4890": [
+        "Thimister",
+        "Thimister-Clermont",
+        "Clermont"
+    ],
+    "4920": [
+        "Aywaille",
+        "Ernonheid",
+        "Harz\u00e9",
+        "Louveign\u00e9"
+    ],
+    "4950": [
+        "Waimes",
+        "Faymonville",
+        "Robertville",
+        "Sourbrodt"
+    ],
+    "4960": [
+        "Malmedy",
+        "Beverc\u00e9"
+    ],
+    "4980": [
+        "Trois-Ponts",
+        "Fosse",
+        "Wanne"
+    ],
+    "4987": [
+        "Chevron",
+        "Lorc\u00e9",
+        "Stoumont",
+        "La Gleize",
+        "Rahier"
+    ],
+    "4990": [
+        "Bra",
+        "Arbrefontaine",
+        "Lierneux"
+    ],
+    "5000": [
+        "Beez",
+        "Namur"
+    ],
+    "5002": [
+        "Saint-Servais"
+    ],
+    "5020": [
+        "Champion",
+        "Suarl\u00e9e",
+        "Temploux",
+        "Daussoulx",
+        "Vedrin",
+        "Flawinne",
+        "Malonne"
+    ],
+    "5022": [
+        "Cognel\u00e9e"
+    ],
+    "5030": [
+        "Beuzet",
+        "Grand-Manil",
+        "Ernage",
+        "Sauveni\u00e8re",
+        "Lonz\u00e9e",
+        "Gembloux"
+    ],
+    "5060": [
+        "Auvelais",
+        "Velaine-Sur-Sambre",
+        "Tamines",
+        "Arsimont",
+        "Sambreville",
+        "Falisolle",
+        "Keumi\u00e9e",
+        "Moignel\u00e9e"
+    ],
+    "5070": [
+        "Fosses-La-Ville",
+        "Sart-Eustache",
+        "Sart-Saint-Laurent",
+        "Aisemont",
+        "Le Roux",
+        "Vitrival"
+    ],
+    "5080": [
+        "Villers-Lez-Heest",
+        "Warisoulx",
+        "Emines",
+        "Rhisnes",
+        "La Bruy\u00e8re"
+    ],
+    "5101": [
+        "Erpent",
+        "Loyers",
+        "Lives-Sur-Meuse"
+    ],
+    "5140": [
+        "Boign\u00e9e",
+        "Sombreffe",
+        "Tongrinne",
+        "Ligny"
+    ],
+    "5170": [
+        "Lustin",
+        "Profondeville",
+        "Bois-De-Villers",
+        "Rivi\u00e8re",
+        "Arbre",
+        "Lesve"
+    ],
+    "5190": [
+        "Mornimont",
+        "Bal\u00e2tre",
+        "Saint-Martin",
+        "Jemeppe-Sur-Sambre",
+        "Onoz",
+        "Moustier-Sur-Sambre",
+        "Ham-Sur-Sambre",
+        "Spy"
+    ],
+    "5300": [
+        "Landenne",
+        "Sclayn",
+        "Andenne",
+        "Bonneville",
+        "Coutisse",
+        "Maizeret",
+        "Nam\u00eache",
+        "Seilles",
+        "Vezin",
+        "Thon"
+    ],
+    "5310": [
+        "Branchon",
+        "Hanret",
+        "Leuze",
+        "Noville-Sur-M\u00e9haigne",
+        "Aische-En-Refail",
+        "Eghez\u00e9e",
+        "Longchamps",
+        "Taviers",
+        "Bolinne",
+        "Upigny",
+        "Dhuy",
+        "Liernu",
+        "Mehaigne",
+        "Boneffe",
+        "Saint-Germain",
+        "Waret-La-Chauss\u00e9e"
+    ],
+    "5333": [
+        "Sorinne-La-Longue"
+    ],
+    "5340": [
+        "Faulx-Les-Tombes",
+        "Mozet",
+        "Sor\u00e9e",
+        "Gesves",
+        "Haltinne"
+    ],
+    "5350": [
+        "Evelette",
+        "Ohey"
+    ],
+    "5351": [
+        "Haillot"
+    ],
+    "5360": [
+        "Natoye",
+        "Hamois"
+    ],
+    "5362": [
+        "Achet"
+    ],
+    "5370": [
+        "Flostoy",
+        "Barvaux-Condroz",
+        "Porcheresse",
+        "Havelange",
+        "Jeneffe",
+        "Verl\u00e9e"
+    ],
+    "5374": [
+        "Maffe"
+    ],
+    "5377": [
+        "Bonsin",
+        "Heure",
+        "Hogne",
+        "Noiseux",
+        "Nettinne",
+        "Sinsin",
+        "Baillonville",
+        "Somme-Leuze",
+        "Waillet"
+    ],
+    "5380": [
+        "Fernelmont",
+        "Forville",
+        "Marchovelette",
+        "Bierwart",
+        "Tillier",
+        "Cortil-Wodon",
+        "Franc-Waret",
+        "Hemptinne",
+        "Pontillas",
+        "Hingeon",
+        "Noville-Les-Bois"
+    ],
+    "5520": [
+        "Anth\u00e9e",
+        "Onhaye"
+    ],
+    "5523": [
+        "Sommi\u00e8re",
+        "Weillen"
+    ],
+    "5530": [
+        "Dorinne",
+        "Evrehailles",
+        "Yvoir",
+        "Durnal",
+        "Godinne",
+        "Houx",
+        "Purnode",
+        "Spontin",
+        "Mont"
+    ],
+    "5537": [
+        "Anh\u00e9e",
+        "Den\u00e9e",
+        "Haut-Le-Wastia",
+        "Warnant",
+        "Annevoie-Rouillon",
+        "Bioul",
+        "Sosoye"
+    ],
+    "5540": [
+        "Hermeton-Sur-Meuse",
+        "Hasti\u00e8re-Lavaux",
+        "Waulsort",
+        "Hasti\u00e8re"
+    ],
+    "5550": [
+        "Alle",
+        "Bohan",
+        "Laforet",
+        "Sugny",
+        "Mouzaive",
+        "Chairi\u00e8re",
+        "Pussemange",
+        "Vresse-Sur-Semois",
+        "Bagimont",
+        "Membre",
+        "Orchimont",
+        "Nafraiture"
+    ],
+    "5555": [
+        "Gros-Fays",
+        "Petit-Fays",
+        "Monceau-En-Ardenne",
+        "Naom\u00e9",
+        "Oizy",
+        "Baillamont",
+        "Bi\u00e8vre",
+        "Cornimont",
+        "Bellefontaine",
+        "Graide"
+    ],
+    "5560": [
+        "Mesnil-Eglise",
+        "Ciergnon",
+        "Finnevaux",
+        "Hulsonniaux",
+        "Mesnil-Saint-Blaise",
+        "Houyet"
+    ],
+    "5570": [
+        "Baronville",
+        "Beauraing",
+        "Von\u00eache",
+        "Winenne",
+        "Felenne",
+        "Feschaux",
+        "Honnay",
+        "Javingue",
+        "Dion",
+        "Wancennes"
+    ],
+    "5574": [
+        "Pondr\u00f4me"
+    ],
+    "5575": [
+        "Bourseigne-Neuve",
+        "Houdremont",
+        "Rienne",
+        "Willerzie",
+        "Louette-Saint-Denis",
+        "Bourseigne-Vieille",
+        "Gedinne",
+        "Sart-Custinne",
+        "Vencimont",
+        "Louette-Saint-Pierre",
+        "Malvoisin",
+        "Patignies"
+    ],
+    "5580": [
+        "Han-Sur-Lesse",
+        "Jemelle",
+        "Rochefort",
+        "Wavreille",
+        "Ave-Et-Auffe",
+        "Eprave",
+        "Lessive",
+        "Mont-Gauthier",
+        "Villers-Sur-Lesse",
+        "Buissonville"
+    ],
+    "5600": [
+        "Fagnolle",
+        "Jamiolle",
+        "Romedenne",
+        "Jamagne",
+        "Neuville",
+        "Omez\u00e9e",
+        "Philippeville",
+        "Sautour",
+        "Villers-En-Fagne",
+        "Vodec\u00e9e",
+        "Franchimont",
+        "Merlemont",
+        "Roly",
+        "Samart",
+        "Surice",
+        "Sart-En-Fagne",
+        "Villers-Le-Gambon"
+    ],
+    "5620": [
+        "Corenne",
+        "Florennes",
+        "Hemptinne-Lez-Florennes",
+        "Saint-Aubin",
+        "Ros\u00e9e",
+        "Flavion",
+        "Morville"
+    ],
+    "5621": [
+        "Hanzinelle",
+        "Hanzinne",
+        "Morialm\u00e9"
+    ],
+    "5644": [
+        "Ermeton-Sur-Biert"
+    ],
+    "5650": [
+        "Chastr\u00e8s",
+        "Clermont",
+        "Pry",
+        "Fontenelle",
+        "Vogen\u00e9e",
+        "Yves-Gomez\u00e9e",
+        "Castillon",
+        "Fraire",
+        "Walcourt"
+    ],
+    "5651": [
+        "Laneffe",
+        "Tarcienne",
+        "Gourdinne",
+        "Berz\u00e9e",
+        "Rogn\u00e9e",
+        "Somz\u00e9e",
+        "Thy-Le-Ch\u00e2teau"
+    ],
+    "5660": [
+        "Br\u00fbly-De-Pesche",
+        "Petite-Chapelle",
+        "Aublain",
+        "Pesche",
+        "Boussu-En-Fagne",
+        "Dailly",
+        "Mariembourg",
+        "Presgaux",
+        "Br\u00fbly",
+        "Couvin",
+        "Cul-Des-Sarts",
+        "Frasnes",
+        "Gonrieux",
+        "Petigny"
+    ],
+    "5670": [
+        "Le Mesnil",
+        "Dourbes",
+        "Maz\u00e9e",
+        "Oignies-En-Thi\u00e9rache",
+        "Olloy-Sur-Viroin",
+        "Treignes",
+        "Vierves-Sur-Viroin",
+        "Viroinval",
+        "Nismes"
+    ],
+    "5680": [
+        "Gochen\u00e9e",
+        "Matagne-La-Grande",
+        "Vodel\u00e9e",
+        "Soulme",
+        "Doische",
+        "Matagne-La-Petite",
+        "Romer\u00e9e",
+        "Vaucelles",
+        "Gimn\u00e9e",
+        "Niverl\u00e9e"
+    ],
+    "6030": [
+        "Marchienne-Au-Pont",
+        "Goutroux"
+    ],
+    "6040": [
+        "Jumet"
+    ],
+    "6042": [
+        "Lodelinsart"
+    ],
+    "6044": [
+        "Roux"
+    ],
+    "6060": [
+        "Gilly"
+    ],
+    "6111": [
+        "Landelies"
+    ],
+    "6120": [
+        "Jamioulx",
+        "Ham-Sur-Heure",
+        "Marbaix",
+        "Nalinnes",
+        "Cour-Sur-Heure"
+    ],
+    "6200": [
+        "Bouffioulx",
+        "Ch\u00e2telineau",
+        "Ch\u00e2telet"
+    ],
+    "6210": [
+        "Wayaux",
+        "Frasnes-Lez-Gosselies",
+        "Les Bons Villers",
+        "Villers-Perwin",
+        "R\u00e8ves"
+    ],
+    "6220": [
+        "Heppignies",
+        "Wangenies",
+        "Lambusart",
+        "Fleurus"
+    ],
+    "6230": [
+        "Thim\u00e9on",
+        "Viesville",
+        "Buzet",
+        "Pont-\u00c0-Celles",
+        "Obaix"
+    ],
+    "6238": [
+        "Luttre",
+        "Liberchies"
+    ],
+    "6240": [
+        "Pironchamps",
+        "Farciennes"
+    ],
+    "6250": [
+        "Presles",
+        "Roselies",
+        "Aiseau-Presles",
+        "Pont-De-Loup",
+        "Aiseau"
+    ],
+    "6460": [
+        "Chimay",
+        "Baili\u00e8vre",
+        "Villers-La-Tour",
+        "Saint-Remy",
+        "Salles",
+        "Robechies"
+    ],
+    "6464": [
+        "Baileux",
+        "Forges",
+        "Bourlers",
+        "Ri\u00e8zes",
+        "L'escaill\u00e8re"
+    ],
+    "6470": [
+        "Sivry-Rance",
+        "Rance",
+        "Montbliart",
+        "Sautin",
+        "Grandrieu",
+        "Sivry"
+    ],
+    "6500": [
+        "Solre-Saint-G\u00e9ry",
+        "Leugnies",
+        "Leval-Chaudeville",
+        "Renlies",
+        "Beaumont",
+        "Barben\u00e7on",
+        "Thirimont"
+    ],
+    "6530": [
+        "Leers-Et-Fosteau",
+        "Thuin"
+    ],
+    "6531": [
+        "Biesme-Sous-Thuin"
+    ],
+    "6543": [
+        "Bienne-Lez-Happart"
+    ],
+    "6560": [
+        "Erquelinnes",
+        "Grand-Reng",
+        "Solre-Sur-Sambre",
+        "Bersillies-L'abbaye",
+        "Hantes-Wih\u00e9ries",
+        "Montignies-Saint-Christophe"
+    ],
+    "6642": [
+        "Juseret"
+    ],
+    "6663": [
+        "Mabompr\u00e9"
+    ],
+    "6670": [
+        "Limerl\u00e9",
+        "Gouvy"
+    ],
+    "6681": [
+        "Lavacherie"
+    ],
+    "6688": [
+        "Longchamps"
+    ],
+    "6700": [
+        "Toernich",
+        "Heinsch",
+        "Arlon",
+        "Bonnert"
+    ],
+    "6730": [
+        "Saint-Vincent",
+        "Bellefontaine",
+        "Rossignol",
+        "Tintigny"
+    ],
+    "6741": [
+        "Vance"
+    ],
+    "6747": [
+        "Ch\u00e2tillon",
+        "Saint-L\u00e9ger",
+        "Meix-Le-Tige"
+    ],
+    "6769": [
+        "Sommethonne",
+        "G\u00e9rouville",
+        "Villers-La-Loue",
+        "Meix-Devant-Virton",
+        "Robelmont"
+    ],
+    "6780": [
+        "Wolkrange",
+        "Hondelange",
+        "Messancy"
+    ],
+    "6781": [
+        "S\u00e9lange"
+    ],
+    "6782": [
+        "Habergy"
+    ],
+    "6791": [
+        "Athus"
+    ],
+    "6800": [
+        "Sainte-Marie-Chevigny",
+        "Saint-Pierre",
+        "Freux",
+        "Libramont-Chevigny",
+        "Bras",
+        "Moircy",
+        "Recogne",
+        "Remagne"
+    ],
+    "6811": [
+        "Les Bulles"
+    ],
+    "6823": [
+        "Villers-Devant-Orval"
+    ],
+    "6836": [
+        "Dohan"
+    ],
+    "6840": [
+        "Grapfontaine",
+        "Longlier",
+        "Tournay",
+        "Grandvoir",
+        "Hamipr\u00e9",
+        "Neufch\u00e2teau"
+    ],
+    "6880": [
+        "Bertrix",
+        "Cugnon",
+        "Orgeo",
+        "Jehonville",
+        "Auby-Sur-Semois"
+    ],
+    "6887": [
+        "Herbeumont",
+        "Saint-M\u00e9dard",
+        "Straimont"
+    ],
+    "6890": [
+        "Ochamps",
+        "Villance",
+        "Libin",
+        "Smuid",
+        "Redu",
+        "Anloy",
+        "Transinne"
+    ],
+    "6900": [
+        "Hargimont",
+        "Marche-En-Famenne",
+        "Roy",
+        "Aye",
+        "Humain",
+        "On",
+        "Waha"
+    ],
+    "6920": [
+        "Sohier",
+        "Wellin"
+    ],
+    "6924": [
+        "Lomprez"
+    ],
+    "6929": [
+        "Gembes",
+        "Haut-Fays",
+        "Daverdisse",
+        "Porcheresse"
+    ],
+    "6940": [
+        "Grandhan",
+        "Septon",
+        "Durbuy",
+        "W\u00e9ris"
+    ],
+    "6941": [
+        "Borlon",
+        "Heyd",
+        "Bende",
+        "Tohogne",
+        "Villers-Sainte-Gertrude",
+        "Bomal-Sur-Ourthe",
+        "Izier"
+    ],
+    "6950": [
+        "Harsin",
+        "Nassogne"
+    ],
+    "6953": [
+        "Lesterny",
+        "Masbourg",
+        "Forri\u00e8res",
+        "Ambly"
+    ],
+    "6960": [
+        "Grandmenil",
+        "Malempr\u00e9",
+        "Manhay",
+        "Harre",
+        "Odeigne",
+        "Vaux-Chavanne",
+        "Dochamps"
+    ],
+    "6970": [
+        "Tenneville"
+    ],
+    "6972": [
+        "Erneuville"
+    ],
+    "6984": [
+        "Hives"
+    ],
+    "6987": [
+        "Rendeux",
+        "Beffe",
+        "Hodister",
+        "Marcourt"
+    ],
+    "6990": [
+        "Fronville",
+        "Marenne",
+        "Hampteau",
+        "Hotton"
+    ],
+    "6997": [
+        "Amonines",
+        "Soy",
+        "Mormont",
+        "Erez\u00e9e"
+    ],
+    "7000": [
+        "Mons"
+    ],
+    "7030": [
+        "Saint-Symphorien"
+    ],
+    "7041": [
+        "Havay",
+        "Givry"
+    ],
+    "7050": [
+        "Erbisoeul",
+        "Jurbise",
+        "Masnuy-Saint-Pierre",
+        "Erbaut",
+        "Herchies",
+        "Masnuy-Saint-Jean"
+    ],
+    "7060": [
+        "Soignies",
+        "Horrues"
+    ],
+    "7080": [
+        "Eugies",
+        "Noirchain",
+        "Frameries",
+        "La Bouverie",
+        "Sars-La-Bruy\u00e8re"
+    ],
+    "7090": [
+        "Hennuy\u00e8res",
+        "Petit-Roeulx-Lez-Braine",
+        "Ronqui\u00e8res",
+        "Steenkerque",
+        "Braine-Le-Comte",
+        "Henripont"
+    ],
+    "7100": [
+        "Haine-Saint-Paul",
+        "Trivi\u00e8res",
+        "Haine-Saint-Pierre",
+        "La Louvi\u00e8re",
+        "Saint-Vaast"
+    ],
+    "7110": [
+        "Boussoit",
+        "Str\u00e9py-Bracquegnies",
+        "Maurage",
+        "Houdeng-Aimeries",
+        "Houdeng-Goegnies"
+    ],
+    "7120": [
+        "Croix-Lez-Rouveroy",
+        "Fauroeulx",
+        "Vellereille-Les-Brayeux",
+        "Peissant",
+        "Rouveroy",
+        "Estinnes-Au-Mont",
+        "Estinnes",
+        "Vellereille-Le-Sec",
+        "Estinnes-Au-Val",
+        "Haulchin"
+    ],
+    "7130": [
+        "Binche",
+        "Bray",
+        "Battignies"
+    ],
+    "7131": [
+        "Waudrez"
+    ],
+    "7133": [
+        "Buvrinnes"
+    ],
+    "7134": [
+        "Leval-Trahegnies",
+        "Ressaix",
+        "P\u00e9ronnes-Lez-Binche",
+        "Epinois"
+    ],
+    "7140": [
+        "Morlanwelz-Mariemont",
+        "Morlanwelz"
+    ],
+    "7170": [
+        "Bois-D'haine",
+        "Bellecourt",
+        "La Hestre",
+        "Manage",
+        "Fayt-Lez-Manage"
+    ],
+    "7181": [
+        "Petit-Roeulx-Lez-Nivelles",
+        "Feluy",
+        "Arquennes",
+        "Familleureux"
+    ],
+    "7190": [
+        "Ecaussinnes-D'enghien",
+        "Marche-Lez-Ecaussinnes",
+        "Ecaussinnes"
+    ],
+    "7320": [
+        "Bernissart"
+    ],
+    "7331": [
+        "Baudour"
+    ],
+    "7332": [
+        "Sirault",
+        "Neufmaison"
+    ],
+    "7333": [
+        "Tertre"
+    ],
+    "7340": [
+        "Paturages",
+        "Colfontaine",
+        "Wasmes",
+        "Warquignies"
+    ],
+    "7350": [
+        "Hainin",
+        "Hensies",
+        "Montroeul-Sur-Haine",
+        "Thulin"
+    ],
+    "7387": [
+        "Autreppe",
+        "Angreau",
+        "Fayt-Le-Franc",
+        "Angre",
+        "Athis",
+        "Onnezies",
+        "Marchipont",
+        "Montignies-Sur-Roc",
+        "Roisin",
+        "Erquennes",
+        "Honnelles"
+    ],
+    "7390": [
+        "Wasmuel",
+        "Quaregnon"
+    ],
+    "7500": [
+        "Ere",
+        "Saint-Maur",
+        "Tournai"
+    ],
+    "7502": [
+        "Esplechin"
+    ],
+    "7522": [
+        "Lamain",
+        "Hertain",
+        "Blandain",
+        "Marquain"
+    ],
+    "7532": [
+        "Beclers"
+    ],
+    "7540": [
+        "Rumillies",
+        "Melles",
+        "Quartes",
+        "Kain"
+    ],
+    "7543": [
+        "Mourcourt"
+    ],
+    "7548": [
+        "Warchin"
+    ],
+    "7608": [
+        "Wiers"
+    ],
+    "7610": [
+        "Rumes"
+    ],
+    "7618": [
+        "Taintignies"
+    ],
+    "7620": [
+        "Jollain-Merlin",
+        "Hollain",
+        "Wez-Velvain",
+        "Guignies",
+        "Bl\u00e9haries",
+        "Brunehaut"
+    ],
+    "7624": [
+        "Howardries"
+    ],
+    "7740": [
+        "Warcoing",
+        "Pecq"
+    ],
+    "7743": [
+        "Esquelmes",
+        "Obigies"
+    ],
+    "7750": [
+        "Anseroeul",
+        "Amougies",
+        "Russeignies",
+        "Mont-De-L'enclus",
+        "Orroir"
+    ],
+    "7760": [
+        "Celles",
+        "Molenbaix",
+        "Pottes",
+        "Popuelles",
+        "Escanaffles",
+        "Velaines"
+    ],
+    "7780": [
+        "Comines",
+        "Comines-Warneton"
+    ],
+    "7784": [
+        "Warneton",
+        "Bas-Warneton"
+    ],
+    "7801": [
+        "Irchonwelz"
+    ],
+    "7803": [
+        "Bouvignies"
+    ],
+    "7811": [
+        "Arbre"
+    ],
+    "7812": [
+        "Villers-Notre-Dame",
+        "Houtaing",
+        "Villers-Saint-Amand",
+        "Mainvault",
+        "Moulbaix",
+        "Ligne"
+    ],
+    "7822": [
+        "Ghislenghien",
+        "Meslin-L'ev\u00eaque",
+        "Isi\u00e8res"
+    ],
+    "7830": [
+        "Hellebecq",
+        "Hoves",
+        "Thoricourt",
+        "Gondregnies",
+        "Graty",
+        "Fouleng",
+        "Bassilly",
+        "Silly"
+    ],
+    "7850": [
+        "Petit-Enghien",
+        "Marcq",
+        "Enghien"
+    ],
+    "7866": [
+        "Bois-De-Lessines",
+        "Ollignies"
+    ],
+    "7870": [
+        "Bauffe",
+        "Lombise",
+        "Montignies-Lez-Lens",
+        "Lens",
+        "Cambron-Saint-Vincent"
+    ],
+    "7880": [
+        "Flobecq"
+    ],
+    "7890": [
+        "Ellezelles",
+        "Lahamaide",
+        "Wodecq"
+    ],
+    "7910": [
+        "Arc-Wattripont",
+        "Wattripont",
+        "Forest",
+        "Frasnes-Lez-Anvaing",
+        "Cordes",
+        "Ellignies-Lez-Frasnes",
+        "Anvaing"
+    ],
+    "7911": [
+        "Buissenal",
+        "Montroeul-Au-Bois",
+        "Frasnes-Lez-Buissenal",
+        "Hacquegnies",
+        "Oeudeghien",
+        "Herquegies",
+        "Moustier"
+    ],
+    "7950": [
+        "Chi\u00e8vres",
+        "Grosage",
+        "Ladeuze",
+        "Tongre-Saint-Martin",
+        "Huissignies"
+    ],
+    "7970": [
+        "Beloeil"
+    ],
+    "7972": [
+        "Aubechies",
+        "Quevaucamps"
+    ],
+    "8000": [
+        "Koolkerke",
+        "Brugge"
+    ],
+    "8200": [
+        "Sint-Andries",
+        "Sint-Michiels"
+    ],
+    "8210": [
+        "Zedelgem",
+        "Loppem",
+        "Veldegem"
+    ],
+    "8377": [
+        "Meetkerke",
+        "Zuienkerke",
+        "Nieuwmunster",
+        "Houtave"
+    ],
+    "8420": [
+        "Klemskerke",
+        "De Haan",
+        "Wenduine"
+    ],
+    "8433": [
+        "Sint-Pieters-Kapelle",
+        "Slijpe",
+        "Schore",
+        "Mannekensvere"
+    ],
+    "8470": [
+        "Gistel",
+        "Moere",
+        "Snaaskerke",
+        "Zevekote"
+    ],
+    "8490": [
+        "Snellegem",
+        "Jabbeke",
+        "Stalhille",
+        "Varsenare",
+        "Zerkegem"
+    ],
+    "8500": [
+        "Kortrijk"
+    ],
+    "8501": [
+        "Bissegem",
+        "Heule"
+    ],
+    "8530": [
+        "Harelbeke"
+    ],
+    "8531": [
+        "Hulste",
+        "Bavikhove"
+    ],
+    "8552": [
+        "Moen"
+    ],
+    "8554": [
+        "Sint-Denijs"
+    ],
+    "8581": [
+        "Kerkhove",
+        "Waarmaarde"
+    ],
+    "8583": [
+        "Bossuit"
+    ],
+    "8587": [
+        "Espierres",
+        "Helchin",
+        "Espierres-Helchin"
+    ],
+    "8600": [
+        "Kaaskerke",
+        "Leke",
+        "Oudekapelle",
+        "Woumen",
+        "Oostkerke",
+        "Vladslo",
+        "Pervijze",
+        "Stuivekenskerke",
+        "Beerst",
+        "Diksmuide",
+        "Driekapellen",
+        "Esen",
+        "Keiem",
+        "Lampernisse",
+        "Nieuwkapelle"
+    ],
+    "8630": [
+        "Avekapelle",
+        "Bulskamp",
+        "Houtem",
+        "Steenkerke",
+        "Veurne",
+        "Booitshoeke",
+        "De Moeren",
+        "Wulveringem",
+        "Zoutenaaie",
+        "Eggewaartskapelle",
+        "Vinkem"
+    ],
+    "8647": [
+        "Lo",
+        "Reninge",
+        "Pollinkhove",
+        "Lo-Reninge",
+        "Noordschote"
+    ],
+    "8670": [
+        "Oostduinkerke",
+        "Wulpen",
+        "Koksijde"
+    ],
+    "8690": [
+        "Hoogstade",
+        "Oeren",
+        "Sint-Rijkers",
+        "Alveringem"
+    ],
+    "8700": [
+        "Schuiferskapelle",
+        "Kanegem",
+        "Aarsele",
+        "Tielt"
+    ],
+    "8710": [
+        "Ooigem",
+        "Sint-Baafs-Vijve",
+        "Wielsbeke"
+    ],
+    "8720": [
+        "Oeselgem",
+        "Dentergem",
+        "Wakken",
+        "Markegem"
+    ],
+    "8770": [
+        "Ingelmunster"
+    ],
+    "8790": [
+        "Waregem"
+    ],
+    "8800": [
+        "Oekene",
+        "Beveren",
+        "Roeselare",
+        "Rumbeke"
+    ],
+    "8820": [
+        "Torhout"
+    ],
+    "8840": [
+        "Staden",
+        "Westrozebeke",
+        "Oostnieuwkerke"
+    ],
+    "8850": [
+        "Ardooie"
+    ],
+    "8880": [
+        "Ledegem",
+        "Rollegem-Kapelle",
+        "Sint-Eloois-Winkel"
+    ],
+    "8900": [
+        "Brielen",
+        "Dikkebus",
+        "Sint-Jan",
+        "Ieper"
+    ],
+    "8902": [
+        "Zillebeke",
+        "Hollebeke",
+        "Voormezele"
+    ],
+    "8906": [
+        "Elverdinge"
+    ],
+    "8920": [
+        "Bikschote",
+        "Poelkapelle",
+        "Langemark",
+        "Langemark-Poelkapelle"
+    ],
+    "8930": [
+        "Menen",
+        "Rekkem",
+        "Lauwe"
+    ],
+    "8970": [
+        "Poperinge",
+        "Reningelst"
+    ],
+    "9000": [
+        "Gent"
+    ],
+    "9030": [
+        "Mariakerke"
+    ],
+    "9050": [
+        "Ledeberg",
+        "Gentbrugge"
+    ],
+    "9090": [
+        "Melle",
+        "Gontrode"
+    ],
+    "9120": [
+        "Kallo",
+        "Melsele",
+        "Haasdonk",
+        "Vrasene"
+    ],
+    "9130": [
+        "Kallo",
+        "Kieldrecht",
+        "Verrebroek",
+        "Doel"
+    ],
+    "9140": [
+        "Temse",
+        "Tielrode",
+        "Steendorp",
+        "Elversele"
+    ],
+    "9190": [
+        "Kemzeke",
+        "Stekene"
+    ],
+    "9200": [
+        "Dendermonde",
+        "Mespelare",
+        "Schoonaarde",
+        "Sint-Gillis-Dendermonde",
+        "Grembergen",
+        "Baasrode",
+        "Appels",
+        "Oudegem"
+    ],
+    "9230": [
+        "Massemen",
+        "Westrem",
+        "Wetteren"
+    ],
+    "9260": [
+        "Serskamp",
+        "Wichelen",
+        "Schellebelle"
+    ],
+    "9270": [
+        "Laarne",
+        "Kalken"
+    ],
+    "9280": [
+        "Wieze",
+        "Denderbelle",
+        "Lebbeke"
+    ],
+    "9308": [
+        "Gijzegem",
+        "Hofstade"
+    ],
+    "9310": [
+        "Herdersem",
+        "Moorsel",
+        "Baardegem",
+        "Meldert"
+    ],
+    "9320": [
+        "Nieuwerkerken",
+        "Erembodegem"
+    ],
+    "9340": [
+        "Lede",
+        "Oordegem",
+        "Wanzele",
+        "Smetlede",
+        "Impe"
+    ],
+    "9400": [
+        "Lieferinge",
+        "Appelterre-Eichem",
+        "Ninove",
+        "Okegem",
+        "Voorde",
+        "Denderwindeke",
+        "Nederhasselt"
+    ],
+    "9401": [
+        "Pollare"
+    ],
+    "9403": [
+        "Neigem"
+    ],
+    "9420": [
+        "Burst",
+        "Erpe",
+        "Aaigem",
+        "Erpe-Mere",
+        "Mere",
+        "Ottergem",
+        "Bambrugge",
+        "Erondegem"
+    ],
+    "9450": [
+        "Haaltert",
+        "Heldergem",
+        "Denderhoutem"
+    ],
+    "9472": [
+        "Iddergem"
+    ],
+    "9500": [
+        "Nederboelare",
+        "Overboelare",
+        "Geraardsbergen",
+        "Moerbeke",
+        "Onkerzele",
+        "Zarlardinge",
+        "Goeferdinge",
+        "Ophasselt",
+        "Viane"
+    ],
+    "9506": [
+        "Grimminge",
+        "Schendelbeke",
+        "Waarbeke",
+        "Idegem",
+        "Nieuwenhove",
+        "Zandbergen",
+        "Smeerebbe-Vloerzegem"
+    ],
+    "9520": [
+        "Bavegem",
+        "Zonnegem",
+        "Oombergen",
+        "Sint-Lievens-Houtem",
+        "Vlierzele"
+    ],
+    "9550": [
+        "Herzele",
+        "Sint-Antelinks",
+        "Sint-Lievens-Esse",
+        "Steenhuize-Wijnhuize",
+        "Woubrechtegem",
+        "Hillegem"
+    ],
+    "9570": [
+        "Lierde",
+        "Sint-Maria-Lierde",
+        "Deftinge"
+    ],
+    "9572": [
+        "Sint-Martens-Lierde"
+    ],
+    "9600": [
+        "Renaix"
+    ],
+    "9620": [
+        "Grotenberge",
+        "Sint-Goriks-Oudenhove",
+        "Erwetegem",
+        "Godveerdegem",
+        "Elene",
+        "Sint-Maria-Oudenhove",
+        "Zottegem",
+        "Leeuwergem",
+        "Oombergen",
+        "Strijpen",
+        "Velzeke-Ruddershove"
+    ],
+    "9630": [
+        "Beerlegem",
+        "Dikkele",
+        "Rozebeke",
+        "Meilegem",
+        "Munkzwalm",
+        "Paulatem",
+        "Hundelgem",
+        "Sint-Denijs-Boekel",
+        "Zwalm",
+        "Roborst",
+        "Sint-Blasius-Boekel",
+        "Sint-Maria-Latem"
+    ],
+    "9660": [
+        "Michelbeke",
+        "Nederbrakel",
+        "Brakel",
+        "Sint-Maria-Oudenhove",
+        "Elst",
+        "Zegelsem",
+        "Everbeek",
+        "Opbrakel"
+    ],
+    "9690": [
+        "Kluisbergen",
+        "Berchem",
+        "Ruien",
+        "Kwaremont",
+        "Zulzeke"
+    ],
+    "9700": [
+        "Nederename",
+        "Eine",
+        "Leupegem",
+        "Mater",
+        "Mullem",
+        "Oudenaarde",
+        "Edelare",
+        "Heurne",
+        "Melden",
+        "Welden",
+        "Bevere",
+        "Ename",
+        "Ooike",
+        "Volkegem"
+    ],
+    "9750": [
+        "Zingem",
+        "Huise",
+        "Ouwegem"
+    ],
+    "9770": [
+        "Kruishoutem"
+    ],
+    "9790": [
+        "Wortegem",
+        "Ooike",
+        "Petegem-Aan-De-Schelde",
+        "Wortegem-Petegem",
+        "Moregem",
+        "Elsegem"
+    ],
+    "9800": [
+        "Zeveren",
+        "Bachte-Maria-Leerne",
+        "Grammene",
+        "Petegem-Aan-De-Leie",
+        "Meigem",
+        "Deinze",
+        "Gottem",
+        "Wontergem",
+        "Astene",
+        "Sint-Martens-Leerne",
+        "Vinkt"
+    ],
+    "9830": [
+        "Sint-Martens-Latem"
+    ],
+    "9840": [
+        "Zevergem",
+        "De Pinte"
+    ],
+    "9850": [
+        "Landegem",
+        "Merendree",
+        "Poesele",
+        "Hansbeke",
+        "Nevele",
+        "Vosselare"
+    ],
+    "9860": [
+        "Balegem",
+        "Landskouter",
+        "Scheldewindeke",
+        "Oosterzele",
+        "Gijzenzele",
+        "Moortsele"
+    ],
+    "9870": [
+        "Olsene",
+        "Zulte",
+        "Machelen"
+    ],
+    "9890": [
+        "Gavere",
+        "Dikkelvenne",
+        "Vurste",
+        "Baaigem"
+    ],
+    "9931": [
+        "Oostwinkel"
+    ],
+    "9960": [
+        "Assenede"
+    ],
+    "9968": [
+        "Oosteeklo",
+        "Bassevelde"
+    ],
+    "1090": [
+        "Jette"
+    ],
+    "1160": [
+        "Auderghem"
+    ],
+    "1331": [
+        "Rosi\u00e8res"
+    ],
+    "1367": [
+        "Autre-Eglise",
+        "Huppaye",
+        "Bomal",
+        "G\u00e9rompont",
+        "Mont-Saint-Andr\u00e9",
+        "Grand-Rosi\u00e8re-Hottomont",
+        "Ramillies"
+    ],
+    "1400": [
+        "Nivelles",
+        "Monstreux"
+    ],
+    "1402": [
+        "Thines"
+    ],
+    "1440": [
+        "Wauthier-Braine",
+        "Braine-Le-Ch\u00e2teau"
+    ],
+    "1471": [
+        "Loupoigne"
+    ],
+    "1473": [
+        "Glabais"
+    ],
+    "1480": [
+        "Oisquercq",
+        "Tubize",
+        "Clabecq",
+        "Saintes"
+    ],
+    "1495": [
+        "Marbais",
+        "Villers-La-Ville",
+        "Mellery",
+        "Tilly",
+        "Sart-Dames-Avelines"
+    ],
+    "1502": [
+        "Lembeek"
+    ],
+    "1540": [
+        "Herne",
+        "Herfelingen"
+    ],
+    "1560": [
+        "Hoeilaart"
+    ],
+    "1600": [
+        "Oudenaken",
+        "Sint-Laureins-Berchem",
+        "Sint-Pieters-Leeuw"
+    ],
+    "1601": [
+        "Ruisbroek"
+    ],
+    "1620": [
+        "Drogenbos"
+    ],
+    "1652": [
+        "Alsemberg"
+    ],
+    "1670": [
+        "Bogaarden",
+        "Pepingen",
+        "Heikruis"
+    ],
+    "1701": [
+        "Itterbeek"
+    ],
+    "1730": [
+        "Bekkerzeel",
+        "Kobbegem",
+        "Mollem",
+        "Asse"
+    ],
+    "1741": [
+        "Wambeek"
+    ],
+    "1755": [
+        "Gooik",
+        "Kester",
+        "Leerbeek",
+        "Oetingen"
+    ],
+    "1760": [
+        "Pamel",
+        "Roosdaal",
+        "Strijtem",
+        "Onze-Lieve-Vrouw-Lombeek"
+    ],
+    "1770": [
+        "Liedekerke"
+    ],
+    "1800": [
+        "Peutie",
+        "Vilvoorde"
+    ],
+    "1840": [
+        "Malderen",
+        "Steenhuffel",
+        "Londerzeel"
+    ],
+    "1880": [
+        "Kapelle-Op-Den-Bos",
+        "Nieuwenrode",
+        "Ramsdonk"
+    ],
+    "1950": [
+        "Kraainem"
+    ],
+    "1970": [
+        "Wezembeek-Oppem"
+    ],
+    "1980": [
+        "Eppegem",
+        "Zemst"
+    ],
+    "1981": [
+        "Hofstade"
+    ],
+    "2000": [
+        "Antwerpen"
+    ],
+    "2018": [
+        "Antwerpen"
+    ],
+    "2040": [
+        "Lillo",
+        "Zandvliet",
+        "Berendrecht",
+        "Antwerpen"
+    ],
+    "2200": [
+        "Morkhoven",
+        "Noorderwijk",
+        "Herentals"
+    ],
+    "2240": [
+        "Zandhoven",
+        "Massenhoven",
+        "Viersel"
+    ],
+    "2275": [
+        "Gierle",
+        "Wechelderzande",
+        "Poederlee",
+        "Lille"
+    ],
+    "2322": [
+        "Minderhout"
+    ],
+    "2323": [
+        "Wortel"
+    ],
+    "2330": [
+        "Merksplas"
+    ],
+    "2340": [
+        "Beerse",
+        "Vlimmeren"
+    ],
+    "2350": [
+        "Vosselaar"
+    ],
+    "2381": [
+        "Weelde"
+    ],
+    "2387": [
+        "Baarle-Hertog"
+    ],
+    "2400": [
+        "Mol"
+    ],
+    "2430": [
+        "Eindhout",
+        "Laakdal",
+        "Vorst"
+    ],
+    "2440": [
+        "Geel"
+    ],
+    "2460": [
+        "Kasterlee",
+        "Lichtaart",
+        "Tielen"
+    ],
+    "2500": [
+        "Lier",
+        "Koningshooikt"
+    ],
+    "2550": [
+        "Kontich",
+        "Waarloos"
+    ],
+    "2610": [
+        "Wilrijk"
+    ],
+    "2650": [
+        "Edegem"
+    ],
+    "2660": [
+        "Hoboken"
+    ],
+    "2812": [
+        "Muizen"
+    ],
+    "2880": [
+        "Weert",
+        "Hingene",
+        "Bornem",
+        "Mariekerke"
+    ],
+    "2940": [
+        "Hoevenen",
+        "Stabroek"
+    ],
+    "2950": [
+        "Kapellen"
+    ],
+    "2970": [
+        "'s Gravenwezel",
+        "Schilde"
+    ],
+    "2980": [
+        "Halle",
+        "Zoersel"
+    ],
+    "3052": [
+        "Blanden"
+    ],
+    "3110": [
+        "Rotselaar"
+    ],
+    "3111": [
+        "Wezemaal"
+    ],
+    "3120": [
+        "Tremelo"
+    ],
+    "3191": [
+        "Hever"
+    ],
+    "3212": [
+        "Pellenberg"
+    ],
+    "3270": [
+        "Scherpenheuvel-Zichem",
+        "Scherpenheuvel"
+    ],
+    "3290": [
+        "Diest",
+        "Schaffen",
+        "Webbekom",
+        "Deurne"
+    ],
+    "3320": [
+        "Hoegaarden",
+        "Meldert"
+    ],
+    "3360": [
+        "Lovenjoel",
+        "Bierbeek",
+        "Korbeek-Lo",
+        "Opvelp"
+    ],
+    "3380": [
+        "Glabbeek",
+        "Bunsbeek"
+    ],
+    "3384": [
+        "Attenrode"
+    ],
+    "3390": [
+        "Houwaart",
+        "Sint-Joris-Winge",
+        "Tielt-Winge",
+        "Tielt"
+    ],
+    "3391": [
+        "Meensel-Kiezegem"
+    ],
+    "3404": [
+        "Attenhoven",
+        "Neerlanden"
+    ],
+    "3454": [
+        "Rummen"
+    ],
+    "3570": [
+        "Alken"
+    ],
+    "3680": [
+        "Opoeteren",
+        "Maaseik",
+        "Neeroeteren"
+    ],
+    "3717": [
+        "Herstappe"
+    ],
+    "3770": [
+        "Riemst",
+        "Kanne",
+        "Membruggen",
+        "Millen",
+        "Val-Meer",
+        "Genoelselderen",
+        "Herderen",
+        "Vlijtingen",
+        "Vroenhoven",
+        "Zichen-Zussen-Bolder"
+    ],
+    "3803": [
+        "Duras",
+        "Wilderen",
+        "Gorsem",
+        "Runkelen"
+    ],
+    "3831": [
+        "Herten"
+    ],
+    "3832": [
+        "Ulbeek"
+    ],
+    "3891": [
+        "Borlo",
+        "Buvingen",
+        "Mielen-Boven-Aalst",
+        "Muizen"
+    ],
+    "3930": [
+        "Achel",
+        "Hamont",
+        "Hamont-Achel"
+    ],
+    "3940": [
+        "Hechtel-Eksel",
+        "Hechtel"
+    ],
+    "3941": [
+        "Eksel"
+    ],
+    "3970": [
+        "Leopoldsburg"
+    ],
+    "3980": [
+        "Tessenderlo"
+    ],
+    "4000": [
+        "Glain",
+        "Li\u00e8ge",
+        "Rocourt"
+    ],
+    "4031": [
+        "Angleur"
+    ],
+    "4122": [
+        "Plainevaux"
+    ],
+    "4140": [
+        "Dolembreux",
+        "Gomz\u00e9-Andoumont",
+        "Rouvreux",
+        "Sprimont"
+    ],
+    "4141": [
+        "Louveign\u00e9"
+    ],
+    "4190": [
+        "My",
+        "Xhoris",
+        "Vieuxville",
+        "Ferri\u00e8res",
+        "Werbomont"
+    ],
+    "4217": [
+        "H\u00e9ron",
+        "Lavoir",
+        "Waret-L'ev\u00eaque"
+    ],
+    "4218": [
+        "Couthuin"
+    ],
+    "4250": [
+        "Bo\u00eblhe",
+        "Geer",
+        "Hollogne-Sur-Geer",
+        "Lens-Saint-Servais"
+    ],
+    "4257": [
+        "Berloz",
+        "Corswarem"
+    ],
+    "4347": [
+        "Freloux",
+        "Noville",
+        "Fexhe-Le-Haut-Clocher",
+        "Roloux",
+        "Voroux-Goreux"
+    ],
+    "4350": [
+        "Pousset",
+        "Lamine",
+        "Momalle",
+        "Remicourt"
+    ],
+    "4360": [
+        "Lens-Sur-Geer",
+        "Otrange",
+        "Oreye",
+        "Bergilers",
+        "Grandville"
+    ],
+    "4400": [
+        "Fl\u00e9malle-Grande",
+        "Mons-Lez-Li\u00e8ge",
+        "Fl\u00e9malle-Haute",
+        "Awirs",
+        "Chokier",
+        "Fl\u00e9malle",
+        "Ivoz-Ramet"
+    ],
+    "4420": [
+        "Montegn\u00e9e",
+        "Saint-Nicolas",
+        "Tilleur"
+    ],
+    "4432": [
+        "Xhendremael",
+        "Alleur"
+    ],
+    "4451": [
+        "Voroux-Lez-Liers"
+    ],
+    "4452": [
+        "Paifve",
+        "Wihogne"
+    ],
+    "4550": [
+        "Saint-S\u00e9verin",
+        "Villers-Le-Temple",
+        "Yern\u00e9e-Fraineux",
+        "Nandrin"
+    ],
+    "4570": [
+        "Marchin",
+        "Vyle-Et-Tharoul"
+    ],
+    "4650": [
+        "Herve",
+        "Grand-Rechain",
+        "Chaineux",
+        "Jul\u00e9mont"
+    ],
+    "4672": [
+        "Saint-Remy"
+    ],
+    "4684": [
+        "Haccourt"
+    ],
+    "4690": [
+        "Glons",
+        "Roclenge-Sur-Geer",
+        "Eben-Emael",
+        "Boirs",
+        "Wonck",
+        "Bassenge"
+    ],
+    "4701": [
+        "Kettenis"
+    ],
+    "4720": [
+        "La Calamine"
+    ],
+    "4728": [
+        "Hergenrath"
+    ],
+    "4730": [
+        "Hauset",
+        "Raeren"
+    ],
+    "4771": [
+        "Heppenbach"
+    ],
+    "4784": [
+        "Crombach"
+    ],
+    "4790": [
+        "Reuland",
+        "Burg-Reuland"
+    ],
+    "4791": [
+        "Thommen"
+    ],
+    "4800": [
+        "Lambermont",
+        "Petit-Rechain",
+        "Ensival",
+        "Polleur",
+        "Verviers"
+    ],
+    "4801": [
+        "Stembert"
+    ],
+    "4820": [
+        "Dison"
+    ],
+    "4831": [
+        "Bilstain"
+    ],
+    "4837": [
+        "Baelen",
+        "Membach"
+    ],
+    "4860": [
+        "Cornesse",
+        "Wegnez",
+        "Pepinster"
+    ],
+    "4900": [
+        "Spa"
+    ],
+    "5001": [
+        "Belgrade"
+    ],
+    "5021": [
+        "Boninne"
+    ],
+    "5024": [
+        "Marche-Les-Dames",
+        "Gelbress\u00e9e"
+    ],
+    "5031": [
+        "Grand-Leez"
+    ],
+    "5032": [
+        "Bossi\u00e8re",
+        "Mazy",
+        "Bothey",
+        "Corroy-Le-Ch\u00e2teau",
+        "Isnes"
+    ],
+    "5081": [
+        "Meux",
+        "Bovesse"
+    ],
+    "5100": [
+        "W\u00e9pion",
+        "Dave",
+        "Jambes",
+        "Naninne",
+        "Wierde"
+    ],
+    "5330": [
+        "Sart-Bernard",
+        "Assesse",
+        "Maillen"
+    ],
+    "5332": [
+        "Crupet"
+    ],
+    "5334": [
+        "Flor\u00e9e"
+    ],
+    "5361": [
+        "Scy",
+        "Mohiville"
+    ],
+    "5363": [
+        "Emptinne"
+    ],
+    "5500": [
+        "Dr\u00e9hance",
+        "Anseremme",
+        "Falmagne",
+        "Bouvignes-Sur-Meuse",
+        "Dinant",
+        "Falmignoul",
+        "Furfooz"
+    ],
+    "5502": [
+        "Thynes"
+    ],
+    "5504": [
+        "Foy-Notre-Dame"
+    ],
+    "5521": [
+        "Serville"
+    ],
+    "5561": [
+        "Celles"
+    ],
+    "5590": [
+        "Braibant",
+        "Ciney",
+        "Conneux",
+        "Sovet",
+        "Chevetogne",
+        "Pessoux",
+        "Ach\u00eane",
+        "Leignon",
+        "Haversin",
+        "Serinchamps"
+    ],
+    "5630": [
+        "Cerfontaine",
+        "Soumoy",
+        "Senzeille",
+        "Daussois",
+        "Silenrieux",
+        "Villers-Deux-Eglises"
+    ],
+    "5640": [
+        "Biesmer\u00e9e",
+        "Graux",
+        "Oret",
+        "Mettet",
+        "Saint-G\u00e9rard",
+        "Biesme"
+    ],
+    "6020": [
+        "Dampremy"
+    ],
+    "6041": [
+        "Gosselies"
+    ],
+    "6142": [
+        "Leernes"
+    ],
+    "6180": [
+        "Courcelles"
+    ],
+    "6223": [
+        "Wagnel\u00e9e"
+    ],
+    "6224": [
+        "Wanferc\u00e9e-Baulet"
+    ],
+    "6280": [
+        "Gerpinnes",
+        "Gougnies",
+        "Joncret",
+        "Villers-Poterie",
+        "Acoz",
+        "Loverval"
+    ],
+    "6441": [
+        "Erpion"
+    ],
+    "6533": [
+        "Bierc\u00e9e"
+    ],
+    "6534": [
+        "Goz\u00e9e"
+    ],
+    "6567": [
+        "Fontaine-Valmont",
+        "Labuissi\u00e8re",
+        "Merbes-Le-Ch\u00e2teau",
+        "Merbes-Sainte-Marie"
+    ],
+    "6591": [
+        "Macon"
+    ],
+    "6593": [
+        "Macquenoise"
+    ],
+    "6594": [
+        "Beauwelz"
+    ],
+    "6600": [
+        "Bastogne",
+        "Noville",
+        "Longvilly",
+        "Villers-La-Bonne-Eau",
+        "Wardin"
+    ],
+    "6630": [
+        "Martelange"
+    ],
+    "6637": [
+        "Fauvillers",
+        "Hollange",
+        "Tintange"
+    ],
+    "6640": [
+        "Nives",
+        "Sibret",
+        "Vaux-Lez-Rosi\u00e8res",
+        "Vaux-Sur-S\u00fbre",
+        "Morhet",
+        "Hompr\u00e9"
+    ],
+    "6661": [
+        "Mont",
+        "Tailles"
+    ],
+    "6662": [
+        "Tavigny"
+    ],
+    "6666": [
+        "Wibrin"
+    ],
+    "6671": [
+        "Bovigny"
+    ],
+    "6680": [
+        "Sainte-Ode",
+        "Amberloup",
+        "Tillet"
+    ],
+    "6690": [
+        "Vielsalm",
+        "Bihain"
+    ],
+    "6717": [
+        "Attert",
+        "Nothomb",
+        "Thiaumont",
+        "Nobressart",
+        "Tontelange"
+    ],
+    "6720": [
+        "Habay",
+        "Habay-La-Neuve",
+        "Hachy"
+    ],
+    "6724": [
+        "Houdemont",
+        "Rulles"
+    ],
+    "6740": [
+        "Etalle",
+        "Sainte-Marie-Sur-Semois",
+        "Villers-Sur-Semois"
+    ],
+    "6743": [
+        "Buzenol"
+    ],
+    "6790": [
+        "Aubange"
+    ],
+    "6792": [
+        "Rachecourt",
+        "Halanzy"
+    ],
+    "6810": [
+        "Chiny",
+        "Jamoigne",
+        "Izel"
+    ],
+    "6812": [
+        "Suxy"
+    ],
+    "6824": [
+        "Chassepierre"
+    ],
+    "6832": [
+        "Sensenruth"
+    ],
+    "6850": [
+        "Offagne",
+        "Carlsbourg",
+        "Paliseul"
+    ],
+    "6852": [
+        "Opont",
+        "Maissin"
+    ],
+    "6860": [
+        "L\u00e9glise",
+        "Mellier",
+        "Witry",
+        "Assenois",
+        "Ebly"
+    ],
+    "6927": [
+        "Bure",
+        "Grupont",
+        "Tellin",
+        "Resteigne"
+    ],
+    "6951": [
+        "Bande"
+    ],
+    "6980": [
+        "La Roche-En-Ardenne",
+        "Beausaint"
+    ],
+    "7011": [
+        "Ghlin"
+    ],
+    "7012": [
+        "Jemappes",
+        "Fl\u00e9nu"
+    ],
+    "7020": [
+        "Maisi\u00e8res",
+        "Nimy"
+    ],
+    "7022": [
+        "Mesvin",
+        "Harveng",
+        "Hyon",
+        "Harmignies",
+        "Nouvelles"
+    ],
+    "7031": [
+        "Villers-Saint-Ghislain"
+    ],
+    "7033": [
+        "Cuesmes"
+    ],
+    "7141": [
+        "Carni\u00e8res",
+        "Mont-Sainte-Aldegonde"
+    ],
+    "7160": [
+        "Chapelle-Lez-Herlaimont",
+        "Pi\u00e9ton",
+        "Godarville"
+    ],
+    "7191": [
+        "Ecaussinnes-Lalaing"
+    ],
+    "7322": [
+        "Pommeroeul",
+        "Ville-Pommeroeul"
+    ],
+    "7370": [
+        "Dour",
+        "Blaugies",
+        "Elouges",
+        "Wih\u00e9ries"
+    ],
+    "7380": [
+        "Baisieux",
+        "Qui\u00e9vrain"
+    ],
+    "7506": [
+        "Willemeau"
+    ],
+    "7534": [
+        "Barry",
+        "Maulde"
+    ],
+    "7604": [
+        "Wasmes-Audemez-Briffoeil",
+        "Baugnies",
+        "Braffe",
+        "Callenelle",
+        "Brasmenil"
+    ],
+    "7622": [
+        "Laplaigne"
+    ],
+    "7623": [
+        "Rongy"
+    ],
+    "7730": [
+        "Bailleul",
+        "Estaimbourg",
+        "Saint-L\u00e9ger",
+        "Estaimpuis",
+        "Evregnies",
+        "Leers-Nord",
+        "N\u00e9chin"
+    ],
+    "7742": [
+        "H\u00e9rinnes-Lez-Pecq"
+    ],
+    "7781": [
+        "Houthem"
+    ],
+    "7800": [
+        "Ath",
+        "Lanquesaint"
+    ],
+    "7861": [
+        "Papignies",
+        "Wannebecq"
+    ],
+    "7863": [
+        "Ghoy"
+    ],
+    "7864": [
+        "Deux-Acren"
+    ],
+    "7900": [
+        "Leuze-En-Hainaut",
+        "Grandmetz"
+    ],
+    "7903": [
+        "Chapelle-\u00c0-Wattines",
+        "Blicquy",
+        "Chapelle-\u00c0-Oie"
+    ],
+    "7904": [
+        "Pipaix",
+        "Tourpes",
+        "Willaupuis"
+    ],
+    "7912": [
+        "Dergneau",
+        "Saint-Sauveur"
+    ],
+    "7940": [
+        "Brugelette",
+        "Cambron-Casteau"
+    ],
+    "7971": [
+        "Thumaide",
+        "Bas\u00e8cles",
+        "Ramegnies",
+        "Wadelincourt"
+    ],
+    "8020": [
+        "Hertsberge",
+        "Waardamme",
+        "Oostkamp",
+        "Ruddervoorde"
+    ],
+    "8211": [
+        "Aartrijke"
+    ],
+    "8300": [
+        "Knokke",
+        "Westkapelle",
+        "Knokke-Heist"
+    ],
+    "8310": [
+        "Assebroek",
+        "Sint-Kruis"
+    ],
+    "8340": [
+        "Hoeke",
+        "Lapscheure",
+        "Moerkerke",
+        "Damme",
+        "Oostkerke",
+        "Sijsele"
+    ],
+    "8370": [
+        "Blankenberge",
+        "Uitkerke"
+    ],
+    "8380": [
+        "Dudzele",
+        "Lissewege",
+        "Zeebrugge"
+    ],
+    "8430": [
+        "Middelkerke"
+    ],
+    "8431": [
+        "Wilskerke"
+    ],
+    "8434": [
+        "Lombardsijde",
+        "Westende"
+    ],
+    "8460": [
+        "Roksem",
+        "Oudenburg",
+        "Ettelgem",
+        "Westkerke"
+    ],
+    "8510": [
+        "Marke",
+        "Bellegem",
+        "Kooigem",
+        "Rollegem"
+    ],
+    "8520": [
+        "Kuurne"
+    ],
+    "8570": [
+        "Vichte",
+        "Anzegem",
+        "Gijzelbrechtegem",
+        "Ingooigem"
+    ],
+    "8572": [
+        "Kaster"
+    ],
+    "8580": [
+        "Avelgem"
+    ],
+    "8582": [
+        "Outrijve"
+    ],
+    "8640": [
+        "Vleteren",
+        "Woesten",
+        "Oostvleteren",
+        "Westvleteren"
+    ],
+    "8650": [
+        "Merkem",
+        "Houthulst",
+        "Klerken"
+    ],
+    "8660": [
+        "Adinkerke",
+        "De Panne"
+    ],
+    "8680": [
+        "Zande",
+        "Bovekerke",
+        "Koekelare"
+    ],
+    "8691": [
+        "Stavele",
+        "Gijverinkhove",
+        "Izenberge",
+        "Leisele"
+    ],
+    "8740": [
+        "Pittem",
+        "Egem"
+    ],
+    "8760": [
+        "Meulebeke"
+    ],
+    "8810": [
+        "Lichtervelde"
+    ],
+    "8830": [
+        "Hooglede",
+        "Gits"
+    ],
+    "8890": [
+        "Dadizele",
+        "Moorslede"
+    ],
+    "8908": [
+        "Vlamertinge"
+    ],
+    "8972": [
+        "Krombeke",
+        "Proven",
+        "Roesbrugge-Haringe"
+    ],
+    "8980": [
+        "Zandvoorde",
+        "Beselare",
+        "Zonnebeke",
+        "Passendale",
+        "Geluveld"
+    ],
+    "9040": [
+        "Sint-Amandsberg"
+    ],
+    "9051": [
+        "Afsnee",
+        "Sint-Denijs-Westrem"
+    ],
+    "9052": [
+        "Zwijnaarde"
+    ],
+    "9060": [
+        "Zelzate"
+    ],
+    "9100": [
+        "Nieuwkerken-Waas",
+        "Sint-Niklaas"
+    ],
+    "9160": [
+        "Eksaarde",
+        "Daknam",
+        "Lokeren"
+    ],
+    "9185": [
+        "Wachtebeke"
+    ],
+    "9551": [
+        "Ressegem"
+    ],
+    "9636": [
+        "Nederzwalm-Hermelgem"
+    ],
+    "9667": [
+        "Horebeke",
+        "Sint-Kornelis-Horebeke",
+        "Sint-Maria-Horebeke"
+    ],
+    "9680": [
+        "Etikhove",
+        "Maarkedal",
+        "Maarke-Kerkem"
+    ],
+    "9681": [
+        "Nukerke"
+    ],
+    "9772": [
+        "Wannegem-Lede"
+    ],
+    "9810": [
+        "Eke",
+        "Nazareth"
+    ],
+    "9820": [
+        "Bottelare",
+        "Melsen",
+        "Munte",
+        "Lemberge",
+        "Merelbeke",
+        "Schelderode"
+    ],
+    "9880": [
+        "Lotenhulle",
+        "Aalter",
+        "Poeke"
+    ],
+    "9961": [
+        "Boekhoute"
+    ],
+    "9990": [
+        "Maldegem"
+    ],
+    "1000": [
+        "Bruxelles"
+    ],
+    "1050": [
+        "Ixelles"
+    ],
+    "1070": [
+        "Anderlecht"
+    ],
+    "1170": [
+        "Watermael-Boitsfort"
+    ],
+    "1180": [
+        "Uccle"
+    ],
+    "1200": [
+        "Woluwe-Saint-Lambert"
+    ],
+    "1301": [
+        "Bierges"
+    ],
+    "1310": [
+        "La Hulpe"
+    ],
+    "1320": [
+        "L'ecluse",
+        "Tourinnes-La-Grosse",
+        "Nodebais",
+        "Beauvechain",
+        "Hamme-Mille"
+    ],
+    "1348": [
+        "Louvain-La-Neuve"
+    ],
+    "1380": [
+        "Lasne",
+        "Couture-Saint-Germain",
+        "Plancenoit",
+        "Lasne-Chapelle-Saint-Lambert",
+        "Maransart",
+        "Ohain"
+    ],
+    "1428": [
+        "Lillois-Witterz\u00e9e"
+    ],
+    "1435": [
+        "Corbais",
+        "H\u00e9villers",
+        "Mont-Saint-Guibert"
+    ],
+    "1460": [
+        "Ittre",
+        "Virginal-Samme"
+    ],
+    "1476": [
+        "Houtain-Le-Val"
+    ],
+    "1490": [
+        "Court-Saint-Etienne"
+    ],
+    "1500": [
+        "Halle"
+    ],
+    "1570": [
+        "Vollezele",
+        "Galmaarden",
+        "Tollembeek"
+    ],
+    "1602": [
+        "Vlezenbeek"
+    ],
+    "1650": [
+        "Beersel"
+    ],
+    "1651": [
+        "Lot"
+    ],
+    "1674": [
+        "Bellingen"
+    ],
+    "1742": [
+        "Sint-Katherina-Lombeek"
+    ],
+    "1745": [
+        "Mazenzele",
+        "Opwijk"
+    ],
+    "1853": [
+        "Strombeek-Bever"
+    ],
+    "2150": [
+        "Borsbeek"
+    ],
+    "2170": [
+        "Merksem"
+    ],
+    "2180": [
+        "Ekeren"
+    ],
+    "2223": [
+        "Schriek"
+    ],
+    "2310": [
+        "Rijkevorsel"
+    ],
+    "2590": [
+        "Berlaar",
+        "Gestel"
+    ],
+    "2620": [
+        "Hemiksem"
+    ],
+    "2801": [
+        "Heffen"
+    ],
+    "2840": [
+        "Reet",
+        "Rumst",
+        "Terhagen"
+    ],
+    "2845": [
+        "Niel"
+    ],
+    "2920": [
+        "Kalmthout"
+    ],
+    "2930": [
+        "Brasschaat"
+    ],
+    "3000": [
+        "Leuven"
+    ],
+    "3010": [
+        "Kessel Lo"
+    ],
+    "3050": [
+        "Oud-Heverlee"
+    ],
+    "3061": [
+        "Leefdaal"
+    ],
+    "3071": [
+        "Erps-Kwerps"
+    ],
+    "3078": [
+        "Meerbeek",
+        "Everberg"
+    ],
+    "3118": [
+        "Werchter"
+    ],
+    "3200": [
+        "Aarschot",
+        "Gelrode"
+    ],
+    "3202": [
+        "Rillaar"
+    ],
+    "3271": [
+        "Averbode",
+        "Zichem"
+    ],
+    "3321": [
+        "Outgaarden"
+    ],
+    "3381": [
+        "Kapellen"
+    ],
+    "3460": [
+        "Assent",
+        "Bekkevoort"
+    ],
+    "3472": [
+        "Kersbeek-Miskom"
+    ],
+    "3501": [
+        "Wimmertingen"
+    ],
+    "3520": [
+        "Zonhoven"
+    ],
+    "3580": [
+        "Beringen"
+    ],
+    "3665": [
+        "As"
+    ],
+    "3724": [
+        "Vliermaal"
+    ],
+    "3793": [
+        "Teuven"
+    ],
+    "3910": [
+        "Neerpelt",
+        "Sint-Huibrechts-Lille"
+    ],
+    "4030": [
+        "Grivegnee"
+    ],
+    "4050": [
+        "Chaudfontaine"
+    ],
+    "4102": [
+        "Ougr\u00e9e"
+    ],
+    "4121": [
+        "Neuville-En-Condroz"
+    ],
+    "4130": [
+        "Tilff",
+        "Esneux"
+    ],
+    "4170": [
+        "Comblain-Au-Pont"
+    ],
+    "4253": [
+        "Darion"
+    ],
+    "4254": [
+        "Ligney"
+    ],
+    "4351": [
+        "Hodeige"
+    ],
+    "4430": [
+        "Ans"
+    ],
+    "4431": [
+        "Loncin"
+    ],
+    "4450": [
+        "Juprelle",
+        "Lantin",
+        "Slins"
+    ],
+    "4537": [
+        "Bodegn\u00e9e",
+        "Chapon-Seraing",
+        "Seraing-Le-Ch\u00e2teau",
+        "Verlaine"
+    ],
+    "4608": [
+        "Warsage",
+        "Neufch\u00e2teau"
+    ],
+    "4632": [
+        "C\u00e9rexhe-Heuseux"
+    ],
+    "4682": [
+        "Heure-Le-Romain",
+        "Houtain-Saint-Sim\u00e9on"
+    ],
+    "4750": [
+        "Elsenborn",
+        "Butgenbach"
+    ],
+    "4761": [
+        "Rocherath"
+    ],
+    "4840": [
+        "Welkenraedt"
+    ],
+    "4841": [
+        "Henri-Chapelle"
+    ],
+    "4880": [
+        "Aubel"
+    ],
+    "4910": [
+        "Theux",
+        "La Reid",
+        "Polleur"
+    ],
+    "4970": [
+        "Stavelot",
+        "Francorchamps"
+    ],
+    "5003": [
+        "Saint-Marc"
+    ],
+    "5150": [
+        "Floriffoux",
+        "Soye",
+        "Floreffe",
+        "Frani\u00e8re"
+    ],
+    "5336": [
+        "Courri\u00e8re"
+    ],
+    "5354": [
+        "Jallet"
+    ],
+    "5372": [
+        "M\u00e9an"
+    ],
+    "5501": [
+        "Lisogne"
+    ],
+    "5524": [
+        "Gerin"
+    ],
+    "5541": [
+        "Hasti\u00e8re-Par-Del\u00e0"
+    ],
+    "5571": [
+        "Wiesme"
+    ],
+    "5572": [
+        "Focant"
+    ],
+    "5646": [
+        "Stave"
+    ],
+    "6001": [
+        "Marcinelle"
+    ],
+    "6010": [
+        "Couillet"
+    ],
+    "6061": [
+        "Montignies-Sur-Sambre"
+    ],
+    "6110": [
+        "Montigny-Le-Tilleul"
+    ],
+    "6141": [
+        "Forchies-La-Marche"
+    ],
+    "6440": [
+        "Vergnies",
+        "Boussu-Lez-Walcourt",
+        "Fourbechies",
+        "Froidchapelle"
+    ],
+    "6463": [
+        "Lompret"
+    ],
+    "6511": [
+        "Str\u00e9e"
+    ],
+    "6536": [
+        "Donstiennes",
+        "Thuillies"
+    ],
+    "6540": [
+        "Mont-Sainte-Genevi\u00e8ve",
+        "Lobbes"
+    ],
+    "6592": [
+        "Monceau-Imbrechies"
+    ],
+    "6686": [
+        "Flamierge"
+    ],
+    "6704": [
+        "Guirsch"
+    ],
+    "6723": [
+        "Habay-La-Vieille"
+    ],
+    "6761": [
+        "Latour"
+    ],
+    "6762": [
+        "Saint-Mard"
+    ],
+    "6767": [
+        "Dampicourt",
+        "Rouvroy",
+        "Torgny",
+        "Harnoncourt",
+        "Lamorteau"
+    ],
+    "6813": [
+        "Termes"
+    ],
+    "6821": [
+        "Lacuisine"
+    ],
+    "6830": [
+        "Les Hayons",
+        "Poupehan",
+        "Bouillon",
+        "Rochehaut"
+    ],
+    "6833": [
+        "Ucimont",
+        "Vivy"
+    ],
+    "6834": [
+        "Bellevaux"
+    ],
+    "6838": [
+        "Corbion"
+    ],
+    "6851": [
+        "Nollevaux"
+    ],
+    "6853": [
+        "Framont"
+    ],
+    "6870": [
+        "Arville",
+        "Awenne",
+        "Hatrival",
+        "Saint-Hubert",
+        "Mirwart",
+        "Vesqueville"
+    ],
+    "6921": [
+        "Chanly"
+    ],
+    "6922": [
+        "Halma"
+    ],
+    "6952": [
+        "Grune"
+    ],
+    "6971": [
+        "Champlon"
+    ],
+    "6982": [
+        "Samr\u00e9e"
+    ],
+    "7040": [
+        "Asquillies",
+        "Aulnois",
+        "Goegnies-Chauss\u00e9e",
+        "Qu\u00e9vy-Le-Grand",
+        "Qu\u00e9vy-Le-Petit",
+        "Blaregnies",
+        "Bougnies",
+        "Genly",
+        "Qu\u00e9vy"
+    ],
+    "7061": [
+        "Thieusies",
+        "Casteau"
+    ],
+    "7063": [
+        "Chauss\u00e9e-Notre-Dame-Louvignies",
+        "Neufvilles"
+    ],
+    "7070": [
+        "Thieu",
+        "Le Roeulx",
+        "Mignault",
+        "Gottignies",
+        "Ville-Sur-Haine"
+    ],
+    "7300": [
+        "Boussu"
+    ],
+    "7321": [
+        "Blaton",
+        "Harchies"
+    ],
+    "7334": [
+        "Villerot",
+        "Hautrage"
+    ],
+    "7503": [
+        "Froyennes"
+    ],
+    "7504": [
+        "Froidmont"
+    ],
+    "7542": [
+        "Mont-Saint-Aubert"
+    ],
+    "7611": [
+        "La Glanerie"
+    ],
+    "7641": [
+        "Bruyelle"
+    ],
+    "7643": [
+        "Fontenoy"
+    ],
+    "7700": [
+        "Luingne",
+        "Mouscron"
+    ],
+    "7783": [
+        "Bizet"
+    ],
+    "7804": [
+        "Ostiches",
+        "Rebaix"
+    ],
+    "7810": [
+        "Maffle"
+    ],
+    "7942": [
+        "M\u00e9vergnies-Lez-Lens"
+    ],
+    "7973": [
+        "Grandglise",
+        "Stambruges"
+    ],
+    "8400": [
+        "Oostende",
+        "Zandvoorde",
+        "Stene"
+    ],
+    "8432": [
+        "Leffinge"
+    ],
+    "8550": [
+        "Zwevegem"
+    ],
+    "8551": [
+        "Heestert"
+    ],
+    "8560": [
+        "Moorsele",
+        "Wevelgem",
+        "Gullegem"
+    ],
+    "8610": [
+        "Werken",
+        "Handzame",
+        "Kortemark",
+        "Zarren"
+    ],
+    "8620": [
+        "Ramskapelle",
+        "Sint-Joris",
+        "Nieuwpoort"
+    ],
+    "8755": [
+        "Ruiselede"
+    ],
+    "8793": [
+        "Sint-Eloois-Vijve"
+    ],
+    "8870": [
+        "Kachtem",
+        "Emelgem",
+        "Izegem"
+    ],
+    "8940": [
+        "Geluwe",
+        "Wervik"
+    ],
+    "8951": [
+        "Dranouter"
+    ],
+    "8954": [
+        "Westouter"
+    ],
+    "8956": [
+        "Kemmel"
+    ],
+    "8957": [
+        "Messines"
+    ],
+    "8978": [
+        "Watou"
+    ],
+    "9031": [
+        "Drongen"
+    ],
+    "9042": [
+        "Desteldonk",
+        "Sint-Kruis-Winkel",
+        "Mendonk"
+    ],
+    "9070": [
+        "Destelbergen",
+        "Heusden"
+    ],
+    "9080": [
+        "Beervelde",
+        "Zaffelare",
+        "Lochristi",
+        "Zeveneken"
+    ],
+    "9150": [
+        "Kruibeke",
+        "Bazel",
+        "Rupelmonde"
+    ],
+    "9170": [
+        "De Klinge",
+        "Sint-Gillis-Waas",
+        "Meerdonk",
+        "Sint-Pauwels"
+    ],
+    "9220": [
+        "Hamme",
+        "Moerzeke"
+    ],
+    "9300": [
+        "Aalst"
+    ],
+    "9402": [
+        "Meerbeke"
+    ],
+    "9404": [
+        "Aspelare"
+    ],
+    "9406": [
+        "Outer"
+    ],
+    "9571": [
+        "Hemelveerdegem"
+    ],
+    "9831": [
+        "Deurle"
+    ],
+    "9881": [
+        "Bellem"
+    ],
+    "9910": [
+        "Ursel",
+        "Knesselare"
+    ],
+    "9940": [
+        "Ertvelde",
+        "Evergem",
+        "Sleidinge",
+        "Kluizen"
+    ],
+    "9970": [
+        "Kaprijke"
+    ],
+    "9982": [
+        "Sint-Jan-In-Eremo"
+    ],
+    "1040": [
+        "Etterbeek"
+    ],
+    "1060": [
+        "Saint-Gilles"
+    ],
+    "1081": [
+        "Koekelberg"
+    ],
+    "1130": [
+        "Haren"
+    ],
+    "1140": [
+        "Evere"
+    ],
+    "1190": [
+        "Forest"
+    ],
+    "1330": [
+        "Rixensart"
+    ],
+    "1332": [
+        "Genval"
+    ],
+    "1341": [
+        "C\u00e9roux-Mousty"
+    ],
+    "1342": [
+        "Limelette"
+    ],
+    "1404": [
+        "Bornival"
+    ],
+    "1472": [
+        "Vieux-Genappe"
+    ],
+    "1541": [
+        "Sint-Pieters-Kapelle"
+    ],
+    "1673": [
+        "Beert"
+    ],
+    "1761": [
+        "Borchtlombeek"
+    ],
+    "1830": [
+        "Machelen"
+    ],
+    "1850": [
+        "Grimbergen"
+    ],
+    "1861": [
+        "Wolvertem"
+    ],
+    "1933": [
+        "Sterrebeek"
+    ],
+    "1982": [
+        "Elewijt",
+        "Weerde"
+    ],
+    "2140": [
+        "Borgerhout"
+    ],
+    "2221": [
+        "Booischot"
+    ],
+    "2242": [
+        "Pulderbos"
+    ],
+    "2270": [
+        "Herenthout"
+    ],
+    "2321": [
+        "Meer"
+    ],
+    "2328": [
+        "Meerle"
+    ],
+    "2390": [
+        "Malle",
+        "Oostmalle",
+        "Westmalle"
+    ],
+    "2450": [
+        "Meerhout"
+    ],
+    "2530": [
+        "Boechout"
+    ],
+    "2531": [
+        "Vremde"
+    ],
+    "2580": [
+        "Beerzel",
+        "Putte"
+    ],
+    "2600": [
+        "Berchem"
+    ],
+    "2627": [
+        "Schelle"
+    ],
+    "2860": [
+        "Sint-Katelijne-Waver"
+    ],
+    "2861": [
+        "Onze-Lieve-Vrouw-Waver"
+    ],
+    "2900": [
+        "Schoten"
+    ],
+    "3012": [
+        "Wilsele"
+    ],
+    "3018": [
+        "Wijgmaal"
+    ],
+    "3054": [
+        "Vaalbeek"
+    ],
+    "3130": [
+        "Begijnendijk",
+        "Betekom"
+    ],
+    "3190": [
+        "Boortmeerbeek"
+    ],
+    "3201": [
+        "Langdorp"
+    ],
+    "3294": [
+        "Molenstede"
+    ],
+    "3510": [
+        "Kermt",
+        "Spalbeek"
+    ],
+    "3582": [
+        "Koersel"
+    ],
+    "3600": [
+        "Genk"
+    ],
+    "3621": [
+        "Rekem"
+    ],
+    "3690": [
+        "Zutendaal"
+    ],
+    "3720": [
+        "Kortessem"
+    ],
+    "3791": [
+        "Remersdaal"
+    ],
+    "3950": [
+        "Bocholt",
+        "Kaulille",
+        "Reppel"
+    ],
+    "4032": [
+        "Ch\u00eanee"
+    ],
+    "4042": [
+        "Liers"
+    ],
+    "4052": [
+        "Beaufays"
+    ],
+    "4100": [
+        "Boncelles",
+        "Seraing"
+    ],
+    "4101": [
+        "Jemeppe-Sur-Meuse"
+    ],
+    "4161": [
+        "Villers-Aux-Tours"
+    ],
+    "4162": [
+        "Hody"
+    ],
+    "4171": [
+        "Poulseur"
+    ],
+    "4180": [
+        "Comblain-Fairon",
+        "Comblain-La-Tour",
+        "Hamoir"
+    ],
+    "4261": [
+        "Latinne"
+    ],
+    "4602": [
+        "Cheratte"
+    ],
+    "4621": [
+        "Retinne"
+    ],
+    "4633": [
+        "Melen"
+    ],
+    "4651": [
+        "Battice"
+    ],
+    "4700": [
+        "Eupen"
+    ],
+    "4710": [
+        "Lontzen"
+    ],
+    "4711": [
+        "Walhorn"
+    ],
+    "4731": [
+        "Eynatten"
+    ],
+    "4760": [
+        "Manderfeld",
+        "Bullange"
+    ],
+    "4770": [
+        "Meyerode",
+        "Ambl\u00e8ve"
+    ],
+    "4780": [
+        "Recht",
+        "Saint-Vith"
+    ],
+    "4782": [
+        "Schoenberg"
+    ],
+    "4821": [
+        "Andrimont"
+    ],
+    "4861": [
+        "Soiron"
+    ],
+    "4983": [
+        "Basse-Bodeux"
+    ],
+    "5376": [
+        "Mi\u00e9cret"
+    ],
+    "5503": [
+        "Sorinnes"
+    ],
+    "5522": [
+        "Falaen"
+    ],
+    "5564": [
+        "Wanlin"
+    ],
+    "5573": [
+        "Martouzin-Neuville"
+    ],
+    "5576": [
+        "Froidfontaine"
+    ],
+    "1020": [
+        "Laeken"
+    ],
+    "1080": [
+        "Molenbeek-Saint-Jean"
+    ],
+    "1082": [
+        "Berchem-Sainte-Agathe"
+    ],
+    "1083": [
+        "Ganshoren"
+    ],
+    "1120": [
+        "Neder-Over-Heembeek"
+    ],
+    "6031": [
+        "Monceau-Sur-Sambre"
+    ],
+    "6150": [
+        "Anderlues"
+    ],
+    "6183": [
+        "Trazegnies"
+    ],
+    "6211": [
+        "Mellet"
+    ],
+    "6221": [
+        "Saint-Amand"
+    ],
+    "1410": [
+        "Waterloo"
+    ],
+    "1420": [
+        "Braine-L'alleud"
+    ],
+    "6462": [
+        "Vaulx-Lez-Chimay"
+    ],
+    "1653": [
+        "Dworp"
+    ],
+    "1654": [
+        "Huizingen"
+    ],
+    "6532": [
+        "Ragnies"
+    ],
+    "1671": [
+        "Elingen"
+    ],
+    "1703": [
+        "Schepdaal"
+    ],
+    "6542": [
+        "Sars-La-Buissi\u00e8re"
+    ],
+    "6596": [
+        "Forge-Philippe",
+        "Seloignes"
+    ],
+    "1831": [
+        "Diegem"
+    ],
+    "1851": [
+        "Humbeek"
+    ],
+    "1852": [
+        "Beigem"
+    ],
+    "6660": [
+        "Nadrin",
+        "Houffalize"
+    ],
+    "6687": [
+        "Bertogne"
+    ],
+    "6692": [
+        "Petit-Thier"
+    ],
+    "6698": [
+        "Grand-Halleux"
+    ],
+    "2050": [
+        "Antwerpen"
+    ],
+    "2060": [
+        "Antwerpen"
+    ],
+    "2070": [
+        "Burcht",
+        "Zwijndrecht"
+    ],
+    "6706": [
+        "Autelbas"
+    ],
+    "2110": [
+        "Wijnegem"
+    ],
+    "2160": [
+        "Wommelgem"
+    ],
+    "2243": [
+        "Pulle"
+    ],
+    "2250": [
+        "Olen"
+    ],
+    "6742": [
+        "Chantemelle"
+    ],
+    "6750": [
+        "Musson",
+        "Mussy-La-Ville",
+        "Signeulx"
+    ],
+    "2288": [
+        "Bouwel"
+    ],
+    "2320": [
+        "Hoogstraten"
+    ],
+    "6760": [
+        "Ruette",
+        "Virton",
+        "Bleid",
+        "Ethe"
+    ],
+    "2370": [
+        "Arendonk"
+    ],
+    "2470": [
+        "Retie"
+    ],
+    "2480": [
+        "Dessel"
+    ],
+    "2491": [
+        "Olmen"
+    ],
+    "2540": [
+        "Hove"
+    ],
+    "2547": [
+        "Lint"
+    ],
+    "6820": [
+        "Sainte-C\u00e9cile",
+        "Florenville",
+        "Fontenoille",
+        "Muno"
+    ],
+    "6831": [
+        "Noirfontaine"
+    ],
+    "2630": [
+        "Aartselaar"
+    ],
+    "2640": [
+        "Mortsel"
+    ],
+    "6856": [
+        "Fays-Les-Veneurs"
+    ],
+    "2850": [
+        "Boom"
+    ],
+    "2910": [
+        "Essen"
+    ],
+    "3001": [
+        "Heverlee"
+    ],
+    "3070": [
+        "Kortenberg"
+    ],
+    "3090": [
+        "Overijse"
+    ],
+    "3128": [
+        "Baal"
+    ],
+    "6986": [
+        "Halleux"
+    ],
+    "7032": [
+        "Spiennes"
+    ],
+    "3221": [
+        "Nieuwrode"
+    ],
+    "7034": [
+        "Saint-Denis",
+        "Obourg"
+    ],
+    "3293": [
+        "Kaggevinne"
+    ],
+    "7062": [
+        "Naast"
+    ],
+    "3512": [
+        "Stevoort"
+    ],
+    "3660": [
+        "Opglabbeek"
+    ],
+    "3668": [
+        "Niel-Bij-As"
+    ],
+    "3721": [
+        "Vliermaalroot"
+    ],
+    "3722": [
+        "Wintershoven"
+    ],
+    "3732": [
+        "Schalkhoven"
+    ],
+    "7520": [
+        "Ramegnies-Chin",
+        "Templeuve"
+    ],
+    "7521": [
+        "Chercq"
+    ],
+    "3792": [
+        "Fouron-Saint-Pierre"
+    ],
+    "7531": [
+        "Havinnes"
+    ],
+    "7533": [
+        "Thimougies"
+    ],
+    "7538": [
+        "Vezon"
+    ],
+    "7603": [
+        "Bon-Secours"
+    ],
+    "7621": [
+        "Lesdain"
+    ],
+    "7640": [
+        "Antoing",
+        "P\u00e9ronnes-Lez-Antoing",
+        "Maubray"
+    ],
+    "7642": [
+        "Calonne"
+    ],
+    "3920": [
+        "Lommel"
+    ],
+    "3971": [
+        "Heppen"
+    ],
+    "7782": [
+        "Ploegsteert"
+    ],
+    "7823": [
+        "Gibecq"
+    ],
+    "4160": [
+        "Anthisnes"
+    ],
+    "7860": [
+        "Lessines"
+    ],
+    "4163": [
+        "Tavier"
+    ],
+    "7862": [
+        "Ogy"
+    ],
+    "4181": [
+        "Filot"
+    ],
+    "7906": [
+        "Gallaix"
+    ],
+    "7943": [
+        "Gages"
+    ],
+    "4263": [
+        "Tourinne"
+    ],
+    "7951": [
+        "Tongre-Notre-Dame"
+    ],
+    "8450": [
+        "Bredene"
+    ],
+    "8480": [
+        "Ichtegem",
+        "Bekegem",
+        "Eernegem"
+    ],
+    "8511": [
+        "Aalbeke"
+    ],
+    "8540": [
+        "Deerlijk"
+    ],
+    "4458": [
+        "Fexhe-Slins"
+    ],
+    "8553": [
+        "Otegem"
+    ],
+    "8573": [
+        "Tiegem"
+    ],
+    "4601": [
+        "Argenteau"
+    ],
+    "4606": [
+        "Saint-Andr\u00e9"
+    ],
+    "4623": [
+        "Magn\u00e9e"
+    ],
+    "4624": [
+        "Roms\u00e9e"
+    ],
+    "8730": [
+        "Sint-Joris",
+        "Beernem",
+        "Oedelem"
+    ],
+    "4652": [
+        "Xhendelesse"
+    ],
+    "8780": [
+        "Oostrozebeke"
+    ],
+    "4653": [
+        "Bolland"
+    ],
+    "8791": [
+        "Beveren"
+    ],
+    "4681": [
+        "Hermalle-Sous-Argenteau"
+    ],
+    "8851": [
+        "Koolskamp"
+    ],
+    "4683": [
+        "Vivegnis"
+    ],
+    "8860": [
+        "Lendelede"
+    ],
+    "4721": [
+        "Neu-Moresnet"
+    ],
+    "8950": [
+        "Heuvelland",
+        "Nieuwkerke"
+    ],
+    "4783": [
+        "Lommersweiler"
+    ],
+    "8952": [
+        "Wulvergem"
+    ],
+    "9032": [
+        "Wondelgem"
+    ],
+    "4877": [
+        "Olne"
+    ],
+    "9111": [
+        "Belsele"
+    ],
+    "9112": [
+        "Sinaai-Waas"
+    ],
+    "5004": [
+        "Bouge"
+    ],
+    "9255": [
+        "Opdorp",
+        "Buggenhout"
+    ],
+    "9290": [
+        "Berlare",
+        "Overmere",
+        "Uitbergen"
+    ],
+    "9521": [
+        "Letterhoutem"
+    ],
+    "9552": [
+        "Borsbeke"
+    ],
+    "5353": [
+        "Goesnes"
+    ],
+    "5364": [
+        "Schaltin"
+    ],
+    "9688": [
+        "Schorisse"
+    ],
+    "5542": [
+        "Blaimont"
+    ],
+    "5543": [
+        "Heer"
+    ],
+    "5544": [
+        "Agimont"
+    ],
+    "5562": [
+        "Custinne"
+    ],
+    "5563": [
+        "Hour"
+    ],
+    "9900": [
+        "Eeklo"
+    ],
+    "9920": [
+        "Lovendegem"
+    ],
+    "9921": [
+        "Vinderhoute"
+    ],
+    "9930": [
+        "Zomergem"
+    ],
+    "9932": [
+        "Ronsele"
+    ],
+    "9971": [
+        "Lembeke"
+    ],
+    "9980": [
+        "Sint-Laureins"
+    ],
+    "9981": [
+        "Sint-Margriete"
+    ],
+    "9988": [
+        "Watervliet",
+        "Waterland-Oudeman"
+    ],
+    "5641": [
+        "Furnaux"
+    ],
+    "6000": [
+        "Charleroi"
+    ],
+    "6032": [
+        "Mont-Sur-Marchienne"
+    ],
+    "6043": [
+        "Ransart"
+    ],
+    "6140": [
+        "Fontaine-L'ev\u00eaque"
+    ],
+    "6181": [
+        "Gouy-Lez-Pi\u00e9ton"
+    ],
+    "6182": [
+        "Souvret"
+    ],
+    "6222": [
+        "Brye"
+    ],
+    "6461": [
+        "Virelles"
+    ],
+    "6590": [
+        "Momignies"
+    ],
+    "6672": [
+        "Beho"
+    ],
+    "6673": [
+        "Cherain"
+    ],
+    "6674": [
+        "Montleban"
+    ],
+    "6721": [
+        "Anlier"
+    ],
+    "6983": [
+        "Ortho"
+    ],
+    "7021": [
+        "Havre"
+    ],
+    "7024": [
+        "Ciply"
+    ],
+    "7180": [
+        "Seneffe"
+    ],
+    "7301": [
+        "Hornu"
+    ],
+    "7330": [
+        "Saint-Ghislain"
+    ],
+    "7382": [
+        "Audregnies"
+    ],
+    "7501": [
+        "Orcq"
+    ],
+    "7530": [
+        "Gaurain-Ramecroix"
+    ],
+    "7536": [
+        "Vaulx"
+    ],
+    "7600": [
+        "P\u00e9ruwelz"
+    ],
+    "7601": [
+        "Roucourt"
+    ],
+    "7602": [
+        "Bury"
+    ],
+    "7711": [
+        "Dottignies"
+    ],
+    "7712": [
+        "Herseaux"
+    ],
+    "7802": [
+        "Ormeignies"
+    ],
+    "7901": [
+        "Thieulain"
+    ],
+    "7941": [
+        "Attre"
+    ],
+    "8301": [
+        "Ramskapelle"
+    ],
+    "8421": [
+        "Vlissegem"
+    ],
+    "8750": [
+        "Wingene",
+        "Zwevezele"
+    ],
+    "8792": [
+        "Desselgem"
+    ],
+    "8904": [
+        "Boezinge",
+        "Zuidschote"
+    ],
+    "8953": [
+        "Wijtschate"
+    ],
+    "8958": [
+        "Loker"
+    ],
+    "9041": [
+        "Oostakker"
+    ],
+    "9180": [
+        "Moerbeke-Waas"
+    ],
+    "9240": [
+        "Zele"
+    ],
+    "9250": [
+        "Waasmunster"
+    ],
+    "9451": [
+        "Kerksken"
+    ],
+    "9470": [
+        "Denderleeuw"
+    ],
+    "9473": [
+        "Welle"
+    ],
+    "9661": [
+        "Parike"
+    ],
+    "9771": [
+        "Nokere"
+    ],
+    "9950": [
+        "Waarschoot"
+    ],
+    "9991": [
+        "Adegem"
+    ],
+    "9992": [
+        "Middelburg"
+    ]
+}

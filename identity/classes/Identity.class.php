@@ -654,7 +654,7 @@ class Identity extends Model {
      * @param  Array    $values    Copy of the current (partial) state of the object (fields depend on the view).
      * @return Array    Associative array mapping fields with their resulting values.
      */
-    public static function onchange($self, $event, $values) {
+    public static function onchange($self, $event, $values, $lang) {
         $result = [];
         if(isset($event['type_id'])) {
             $type = IdentityType::id($event['type_id'])->read(['code'])->first();
@@ -666,6 +666,46 @@ class Identity extends Model {
                 $result['lastname'] = '';
             }
         }
+
+        if(isset($event['address_zip']) && isset($values['address_country'])) {
+            $list = self::getCitiesByZip($event['address_zip'], $values['address_country'], $lang);
+            if($list) {
+                $result['address_city'] = [
+                    'value' => '',
+                    'selection' => $list
+                ];
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Returns cities' names based on a zip code and a country.
+     */
+    private static function getCitiesByZip($zip, $country, $lang) {
+        $result = null;
+
+        $file = EQ_BASEDIR."/packages/identity/i18n/{$lang}/zipcodes/{$country}.json";
+        if(file_exists($file)) {
+            $data = file_get_contents($file);
+            $map_zip = json_decode($data, true);
+            if(isset($map_zip[$zip])) {
+                $result = $map_zip[$zip];
+            }
+        }
+        // fallback to english value, if defined
+        if(!$result) {
+            $file = EQ_BASEDIR."/packages/identity/i18n/en/zipcodes/{$country}.json";
+            if(file_exists($file)) {
+                $data = file_get_contents($file);
+                $map_zip = json_decode($data, true);
+                if(isset($map_zip[$zip])) {
+                    $result = $map_zip[$zip];
+                }
+            }
+        }
+
         return $result;
     }
 

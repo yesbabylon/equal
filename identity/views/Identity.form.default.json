@@ -306,7 +306,7 @@
                                             },
                                             {
                                                 "type": "field",
-                                                "value": "address_city",
+                                                "value": "address_country",
                                                 "width": "50%"
                                             },
                                             {
@@ -316,12 +316,12 @@
                                             },
                                             {
                                                 "type": "field",
-                                                "value": "address_state",
+                                                "value": "address_city",
                                                 "width": "50%"
                                             },
                                             {
                                                 "type": "field",
-                                                "value": "address_country",
+                                                "value": "address_state",
                                                 "width": "50%"
                                             }
                                         ]
