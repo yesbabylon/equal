@@ -49,33 +49,33 @@ $comparison_methods = [
 /**
  * Returns true if the given alert must be sent bases on server statuses and alert triggers
  *
- * @param $alert
- * @param $server_statuses
+ * @param array $alert
+ * @param array $statuses Server or instance statuses
  * @return bool
  */
-$mustSendAlert = function($alert, $server_statuses) use($comparison_methods) {
+$mustSendAlert = function(array $alert, array $statuses) use($comparison_methods) {
     $must_trigger = count($alert['alert_triggers_ids']) > 0;
     foreach($alert['alert_triggers_ids'] as $trigger) {
-        if($trigger['repetition'] > count($server_statuses)) {
+        if($trigger['repetition'] > count($statuses)) {
             $must_trigger = false;
             break;
         }
 
         for($i = 0; $i <= $trigger['repetition']; $i++) {
-            $server_status = $server_statuses[$i];
+            $status = $statuses[$i];
 
-            $server_status_value = AlertTrigger::getServerStatusValue($trigger['key'], $server_status);
-            if(!isset($server_status_value)) {
+            $status_value = AlertTrigger::getServerStatusValue($trigger['key'], $status);
+            if(is_null($status_value)) {
                 $must_trigger = false;
                 break 2;
             }
 
-            $server_status_value = AlertTrigger::adaptValue($trigger['key'], $server_status_value);
+            $status_value = AlertTrigger::adaptValue($trigger['key'], $status_value);
             $trigger_value = AlertTrigger::adaptValue($trigger['key'], $trigger['value']);
 
             if(
                 !in_array($trigger['operator'], array_keys($comparison_methods))
-                || !$comparison_methods[$trigger['operator']]($server_status_value, $trigger_value)
+                || !$comparison_methods[$trigger['operator']]($status_value, $trigger_value)
             ) {
                 $must_trigger = false;
                 break 2;
@@ -89,12 +89,12 @@ $mustSendAlert = function($alert, $server_statuses) use($comparison_methods) {
 /**
  * Sends the given alert to all users link for given server
  *
- * @param $server
- * @param $alert
+ * @param string $server_name
+ * @param array $alert
  * @return void
  * @throws Exception
  */
-$sendAlert = function($server, $alert) {
+$sendAlert = function(string $server_name, array $alert) {
     $users_emails = array_column($alert['users_ids'], 'login');
     foreach($alert['groups_ids'] as $group) {
         $users_emails = array_merge($users_emails, array_column($group['users_ids'], 'login'));
@@ -104,15 +104,15 @@ $sendAlert = function($server, $alert) {
     foreach($users_emails as $email) {
         $message = new Email();
 
-        $body = "Alert {$alert['name']} for server {$server['name']}:";
+        $body = "Alert {$alert['name']} for server $server_name:";
         $body .= "<ul>";
         foreach ($alert['alert_triggers_ids'] as $trigger) {
-            $body .= "<li>{$trigger['key']} {$trigger['operator']} {$trigger['value']}</li>";
+            $body .= "<li>{$trigger['key']} {$trigger['operator']} {$trigger['value']} (repetition: {$trigger['repetition']})</li>";
         }
         $body .= "</ul>";
 
         $message->setTo($email)
-            ->setSubject("{$server['name']} alert: {$alert['name']}")
+            ->setSubject("$server_name alert: {$alert['name']}")
             ->setContentType("text/html")
             ->setBody($body);
 
@@ -128,11 +128,21 @@ $sendAlert = function($server, $alert) {
 $servers = Server::search(['server_type', 'in', ['b2', 'tapu_backups', 'sapu_stats', 'seru_admin']])
     ->read([
         'name',
+        'server_type',
         'alerts_ids' => [
             'name',
             'users_ids'             => ['login'],
             'groups_ids'            => ['users_ids' => ['login']],
             'alert_triggers_ids'    => ['key', 'operator', 'value', 'repetition']
+        ],
+        'instances_ids' => [
+            'name',
+            'alerts_ids' => [
+                'name',
+                'users_ids'             => ['login'],
+                'groups_ids'            => ['users_ids' => ['login']],
+                'alert_triggers_ids'    => ['key', 'operator', 'value', 'repetition']
+            ]
         ]
     ])
     ->get();
@@ -146,6 +156,15 @@ foreach($servers as $server) {
     foreach($server['alerts_ids'] as $alert) {
         foreach($alert['alert_triggers_ids'] as $alert_trigger) {
             $max_repetition = max($max_repetition, $alert_trigger['repetition']);
+        }
+    }
+    if($server['server_type'] === 'b2') {
+        foreach($server['instances_ids'] as $instance) {
+            foreach($instance['alerts_ids'] as $alert) {
+                foreach($alert['alert_triggers_ids'] as $alert_trigger) {
+                    $max_repetition = max($max_repetition, $alert_trigger['repetition']);
+                }
+            }
         }
     }
 
@@ -174,12 +193,40 @@ foreach($servers as $server) {
     }
 
     foreach($server['alerts_ids'] as $alert) {
-        $must_trigger = $mustSendAlert($alert, $server_statuses);
-        if(!$must_trigger) {
+        if(!$mustSendAlert($alert, $server_statuses)) {
             continue;
         }
 
-        $sendAlert($server, $alert);
+        $sendAlert($server['name'], $alert);
+    }
+
+    if($server['server_type'] === 'b2') {
+        foreach($server['instances_ids'] as $instance) {
+            if(count($instance['alerts_ids']) === 0) {
+                continue;
+            }
+
+            $instance_statuses = [];
+            foreach($server_statuses as $server_status) {
+                if(isset($server_status['b2_instances'][$instance['name']])) {
+                    $instance_statuses[] = array_merge(
+                        ['up' => true],
+                        $server_status['b2_instances'][$instance['name']]
+                    );
+                }
+                else {
+                    $instance_statuses[] = ['up' => 'false'];
+                }
+            }
+
+            foreach($instance['alerts_ids'] as $alert) {
+                if(!$mustSendAlert($alert, $instance_statuses)) {
+                    continue;
+                }
+
+                $sendAlert($server['name'].' ('.$instance['name'].')', $alert);
+            }
+        }
     }
 }
 

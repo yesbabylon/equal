@@ -42,12 +42,28 @@ $getServerApiUrl = function(array $accesses) {
     return $access_url;
 };
 
+$getInstancesStatuses = function($instances, $access_url) {
+    $instances_statuses = [];
+    foreach($instances as $instance) {
+        $instance_status = file_get_contents("$access_url/instance/status?instance=$instance");
+        if($instance_status) {
+            $instance_status = json_decode($instance_status, true);
+            $instances_statuses[$instance] = $instance_status;
+        }
+    }
+
+    return $instances_statuses;
+};
+
 /**
  * Action
  */
 
 $servers = Server::search(['server_type', 'in', ['b2', 'tapu_backups', 'sapu_stats', 'seru_admin']])
-    ->read(['accesses_ids' => ['access_type', 'port', 'url']])
+    ->read([
+        'server_type',
+        'accesses_ids'  => ['access_type', 'port', 'url']
+    ])
     ->get();
 
 foreach($servers as $server) {
@@ -58,6 +74,19 @@ foreach($servers as $server) {
 
     $server_status = file_get_contents("$access_url/status");
     $up = $server_status !== false;
+
+    if($up && $server['server_type'] === 'b2') {
+        $instances = file_get_contents("$access_url/instances");
+        if($instances) {
+            $instances = json_decode($instances, true);
+            $instances_statuses = $getInstancesStatuses($instances, $access_url);
+            if(!empty($instances_statuses)) {
+                $server_status = json_decode($server_status, true);
+                $server_status['b2_instances'] = $instances_statuses;
+                $server_status = json_encode($server_status);
+            }
+        }
+    }
 
     Status::create([
         'server_id'         => $server['id'],

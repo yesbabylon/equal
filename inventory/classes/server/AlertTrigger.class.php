@@ -36,6 +36,12 @@ class AlertTrigger extends Model {
         'stats.nginx_proc'          => 'integer',
         'stats.mysql_proc'          => 'integer',
         /**
+         * Only b2 instance
+         */
+        'maintenance_enabled'       => 'boolean',
+        'docker_stats.CPUPerc'      => 'percentage',
+        'docker_stats.MemPerc'      => 'percentage',
+        /**
          * Only backup
          */
         'instant.backup_tokens_qty' => 'integer',
@@ -87,6 +93,12 @@ class AlertTrigger extends Model {
                     'stats.apache_proc',
                     'stats.nginx_proc',
                     'stats.mysql_proc',
+                    /**
+                     * Only b2 instance
+                     */
+                    'maintenance_enabled',
+                    'docker_stats.CPUPerc',
+                    'docker_stats.MemPerc',
                     /**
                      * Only backup
                      */

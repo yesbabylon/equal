@@ -30,6 +30,16 @@ class Alert extends Model {
                 'description'       => "Servers that use this alert."
             ],
 
+            'instances_ids' => [
+                'type'              => 'many2many',
+                'foreign_object'    => 'inventory\server\Instance',
+                'foreign_field'     => 'alerts_ids',
+                'rel_table'         => 'inventory_instance_rel_alert',
+                'rel_foreign_key'   => 'instance_id',
+                'rel_local_key'     => 'alert_id',
+                'description'       => "Instances that use this alert."
+            ],
+
             'alert_triggers_ids' => [
                 'type'              => 'many2many',
                 'foreign_object'    => 'inventory\server\AlertTrigger',
@@ -42,7 +52,7 @@ class Alert extends Model {
 
             'users_ids' => [
                 'type'              => 'many2many',
-                'foreign_object'    => 'core\User',
+                'foreign_object'    => 'inventory\core\User',
                 'foreign_field'     => 'server_alerts_ids',
                 'rel_table'         => 'inventory_server_alert_rel_core_user',
                 'rel_foreign_key'   => 'user_id',
@@ -52,7 +62,7 @@ class Alert extends Model {
 
             'groups_ids' => [
                 'type'              => 'many2many',
-                'foreign_object'    => 'core\Group',
+                'foreign_object'    => 'inventory\core\Group',
                 'foreign_field'     => 'server_alerts_ids',
                 'rel_table'         => 'inventory_server_alert_rel_core_group',
                 'rel_foreign_key'   => 'group_id',

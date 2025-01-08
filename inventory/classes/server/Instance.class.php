@@ -84,6 +84,16 @@ class Instance extends Model {
                 'foreign_object'    => 'inventory\Software',
                 'foreign_field'     => 'instance_id',
                 'description'       => 'Information about the list of  software running on the instance.'
+            ],
+
+            'alerts_ids' => [
+                'type'              => 'many2many',
+                'foreign_object'    => 'inventory\server\Alert',
+                'foreign_field'     => 'instances_ids',
+                'rel_table'         => 'inventory_instance_rel_alert',
+                'rel_foreign_key'   => 'alert_id',
+                'rel_local_key'     => 'instance_id',
+                'description'       => 'Alerts of the instance.'
             ]
 
         ];
