@@ -39,6 +39,12 @@ class Server extends Model {
                 'default'           => 'front'
             ],
 
+            'up' => [
+                'type'              => 'boolean',
+                'description'       => 'Is the server currently up, is set according to the last inventory\server\Status retrieval.',
+                'default'           => false
+            ],
+
             'accesses_ids' => [
                 'type'              => 'one2many',
                 'foreign_object'    => 'inventory\Access',

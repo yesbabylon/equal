@@ -57,6 +57,12 @@ class Instance extends Model {
                 'description'       => 'Front-end home URL.'
             ],
 
+            'up' => [
+                'type'              => 'boolean',
+                'description'       => 'Is the instance currently up, is set according to the last inventory\server\Status retrieval.',
+                'default'           => false
+            ],
+
             'product_id' => [
                 'type'              => 'many2one',
                 'foreign_object'    => 'inventory\Product',
