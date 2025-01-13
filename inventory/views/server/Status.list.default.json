@@ -1,0 +1,38 @@
+{
+  "name": "Statuses",
+  "description": "Default listing of all statuses.",
+  "order": "created",
+  "sort": "desc",
+  "layout": {
+    "items": [
+      {
+        "type": "field",
+        "value": "id",
+        "width": "10%",
+        "sortable": true,
+        "readonly": true
+      },
+      {
+        "type": "field",
+        "value": "created",
+        "with": "33%",
+        "sortable": true,
+        "readonly": true
+      },
+      {
+        "type": "field",
+        "value": "up",
+        "width": "10%",
+        "sortable": true,
+        "readonly": true
+      },
+      {
+        "type": "field",
+        "value": "server_status",
+        "width": "66%",
+        "sortable": true,
+        "readonly": true
+      }
+    ]
+  }
+}
