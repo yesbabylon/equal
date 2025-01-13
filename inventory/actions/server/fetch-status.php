@@ -76,16 +76,19 @@ foreach($servers as $server) {
     $up = $server_status !== false;
 
     if($up && $server['server_type'] === 'b2') {
+        $server_status = json_decode($server_status, true);
+        $server_status['b2_instances'] = [];
+
         $instances = file_get_contents("$access_url/instances");
         if($instances) {
             $instances = json_decode($instances, true);
             $instances_statuses = $getInstancesStatuses($instances, $access_url);
             if(!empty($instances_statuses)) {
-                $server_status = json_decode($server_status, true);
                 $server_status['b2_instances'] = $instances_statuses;
-                $server_status = json_encode($server_status);
             }
         }
+
+        $server_status = json_encode($server_status);
     }
 
     Status::create([
