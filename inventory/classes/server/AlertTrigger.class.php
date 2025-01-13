@@ -14,6 +14,9 @@ class AlertTrigger extends Model {
     const MAP_STATUS_KEYS_TYPES = [
         'up'                        => 'boolean',
 
+        /**
+         * All server types
+         */
         'stats.net.rx'              => 'data_size',
         'stats.net.tx'              => 'data_size',
         'stats.net.total'           => 'data_size',
@@ -75,9 +78,13 @@ class AlertTrigger extends Model {
             'key' => [
                 'type'              => 'string',
                 'description'       => "Name of the server status data used for the check if the alert must be triggered.",
+                'hep'               => "Some status data keys are only available for certain types of servers.",
                 'selection'         => [
-                    'up',                    // True if the server was reachable when inventory\server\Status created
+                    'up',                       // Only key that is always present in server status, true if the server was reachable when inventory\server\Status created.
 
+                    /**
+                     * All server types
+                     */
                     'stats.net.rx',
                     'stats.net.tx',
                     'stats.net.total',
@@ -128,6 +135,7 @@ class AlertTrigger extends Model {
             'repetition' => [
                 'type'              => 'integer',
                 'description'       => "Number of repetitions needed for the alert to be triggered.",
+                'help'              => "If repetition is 1, then the triggers as to repeat one time for the alert to be triggered. So the trigger must match twice in a row.",
                 'min'               => 0,
                 'default'           => 0
             ]

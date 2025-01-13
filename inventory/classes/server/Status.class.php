@@ -31,7 +31,8 @@ class Status extends Model {
             'server_status' => [
                 'type'              => 'string',
                 'usage'             => 'text/json',
-                'description'       => "JSON representation of servers status and statistics."
+                'description'       => "JSON representation of servers status and statistics.",
+                'help'              => "Remains 'null' if server API wasn't reachable."
             ]
 
         ];
