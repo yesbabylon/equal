@@ -26,7 +26,7 @@ class AlertTrigger extends Model {
         'instant.total_proc'        => 'integer',
         'instant.ram_use'           => 'data_size',
         'instant.cpu_use'           => 'percentage',
-        'instant.disk_use'          => 'data_size',
+        'instant.dsk_use'           => 'data_size',
         'instant.usr_active'        => 'integer',
         'instant.usr_total'         => 'integer',
         /**
@@ -94,7 +94,7 @@ class AlertTrigger extends Model {
                     'instant.total_proc',
                     'instant.ram_use',
                     'instant.cpu_use',
-                    'instant.disk_use',
+                    'instant.dsk_use',
                     'instant.usr_active',
                     'instant.usr_total',
                     /**
