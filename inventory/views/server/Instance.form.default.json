@@ -22,7 +22,13 @@
                                             },
                                             {
                                                 "type": "field",
-                                                "value": "type",
+                                                "value": "up",
+                                                "width": "33%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "label": "Type",
+                                                "value": "instance_type",
                                                 "width": "33%"
                                             }
                                         ]

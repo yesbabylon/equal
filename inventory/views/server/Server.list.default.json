@@ -21,6 +21,12 @@
             },
             {
                 "type": "field",
+                "value": "up",
+                "width": "33%",
+                "sortable": true
+            },
+            {
+                "type": "field",
                 "label": "Type",
                 "value": "server_type",
                 "width": "33%",

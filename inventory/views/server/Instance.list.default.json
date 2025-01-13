@@ -28,6 +28,12 @@
             },
             {
                 "type": "field",
+                "value": "up",
+                "width": "15%",
+                "sortable": true
+            },
+            {
+                "type": "field",
                 "value": "url",
                 "width": "15%",
                 "sortable": true,

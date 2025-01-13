@@ -19,6 +19,12 @@
                                                 "widget": {
                                                     "heading": true
                                                 }
+                                            },
+                                            {
+                                                "type": "field",
+                                                "label": "Up",
+                                                "value": "up",
+                                                "width": "25%"
                                             }
                                         ]
                                     },
