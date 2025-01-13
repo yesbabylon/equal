@@ -39,6 +39,12 @@ class Server extends Model {
                 'default'           => 'front'
             ],
 
+            'synced' => [
+                'type'              => 'datetime',
+                'description'       => 'Date of last automatic status update.',
+                'help'              => 'The "up" field can be auto updated by the action "inventory_server_fetch-status".'
+            ],
+
             'up' => [
                 'type'              => 'boolean',
                 'description'       => 'Is the server currently up, is set according to the last inventory\server\Status retrieval.',

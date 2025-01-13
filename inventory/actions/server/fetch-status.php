@@ -125,21 +125,21 @@ foreach($servers as $server) {
 // Set current status of servers
 if(!empty($map_up_down_servers_ids['up'])) {
     Server::search(['id', 'in', $map_up_down_servers_ids['up']])
-        ->update(['up' => true]);
+        ->update(['up' => true, 'synced' => time()]);
 }
 if(!empty($map_up_down_servers_ids['down'])) {
     Server::search(['id', 'in', $map_up_down_servers_ids['down']])
-        ->update(['up' => false]);
+        ->update(['up' => false, 'synced' => time()]);
 }
 
 // Set current status of instances
 if(!empty($map_up_down_instances_ids['up'])) {
     Instance::search(['id', 'in', $map_up_down_instances_ids['up']])
-        ->update(['up' => true]);
+        ->update(['up' => true, 'synced' => time()]);
 }
 if(!empty($map_up_down_instances_ids['down'])) {
     Instance::search(['id', 'in', $map_up_down_instances_ids['down']])
-        ->update(['up' => false]);
+        ->update(['up' => false, 'synced' => time()]);
 }
 
 $context->httpResponse()
