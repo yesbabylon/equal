@@ -43,7 +43,29 @@ $getServerApiUrl = function(array $accesses) {
     return $access_url;
 };
 
-$getInstancesStatuses = function($instances, $access_url) {
+$getServerStatus = function(string $access_url) {
+    $server_status_res = file_get_contents("$access_url/status");
+    if($server_status_res === false) {
+        return false;
+    }
+
+    $server_status_res = json_decode($server_status_res, true);
+
+    return $server_status_res['result'];
+};
+
+$getInstances = function(string $access_url) {
+    $instances_res = file_get_contents("$access_url/instances");
+    if($instances_res === false) {
+        return [];
+    }
+
+    $instances_res = json_decode($instances_res, true);
+
+    return $instances_res['result'];
+};
+
+$getInstancesStatuses = function(array $instances, string $access_url) {
     $instances_statuses = [];
     foreach($instances as $instance) {
         $instance_status = file_get_contents("$access_url/instance/status?instance=$instance");
@@ -76,18 +98,16 @@ foreach($servers as $server) {
         continue;
     }
 
-    $server_status = file_get_contents("$access_url/status");
+    $server_status = $getServerStatus($access_url);
     $up = $server_status !== false;
 
     if($server['server_type'] === 'b2' && !empty($server['instances_ids'])) {
         if($up) {
-            $server_status = json_decode($server_status, true);
             $server_status['b2_instances'] = [];
 
-            $instances = file_get_contents("$access_url/instances");
+            $instances = $getInstances($access_url);
             if($instances) {
-                $instances = json_decode($instances, true);
-                $instances_statuses = $getInstancesStatuses($instances['result'], $access_url);
+                $instances_statuses = $getInstancesStatuses($instances, $access_url);
                 if(!empty($instances_statuses)) {
                     $server_status['b2_instances'] = $instances_statuses;
 
@@ -102,8 +122,6 @@ foreach($servers as $server) {
                     $map_up_down_instances_ids['down'] = array_column($server['instances_ids'], 'id');
                 }
             }
-
-            $server_status = json_encode($server_status);
         }
         else {
             $map_up_down_instances_ids['down'] = array_merge(
@@ -116,7 +134,7 @@ foreach($servers as $server) {
     Status::create([
         'server_id'         => $server['id'],
         'up'                => $up,
-        'server_status'     => $up ? $server_status : null
+        'server_status'     => $up ? json_encode($server_status) : null
     ]);
 
     $map_up_down_servers_ids[$up ? 'up' : 'down'][] = $server['id'];
