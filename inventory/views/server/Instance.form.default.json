@@ -22,11 +22,6 @@
                                             },
                                             {
                                                 "type": "field",
-                                                "value": "up",
-                                                "width": "33%"
-                                            },
-                                            {
-                                                "type": "field",
                                                 "label": "Type",
                                                 "value": "instance_type",
                                                 "width": "33%"
@@ -66,6 +61,31 @@
             },
             {
                 "sections": [
+                    {
+                        "id": "section.status",
+                        "label": "Status",
+                        "rows": [
+                            {
+                                "columns": [
+                                    {
+                                        "width": "33%",
+                                        "items": [
+                                            {
+                                                "type": "field",
+                                                "value": "synced",
+                                                "width": "50%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "up",
+                                                "width": "50%"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
                     {
                         "id": "section.details",
                         "label": "Details",

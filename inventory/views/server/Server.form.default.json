@@ -19,12 +19,6 @@
                                                 "widget": {
                                                     "heading": true
                                                 }
-                                            },
-                                            {
-                                                "type": "field",
-                                                "label": "Up",
-                                                "value": "up",
-                                                "width": "25%"
                                             }
                                         ]
                                     },
@@ -47,6 +41,31 @@
             },
             {
                 "sections": [
+                    {
+                        "id": "section.status",
+                        "label": "Status",
+                        "rows": [
+                            {
+                                "columns": [
+                                    {
+                                        "width": "33%",
+                                        "items": [
+                                            {
+                                                "type": "field",
+                                                "value": "synced",
+                                                "width": "50%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "up",
+                                                "width": "50%"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
                     {
                         "id": "section.description",
                         "label": "Description",
