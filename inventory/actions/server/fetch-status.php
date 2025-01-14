@@ -10,7 +10,8 @@ use inventory\server\Server;
 use inventory\server\Status;
 
 [$params, $providers] = eQual::announce([
-    'description'       => "Fetches status statistics from servers of b2 or aru type, then saves them.",
+    'description'       => "Fetches and saves statuses from servers of b2, tapu_backups, sapu_stats and seru_admin type.",
+    'help'              => "Updates servers and instances 'up' fields.",
     'params'            => [],
     'access'            => [
         'visibility'        => 'private'
@@ -32,6 +33,12 @@ use inventory\server\Status;
  * Methods
  */
 
+/**
+ * Returns api url from given accesses (http/https on port 8000)
+ *
+ * @param array $accesses
+ * @return string|null
+ */
 $getServerApiUrl = function(array $accesses) {
     $access_url = null;
     foreach($accesses as $access) {
@@ -43,6 +50,12 @@ $getServerApiUrl = function(array $accesses) {
     return $access_url;
 };
 
+/**
+ * Returns server status for the given server's access url
+ *
+ * @param string $access_url
+ * @return false|array
+ */
 $getServerStatus = function(string $access_url) {
     $server_status_res = file_get_contents("$access_url/status");
     if($server_status_res === false) {
@@ -54,10 +67,16 @@ $getServerStatus = function(string $access_url) {
     return $server_status_res['result'];
 };
 
+/**
+ * Returns the list of instances for given b2 server's access url
+ *
+ * @param string $access_url
+ * @return false|array
+ */
 $getInstances = function(string $access_url) {
     $instances_res = file_get_contents("$access_url/instances");
     if($instances_res === false) {
-        return [];
+        return false;
     }
 
     $instances_res = json_decode($instances_res, true);
@@ -65,7 +84,14 @@ $getInstances = function(string $access_url) {
     return $instances_res['result'];
 };
 
-$getInstancesStatuses = function(array $instances, string $access_url) {
+/**
+ * Returns instances statuses for given b2 server's access url
+ *
+ * @param array $instances
+ * @param string $access_url
+ * @return array
+ */
+$getInstancesStatuses = function(array $instances, string $access_url): array {
     $instances_statuses = [];
     foreach($instances as $instance) {
         $instance_status = file_get_contents("$access_url/instance/status?instance=$instance");
@@ -119,6 +145,8 @@ foreach($servers as $server) {
                     }
                 }
                 else {
+                    // All instances set to down because not able to get their statuses
+
                     $map_up_down_instances_ids['down'] = array_merge(
                         $map_up_down_instances_ids['down'],
                         array_column($server['instances_ids'], 'id')
@@ -127,6 +155,8 @@ foreach($servers as $server) {
             }
         }
         else {
+            // All instances set to down because b2 server down
+
             $map_up_down_instances_ids['down'] = array_merge(
                 $map_up_down_instances_ids['down'],
                 array_column($server['instances_ids'], 'id')
@@ -143,7 +173,7 @@ foreach($servers as $server) {
     $map_up_down_servers_ids[$up ? 'up' : 'down'][] = $server['id'];
 }
 
-// Set current status of servers
+// Sync current status of servers
 if(!empty($map_up_down_servers_ids['up'])) {
     Server::search(['id', 'in', $map_up_down_servers_ids['up']])
         ->update(['up' => true, 'synced' => time()]);
@@ -153,7 +183,7 @@ if(!empty($map_up_down_servers_ids['down'])) {
         ->update(['up' => false, 'synced' => time()]);
 }
 
-// Set current status of instances
+// Sync current status of instances
 if(!empty($map_up_down_instances_ids['up'])) {
     Instance::search(['id', 'in', $map_up_down_instances_ids['up']])
         ->update(['up' => true, 'synced' => time()]);
