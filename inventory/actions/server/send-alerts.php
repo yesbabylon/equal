@@ -12,7 +12,7 @@ use inventory\server\Server;
 use inventory\server\Status;
 
 [$params, $providers] = eQual::announce([
-    'description'       => "Sends servers alerts if their triggers match the current servers statuses.",
+    'description'       => "Sends servers/instances alerts if their triggers match the last servers status(es).",
     'params'            => [],
     'response'          => [
         'content-type'      => 'application/json',
@@ -125,33 +125,32 @@ $sendAlert = function(string $server_name, array $alert) {
  * Action
  */
 
+$alerts_fields = [
+    'name',
+    'users_ids'             => ['login'],
+    'groups_ids'            => ['users_ids' => ['login']],
+    'alert_triggers_ids'    => ['key', 'operator', 'value', 'repetition']
+];
+
 $servers = Server::search(['server_type', 'in', ['b2', 'tapu_backups', 'sapu_stats', 'seru_admin']])
     ->read([
         'name',
         'server_type',
-        'alerts_ids' => [
-            'name',
-            'users_ids'             => ['login'],
-            'groups_ids'            => ['users_ids' => ['login']],
-            'alert_triggers_ids'    => ['key', 'operator', 'value', 'repetition']
-        ],
+        'alerts_ids'    => $alerts_fields,
         'instances_ids' => [
             'name',
-            'alerts_ids' => [
-                'name',
-                'users_ids'             => ['login'],
-                'groups_ids'            => ['users_ids' => ['login']],
-                'alert_triggers_ids'    => ['key', 'operator', 'value', 'repetition']
-            ]
+            'alerts_ids'    => $alerts_fields
         ]
     ])
     ->get();
 
 foreach($servers as $server) {
     if(count($server['alerts_ids']) === 0) {
+        // No alert configured
         continue;
     }
 
+    // Handle trigger repetition to get right quantity of statuses to check against triggers
     $max_repetition = 0;
     foreach($server['alerts_ids'] as $alert) {
         foreach($alert['alert_triggers_ids'] as $alert_trigger) {
@@ -168,17 +167,23 @@ foreach($servers as $server) {
         }
     }
 
+    // Get the quantity of statuses needed to check all the alerts (only 1 if no triggers with repetition)
     $statuses = Status::search(
         ['server_id', '=', $server['id']],
-        ['sort' => ['created' => 'desc'], 'limit' => $max_repetition + 1]
+        [
+            'sort' => ['created' => 'desc'],
+            'limit' => $max_repetition + 1
+        ]
     )
         ->read(['up', 'server_status'])
         ->get();
 
     if(empty($statuses)) {
+        // No statuses yet
         continue;
     }
 
+    // Create server statuses, add 'up' key to it
     $server_statuses = [];
     foreach($statuses as $status) {
         if($status['up']) {
@@ -192,6 +197,7 @@ foreach($servers as $server) {
         }
     }
 
+    // Send alerts if triggers matches
     foreach($server['alerts_ids'] as $alert) {
         if(!$mustSendAlert($alert, $server_statuses)) {
             continue;
@@ -203,9 +209,11 @@ foreach($servers as $server) {
     if($server['server_type'] === 'b2') {
         foreach($server['instances_ids'] as $instance) {
             if(count($instance['alerts_ids']) === 0) {
+                // No alert configured
                 continue;
             }
 
+            // Create instance statuses, add 'up' key to it
             $instance_statuses = [];
             foreach($server_statuses as $server_status) {
                 if(isset($server_status['b2_instances'][$instance['name']])) {
@@ -219,6 +227,7 @@ foreach($servers as $server) {
                 }
             }
 
+            // Send alerts if triggers matches
             foreach($instance['alerts_ids'] as $alert) {
                 if(!$mustSendAlert($alert, $instance_statuses)) {
                     continue;
