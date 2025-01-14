@@ -19,7 +19,7 @@
                       },
                       {
                         "type": "field",
-                        "value": "server_type",
+                        "value": "trigger_type",
                         "width": "33%"
                       }
                     ]

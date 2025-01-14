@@ -59,10 +59,10 @@ class AlertTrigger extends Model {
                 'description'       => "Name of the alert."
             ],
 
-            'server_type' => [
+            'trigger_type' => [
                 'type'              => 'string',
                 'description'       => "The type of server this alert is meant for.",
-                'selection'         => ['all', 'b2', 'tapu_backups', 'sapu_stats', 'seru_admin']
+                'selection'         => ['all', 'b2', 'b2_instance', 'tapu_backups', 'sapu_stats', 'seru_admin']
             ],
 
             'alerts_ids' => [
@@ -135,7 +135,7 @@ class AlertTrigger extends Model {
             'repetition' => [
                 'type'              => 'integer',
                 'description'       => "Number of repetitions needed for the alert to be triggered.",
-                'help'              => "If repetition is 1, then the triggers as to repeat one time for the alert to be triggered. So the trigger must match twice in a row.",
+                'help'              => "If repetition is 1, then the trigger must match twice in a row.",
                 'min'               => 0,
                 'default'           => 0
             ]
@@ -162,8 +162,8 @@ class AlertTrigger extends Model {
             'instant.usr_total',
         ];
 
-        if(isset($event['server_type'])) {
-            switch($event['server_type']) {
+        if(isset($event['trigger_type'])) {
+            switch($event['trigger_type']) {
                 case 'b2':
                     $result['key'] = [
                         'selection' => array_merge(
@@ -174,12 +174,19 @@ class AlertTrigger extends Model {
                                 'stats.nginx_mem',
                                 'stats.apache_proc',
                                 'stats.nginx_proc',
-                                'stats.mysql_proc',
-                                'maintenance_enabled',
-                                'docker_stats.CPUPerc',
-                                'docker_stats.MemPerc'
+                                'stats.mysql_proc'
                             ]
                         )
+                    ];
+                    break;
+                case 'b2_instance':
+                    $result['key'] = [
+                        'selection' => [
+                            'up',
+                            'maintenance_enabled',
+                            'docker_stats.CPUPerc',
+                            'docker_stats.MemPerc',
+                        ]
                     ];
                     break;
                 case 'tapu_backups':
@@ -256,10 +263,15 @@ class AlertTrigger extends Model {
     public static function getConstraints(): array {
         return [
             'key' => [
-                'key_not_allowed_for_server_type' => [
-                    'message'       => 'Not allowed for this server type.',
+                'key_not_allowed_for_trigger_type' => [
+                    'message'       => 'Not allowed for this trigger type.',
                     'function'      => function ($key, $values) {
-                        $allowed_keys = [
+                        if(!isset($values['trigger_type'])) {
+                            return true;
+                        }
+
+                        $allowed_keys = [];
+                        $server_allowed_keys = [
                             'up',
                             'stats.net.rx',
                             'stats.net.tx',
@@ -275,22 +287,27 @@ class AlertTrigger extends Model {
                             'instant.usr_total'
                         ];
 
-                        switch($values['server_type']) {
+                        switch($values['trigger_type']) {
                             case 'b2':
-                                $allowed_keys = array_merge($allowed_keys, [
+                                $allowed_keys = array_merge($server_allowed_keys, [
                                     'stats.mysql_mem',
                                     'stats.apache_mem',
                                     'stats.nginx_mem',
                                     'stats.apache_proc',
                                     'stats.nginx_proc',
-                                    'stats.mysql_proc',
-                                    'maintenance_enabled',
-                                    'docker_stats.CPUPerc',
-                                    'docker_stats.MemPerc'
+                                    'stats.mysql_proc'
                                 ]);
                                 break;
+                            case 'b2_instance':
+                                $allowed_keys = [
+                                    'up',
+                                    'maintenance_enabled',
+                                    'docker_stats.CPUPerc',
+                                    'docker_stats.MemPerc',
+                                ];
+                                break;
                             case 'tapu_backups':
-                                $allowed_keys = array_merge($allowed_keys, [
+                                $allowed_keys = array_merge($server_allowed_keys, [
                                     'instant.backup_tokens_qty',
                                     'stats.backups_disk'
                                 ]);
