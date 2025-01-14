@@ -130,6 +130,7 @@ class AlertTrigger extends Model {
             'value' => [
                 'type'              => 'string',
                 'description'       => "Value used for the check if the alert must be triggered.",
+                'required'          => true
             ],
 
             'repetition' => [
@@ -311,6 +312,9 @@ class AlertTrigger extends Model {
                                     'instant.backup_tokens_qty',
                                     'stats.backups_disk'
                                 ]);
+                                break;
+                            default:
+                                $allowed_keys = $server_allowed_keys;
                                 break;
                         }
 
