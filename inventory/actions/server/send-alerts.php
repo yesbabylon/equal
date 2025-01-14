@@ -100,6 +100,9 @@ $sendAlert = function(string $server_name, array $alert) {
         $users_emails = array_merge($users_emails, array_column($group['users_ids'], 'login'));
     }
     $users_emails = array_unique($users_emails);
+    if(empty($users_emails)) {
+        trigger_error("APP::no user nor group configured for alert {$alert['name']}}", EQ_ERROR_INVALID_CONFIG);
+    }
 
     foreach($users_emails as $email) {
         $message = new Email();
