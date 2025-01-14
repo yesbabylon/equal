@@ -124,10 +124,7 @@ foreach($servers as $server) {
             }
         }
         else {
-            $map_up_down_instances_ids['down'] = array_merge(
-                $map_up_down_instances_ids['down'],
-                array_column($server['instances_ids'], 'id')
-            );
+            $map_up_down_instances_ids['down'] = array_column($server['instances_ids'], 'id');
         }
     }
 
