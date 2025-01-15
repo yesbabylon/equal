@@ -48,13 +48,15 @@ class AlertTrigger extends Model {
 
             'name' => [
                 'type'              => 'string',
-                'description'       => "Name of the alert."
+                'description'       => "Name of the trigger.",
+                'required'          => true
             ],
 
             'trigger_type' => [
                 'type'              => 'string',
                 'description'       => "The type of server this alert is meant for.",
-                'selection'         => ['all', 'b2', 'b2_instance', 'tapu_backups', 'sapu_stats', 'seru_admin']
+                'selection'         => ['all', 'b2', 'b2_instance', 'tapu_backups', 'sapu_stats', 'seru_admin'],
+                'required'          => true
             ],
 
             'alerts_ids' => [

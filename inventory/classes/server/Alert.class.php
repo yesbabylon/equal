@@ -20,24 +20,10 @@ class Alert extends Model {
                 'required'          => true
             ],
 
-            'servers_ids' => [
-                'type'              => 'many2many',
-                'foreign_object'    => 'inventory\server\Server',
-                'foreign_field'     => 'alerts_ids',
-                'rel_table'         => 'inventory_server_rel_alert',
-                'rel_foreign_key'   => 'server_id',
-                'rel_local_key'     => 'alert_id',
-                'description'       => "Servers that use this alert."
-            ],
-
-            'instances_ids' => [
-                'type'              => 'many2many',
-                'foreign_object'    => 'inventory\server\Instance',
-                'foreign_field'     => 'alerts_ids',
-                'rel_table'         => 'inventory_instance_rel_alert',
-                'rel_foreign_key'   => 'instance_id',
-                'rel_local_key'     => 'alert_id',
-                'description'       => "Instances that use this alert."
+            'alert_type' => [
+                'type'              => 'string',
+                'description'       => "The type of server/instance this alert is meant for.",
+                'selection'         => ['all', 'b2', 'b2_instance', 'tapu_backups', 'sapu_stats', 'seru_admin']
             ],
 
             'alert_triggers_ids' => [
@@ -47,7 +33,11 @@ class Alert extends Model {
                 'rel_table'         => 'inventory_alert_rel_alert_trigger',
                 'rel_foreign_key'   => 'alert_trigger_id',
                 'rel_local_key'     => 'alert_id',
-                'description'       => "Send the alert when its triggers matches."
+                'description'       => "Send the alert when its triggers matches.",
+                'domain'            => [
+                    [['trigger_type', '=', 'all']],
+                    [['trigger_type', '=', 'object.alert_type']]
+                ]
             ],
 
             'users_ids' => [

@@ -7,6 +7,7 @@
 
 use core\Mail;
 use equal\email\Email;
+use inventory\server\Alert;
 use inventory\server\AlertTrigger;
 use inventory\server\Server;
 use inventory\server\Status;
@@ -128,35 +129,41 @@ $sendAlert = function(string $server_name, array $alert) {
  * Action
  */
 
-$alerts_fields = [
-    'name',
-    'users_ids'             => ['login'],
-    'groups_ids'            => ['users_ids' => ['login']],
-    'alert_triggers_ids'    => ['key', 'operator', 'value', 'repetition']
-];
-
 $servers = Server::search(['server_type', 'in', ['b2', 'tapu_backups', 'sapu_stats', 'seru_admin']])
     ->read([
         'name',
         'server_type',
-        'alerts_ids'    => $alerts_fields,
-        'instances_ids' => [
-            'name',
-            'alerts_ids'    => $alerts_fields
-        ]
+        'instances_ids' => ['name']
+    ])
+    ->get();
+
+$alerts = Alert::search()
+    ->read([
+        'name',
+        'alert_type',
+        'users_ids'             => ['login'],
+        'groups_ids'            => ['users_ids' => ['login']],
+        'alert_triggers_ids'    => ['key', 'operator', 'value', 'repetition']
     ])
     ->get();
 
 // Send servers alerts if triggers matches
 foreach($servers as $server) {
-    if(count($server['alerts_ids']) === 0) {
+    $server_alerts = array_filter(
+        $alerts,
+        function($alert) use($server) {
+            return in_array($alert['alert_type'], ['all', $server['server_type']]);
+        }
+    );
+
+    if(count($server_alerts) === 0) {
         // No alert configured
         continue;
     }
 
     // Handle trigger repetition to get right quantity of statuses to check against triggers
     $max_repetition = 0;
-    foreach($server['alerts_ids'] as $alert) {
+    foreach($server_alerts as $alert) {
         foreach($alert['alert_triggers_ids'] as $alert_trigger) {
             $max_repetition = max($max_repetition, $alert_trigger['repetition']);
         }
@@ -186,7 +193,7 @@ foreach($servers as $server) {
     );
 
     // Send alerts if triggers matches
-    foreach($server['alerts_ids'] as $alert) {
+    foreach($server_alerts as $alert) {
         if(!$mustSendAlert($alert, $server_statuses_data)) {
             continue;
         }
@@ -198,14 +205,21 @@ foreach($servers as $server) {
 // Send instances alerts if triggers matches
 foreach($servers as $server) {
     foreach($server['instances_ids'] as $instance) {
-        if(count($instance['alerts_ids']) === 0) {
+        $instance_alerts = array_filter(
+            $alerts,
+            function($alert) use($server) {
+                return in_array($alert['alert_type'], ['all', 'b2_instance']);
+            }
+        );
+
+        if(count($instance_alerts) === 0) {
             // No alert configured
             continue;
         }
 
         // Handle trigger repetition to get right quantity of statuses to check against triggers
         $max_repetition = 0;
-        foreach($instance['alerts_ids'] as $alert) {
+        foreach($instance_alerts as $alert) {
             foreach($alert['alert_triggers_ids'] as $alert_trigger) {
                 $max_repetition = max($max_repetition, $alert_trigger['repetition']);
             }
@@ -235,7 +249,7 @@ foreach($servers as $server) {
         );
 
         // Send alerts if triggers matches
-        foreach($instance['alerts_ids'] as $alert) {
+        foreach($instance_alerts as $alert) {
             if(!$mustSendAlert($alert, $instance_statuses_data)) {
                 continue;
             }

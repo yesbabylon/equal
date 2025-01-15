@@ -10,11 +10,25 @@
               {
                 "columns": [
                   {
-                    "width": "50%",
+                    "width": "75%",
                     "items": [
                       {
                         "type": "field",
                         "value": "name",
+                        "width": "50%",
+                        "widget": {
+                          "heading": true
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "width": "25%",
+                    "items": [
+                      {
+                        "type": "field",
+                        "label": "Type",
+                        "value": "alert_type",
                         "width": "100%"
                       }
                     ]

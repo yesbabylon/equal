@@ -234,30 +234,6 @@
                                 ]
                             }
                         ]
-                    },
-                    {
-                        "id": "section.alerts",
-                        "label": "Alerts",
-                        "rows": [
-                            {
-                                "columns": [
-                                    {
-                                        "width": "100%",
-                                        "items": [
-                                            {
-                                                "type": "field",
-                                                "value": "alerts_ids",
-                                                "width": "100%",
-                                                "label": "Alerts",
-                                                "widget": {
-                                                    "view": "list.server-instance"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
                     }
                 ]
             }
