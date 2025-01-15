@@ -1,148 +1,108 @@
 {
-  "name": "Alert",
-  "description": "Default form for Alert",
-  "layout": {
-    "groups": [
-      {
-        "sections": [
-          {
-            "rows": [
-              {
-                "columns": [
-                  {
-                    "width": "75%",
-                    "items": [
-                      {
-                        "type": "field",
-                        "value": "name",
-                        "width": "50%",
-                        "widget": {
-                          "heading": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "width": "25%",
-                    "items": [
-                      {
-                        "type": "field",
-                        "label": "Type",
-                        "value": "alert_type",
-                        "width": "100%"
-                      }
-                    ]
-                  }
+    "name": "Alert",
+    "description": "Default form for Alert",
+    "layout": {
+        "groups": [
+            {
+                "sections": [
+                    {
+                        "rows": [
+                            {
+                                "columns": [
+                                    {
+                                        "width": "75%",
+                                        "items": [
+                                            {
+                                                "type": "field",
+                                                "value": "name",
+                                                "width": "50%",
+                                                "widget": {
+                                                    "heading": true
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "width": "25%",
+                                        "items": [
+                                            {
+                                                "type": "field",
+                                                "label": "Type",
+                                                "value": "alert_type",
+                                                "width": "100%"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 ]
-              }
-            ]
-          }
+            },
+            {
+                "sections": [
+                    {
+                        "label": "Triggers",
+                        "id": "section.alert_triggers",
+                        "rows": [
+                            {
+                                "columns": [
+                                    {
+                                        "width": "100%",
+                                        "items": [
+                                            {
+                                                "type": "field",
+                                                "value": "alert_triggers_ids",
+                                                "width": "100%"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Users",
+                        "id": "section.users",
+                        "rows": [
+                            {
+                                "columns": [
+                                    {
+                                        "width": "100%",
+                                        "items": [
+                                            {
+                                                "type": "field",
+                                                "value": "users_ids",
+                                                "width": "100%"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Groups",
+                        "id": "section.groups",
+                        "rows": [
+                            {
+                                "columns": [
+                                    {
+                                        "width": "100%",
+                                        "items": [
+                                            {
+                                                "type": "field",
+                                                "value": "groups_ids",
+                                                "width": "100%"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
         ]
-      },
-      {
-        "sections": [
-          {
-            "label": "Triggers",
-            "id": "section.alert_triggers",
-            "rows": [
-              {
-                "columns": [
-                  {
-                    "width": "100%",
-                    "items": [
-                      {
-                        "type": "field",
-                        "value": "alert_triggers_ids",
-                        "width": "100%"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "label": "Users",
-            "id": "section.users",
-            "rows": [
-              {
-                "columns": [
-                  {
-                    "width": "100%",
-                    "items": [
-                      {
-                        "type": "field",
-                        "value": "users_ids",
-                        "width": "100%"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "label": "Groups",
-            "id": "section.groups",
-            "rows": [
-              {
-                "columns": [
-                  {
-                    "width": "100%",
-                    "items": [
-                      {
-                        "type": "field",
-                        "value": "groups_ids",
-                        "width": "100%"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "label": "Servers",
-            "id": "section.servers",
-            "rows": [
-              {
-                "columns": [
-                  {
-                    "width": "100%",
-                    "items": [
-                      {
-                        "type": "field",
-                        "value": "servers_ids",
-                        "width": "100%"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "label": "Instances",
-            "id": "section.instances",
-            "rows": [
-              {
-                "columns": [
-                  {
-                    "width": "100%",
-                    "items": [
-                      {
-                        "type": "field",
-                        "value": "instances_ids",
-                        "width": "100%"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+    }
 }

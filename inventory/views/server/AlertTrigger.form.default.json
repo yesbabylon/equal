@@ -1,73 +1,73 @@
 {
-  "name": "Alert Trigger",
-  "description": "Default form for Alert Trigger",
-  "layout": {
-    "groups": [
-      {
-        "sections": [
-          {
-            "rows": [
-              {
-                "columns": [
-                  {
-                    "width": "50%",
-                    "items": [
-                      {
-                        "type": "field",
-                        "value": "name",
-                        "width": "66%"
-                      },
-                      {
-                        "type": "field",
-                        "value": "trigger_type",
-                        "width": "33%"
-                      }
-                    ]
-                  },
-                  {
-                    "width": "25%",
-                    "items": []
-                  },
-                  {
-                    "width": "25%",
-                    "items": [
-                      {
-                        "type": "field",
-                        "value": "repetition",
-                        "width": "100%"
-                      }
-                    ]
-                  }
+    "name": "Alert Trigger",
+    "description": "Default form for Alert Trigger",
+    "layout": {
+        "groups": [
+            {
+                "sections": [
+                    {
+                        "rows": [
+                            {
+                                "columns": [
+                                    {
+                                        "width": "50%",
+                                        "items": [
+                                            {
+                                                "type": "field",
+                                                "value": "name",
+                                                "width": "66%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "trigger_type",
+                                                "width": "33%"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "width": "25%",
+                                        "items": []
+                                    },
+                                    {
+                                        "width": "25%",
+                                        "items": [
+                                            {
+                                                "type": "field",
+                                                "value": "repetition",
+                                                "width": "100%"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "columns": [
+                                    {
+                                        "width": "100%",
+                                        "items": [
+                                            {
+                                                "type": "field",
+                                                "value": "key",
+                                                "width": "33%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "operator",
+                                                "width": "33%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "value",
+                                                "width": "33%"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 ]
-              },
-              {
-                "columns": [
-                  {
-                    "width": "100%",
-                    "items": [
-                      {
-                        "type": "field",
-                        "value": "key",
-                        "width": "33%"
-                      },
-                      {
-                        "type": "field",
-                        "value": "operator",
-                        "width": "33%"
-                      },
-                      {
-                        "type": "field",
-                        "value": "value",
-                        "width": "33%"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
+            }
         ]
-      }
-    ]
-  }
+    }
 }

@@ -1,60 +1,60 @@
 {
-  "name": "Status",
-  "description": "Default form for Status",
-  "header": {
-    "actions": {
-      "ACTION.EDIT": false
-    }
-  },
-  "layout": {
-    "groups": [
-      {
-        "sections": [
-          {
-            "rows": [
-              {
-                "columns": [
-                  {
-                    "width": "100%",
-                    "items": [
-                      {
-                        "type": "field",
-                        "value": "created",
-                        "width": "33%",
-                        "readonly": true
-                      },
-                      {
-                        "type": "field",
-                        "value": "up",
-                        "width": "33%",
-                        "readonly": true
-                      }
-                    ]
-                  }
+    "name": "Status",
+    "description": "Default form for Status",
+    "header": {
+        "actions": {
+            "ACTION.EDIT": false
+        }
+    },
+    "layout": {
+        "groups": [
+            {
+                "sections": [
+                    {
+                        "rows": [
+                            {
+                                "columns": [
+                                    {
+                                        "width": "100%",
+                                        "items": [
+                                            {
+                                                "type": "field",
+                                                "value": "created",
+                                                "width": "33%",
+                                                "readonly": true
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "up",
+                                                "width": "33%",
+                                                "readonly": true
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "columns": [
+                                    {
+                                        "width": "66%",
+                                        "items": [
+                                            {
+                                                "type": "field",
+                                                "value": "status_data",
+                                                "width": "100%",
+                                                "readonly": true,
+                                                "widget": {
+                                                    "usage": "string/text"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 ]
-              },
-              {
-                "columns": [
-                  {
-                    "width": "66%",
-                    "items": [
-                      {
-                        "type": "field",
-                        "value": "status_data",
-                        "width": "100%",
-                        "readonly": true,
-                        "widget": {
-                          "usage": "string/text"
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
+            }
         ]
-      }
-    ]
-  }
+    }
 }
