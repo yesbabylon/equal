@@ -90,12 +90,12 @@ $mustSendAlert = function(array $alert, array $statuses) use($comparison_methods
 /**
  * Sends the given alert to all users link for given server
  *
- * @param string $server_name
  * @param array $alert
+ * @param string $alert_email_subject
  * @return void
  * @throws Exception
  */
-$sendAlert = function(string $server_name, array $alert) {
+$sendAlert = function(array $alert, string $alert_email_subject) {
     $users_emails = array_column($alert['users_ids'], 'login');
     foreach($alert['groups_ids'] as $group) {
         $users_emails = array_merge($users_emails, array_column($group['users_ids'], 'login'));
@@ -105,18 +105,18 @@ $sendAlert = function(string $server_name, array $alert) {
         trigger_error("APP::no user nor group configured for alert {$alert['name']}}", EQ_REPORT_WARNING);
     }
 
+    $body = "<div>Alert triggers:</div>";
+    $body .= "<ul>";
+    foreach($alert['alert_triggers_ids'] as $trigger) {
+        $body .= "<li>{$trigger['name']}</li>";
+    }
+    $body .= "</ul>";
+
     foreach($users_emails as $email) {
         $message = new Email();
 
-        $body = "Alert \"{$alert['name']}\" for server $server_name:";
-        $body .= "<ul>";
-        foreach ($alert['alert_triggers_ids'] as $trigger) {
-            $body .= "<li>{$trigger['name']}</li>";
-        }
-        $body .= "</ul>";
-
         $message->setTo($email)
-            ->setSubject("$server_name alert: {$alert['name']}")
+            ->setSubject($alert_email_subject)
             ->setContentType("text/html")
             ->setBody($body);
 
@@ -198,7 +198,10 @@ foreach($servers as $server) {
             continue;
         }
 
-        $sendAlert($server['name'], $alert);
+        $sendAlert(
+            $alert,
+            "Alert \"{$alert['name']}\" for server {$server['name']}"
+        );
     }
 }
 
@@ -254,7 +257,10 @@ foreach($servers as $server) {
                 continue;
             }
 
-            $sendAlert($server['name'].' ('.$instance['name'].')', $alert);
+            $sendAlert(
+                $alert,
+                "Alert \"{$alert['name']}\" for instance {$instance['name']} (server {$server['name']})"
+            );
         }
     }
 }
