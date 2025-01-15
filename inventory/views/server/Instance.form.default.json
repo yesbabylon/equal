@@ -187,6 +187,27 @@
                         ]
                     },
                     {
+                        "id": "section.statuses",
+                        "label": "Statuses",
+                        "rows": [
+                            {
+                                "columns": [
+                                    {
+                                        "width": "100%",
+                                        "items": [
+                                            {
+                                                "type": "field",
+                                                "value": "statuses_ids",
+                                                "width": "100%",
+                                                "label": "Statuses"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
                         "id": "section.alerts",
                         "label": "Alerts",
                         "rows": [

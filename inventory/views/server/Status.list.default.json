@@ -28,7 +28,7 @@
       },
       {
         "type": "field",
-        "value": "server_status",
+        "value": "status_data",
         "width": "66%",
         "sortable": true,
         "readonly": true

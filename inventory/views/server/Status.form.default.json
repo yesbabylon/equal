@@ -40,7 +40,7 @@
                     "items": [
                       {
                         "type": "field",
-                        "value": "server_status",
+                        "value": "status_data",
                         "width": "100%",
                         "readonly": true,
                         "widget": {

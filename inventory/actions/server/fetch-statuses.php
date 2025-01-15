@@ -10,7 +10,7 @@ use inventory\server\Server;
 use inventory\server\Status;
 
 [$params, $providers] = eQual::announce([
-    'description'       => "Fetches and saves statuses from servers of b2, tapu_backups, sapu_stats and seru_admin type.",
+    'description'       => "Fetches and saves statuses from servers of b2, tapu_backups, sapu_stats and seru_admin type. It also handles the statuses of b2 instances.",
     'help'              => "Updates servers and instances 'up' fields.",
     'params'            => [],
     'access'            => [
@@ -54,54 +54,38 @@ $getServerApiUrl = function(array $accesses) {
  * Returns server status for the given server's access url
  *
  * @param string $access_url
- * @return false|array
+ * @return array
  */
 $getServerStatus = function(string $access_url) {
     $server_status_res = file_get_contents("$access_url/status");
     if($server_status_res === false) {
-        return false;
+        return ['up' => false];
     }
 
     $server_status_res = json_decode($server_status_res, true);
 
-    return $server_status_res['result'];
+    return array_merge(
+        ['up' => true],
+        $server_status_res['result']
+    );
 };
 
 /**
- * Returns the list of instances for given b2 server's access url
+ * Returns instance status for given b2 server's access url
  *
- * @param string $access_url
- * @return false|array
- */
-$getInstances = function(string $access_url) {
-    $instances_res = file_get_contents("$access_url/instances");
-    if($instances_res === false) {
-        return false;
-    }
-
-    $instances_res = json_decode($instances_res, true);
-
-    return $instances_res['result'];
-};
-
-/**
- * Returns instances statuses for given b2 server's access url
- *
- * @param array $instances
+ * @param string $instance
  * @param string $access_url
  * @return array
  */
-$getInstancesStatuses = function(array $instances, string $access_url): array {
-    $instances_statuses = [];
-    foreach($instances as $instance) {
-        $instance_status = file_get_contents("$access_url/instance/status?instance=$instance");
-        if($instance_status) {
-            $instance_status = json_decode($instance_status, true);
-            $instances_statuses[$instance] = $instance_status['result'];
-        }
+$getInstanceStatus = function(string $instance, string $access_url): array {
+    $instance_status = file_get_contents("$access_url/instance/status?instance=$instance");
+    if($instance_status === false) {
+        return ['up' => false];
     }
 
-    return $instances_statuses;
+    $instance_status = json_decode($instance_status, true);
+
+    return $instance_status['result'];
 };
 
 /**
@@ -116,8 +100,7 @@ $servers = Server::search(['server_type', 'in', ['b2', 'tapu_backups', 'sapu_sta
     ])
     ->get();
 
-$map_up_down_servers_ids = ['up' => [], 'down' => []];
-$map_up_down_instances_ids = ['up' => [], 'down' => []];
+$map_up_down_servers_ids = $map_up_down_instances_ids = ['up' => [], 'down' => []];
 foreach($servers as $server) {
     $access_url = $getServerApiUrl($server['accesses_ids']);
     if(is_null($access_url)) {
@@ -125,52 +108,45 @@ foreach($servers as $server) {
     }
 
     $server_status = $getServerStatus($access_url);
-    $up = $server_status !== false;
+
+    Status::create([
+        'server_id'     => $server['id'],
+        'up'            => $server_status['up'],
+        'status_data'   => json_encode($server_status)
+    ]);
+
+    $map_up_down_servers_ids[$server_status['up'] ? 'up' : 'down'][] = $server['id'];
 
     if($server['server_type'] === 'b2' && !empty($server['instances_ids'])) {
-        if($up) {
-            $server_status['b2_instances'] = [];
+        if($server_status['up']) {
+            foreach($server['instances_ids'] as $instance) {
+                $instance_status = $getInstanceStatus($instance['name'], $access_url);
 
-            $instances = $getInstances($access_url);
-            if($instances) {
-                $instances_statuses = $getInstancesStatuses($instances, $access_url);
-                if(!empty($instances_statuses)) {
-                    $server_status['b2_instances'] = $instances_statuses;
+                Status::create([
+                    'instance_id'   => $instance['id'],
+                    'up'            => $instance_status['up'],
+                    'status_data'   => json_encode($instance_status)
+                ]);
 
-                    foreach($server['instances_ids'] as $instance) {
-                        $instance_up = isset($server_status['b2_instances'][$instance['name']])
-                            && $server_status['b2_instances'][$instance['name']]['up'];
-
-                        $map_up_down_instances_ids[$instance_up ? 'up' : 'down'][] = $instance['id'];
-                    }
-                }
-                else {
-                    // All instances set to down because not able to get their statuses
-
-                    $map_up_down_instances_ids['down'] = array_merge(
-                        $map_up_down_instances_ids['down'],
-                        array_column($server['instances_ids'], 'id')
-                    );
-                }
+                $map_up_down_instances_ids[$instance_status['up'] ? 'up' : 'down'][] = $instance['id'];
             }
         }
         else {
-            // All instances set to down because b2 server down
+            foreach($server['instances_ids'] as $instance) {
+                Status::create([
+                    'instance_id'   => $instance['id'],
+                    'up'            => false,
+                    'status_data'   => json_encode(['up' => false])
+                ]);
+            }
 
+            // All instances set to down because b2 server down
             $map_up_down_instances_ids['down'] = array_merge(
                 $map_up_down_instances_ids['down'],
                 array_column($server['instances_ids'], 'id')
             );
         }
     }
-
-    Status::create([
-        'server_id'         => $server['id'],
-        'up'                => $up,
-        'server_status'     => $up ? json_encode($server_status) : null
-    ]);
-
-    $map_up_down_servers_ids[$up ? 'up' : 'down'][] = $server['id'];
 }
 
 // Sync current status of servers

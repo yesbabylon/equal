@@ -19,20 +19,27 @@ class Status extends Model {
                 'foreign_object'    => 'inventory\server\Server',
                 'ondelete'          => 'cascade',
                 'description'       => "Server concerned by the status.",
-                'required'          => true,
+                'help'              => "A status can either concern a server or an instance."
+            ],
+
+            'instance_id' => [
+                'type'              => 'many2one',
+                'foreign_object'    => 'inventory\server\Instance',
+                'ondelete'          => 'cascade',
+                'description'       => "Instance concerned by the status.",
+                'help'              => "A status can either concern an instance or a server."
             ],
 
             'up' => [
                 'type'              => 'boolean',
-                'description'       => "True if the the server API was reachable.",
+                'description'       => "True if the the server/instance is up.",
                 'default'           => true
             ],
 
-            'server_status' => [
+            'status_data' => [
                 'type'              => 'string',
                 'usage'             => 'text/json',
-                'description'       => "JSON representation of servers status and statistics.",
-                'help'              => "Remains 'null' if server API wasn't reachable."
+                'description'       => "JSON representation of server/instance statuses and statistics."
             ]
 
         ];

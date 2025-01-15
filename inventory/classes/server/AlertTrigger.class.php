@@ -12,43 +12,35 @@ use equal\orm\Model;
 class AlertTrigger extends Model {
 
     const MAP_STATUS_KEYS_TYPES = [
-        'up'                        => 'boolean',
-
         /**
-         * All server types
+         * All
          */
-        'stats.net.rx'              => 'data_size',
-        'stats.net.tx'              => 'data_size',
-        'stats.net.total'           => 'data_size',
-        'stats.net.avg_rate'        => 'data_rate',
-        'stats.cpu'                 => 'percentage',
-        'stats.uptime'              => 'days',
+        'up'                        => 'boolean',
         'instant.total_proc'        => 'integer',
-        'instant.ram_use'           => 'data_size',
+        'instant.ram_use'           => 'percentage',
         'instant.cpu_use'           => 'percentage',
-        'instant.dsk_use'           => 'data_size',
-        'instant.usr_active'        => 'integer',
-        'instant.usr_total'         => 'integer',
+        'instant.dsk_use'           => 'percentage',
+
         /**
          * Only b2
          */
-        'stats.mysql_mem'           => 'percentage',
-        'stats.apache_mem'          => 'percentage',
-        'stats.nginx_mem'           => 'percentage',
-        'stats.apache_proc'         => 'integer',
-        'stats.nginx_proc'          => 'integer',
-        'stats.mysql_proc'          => 'integer',
+        'instant.mysql_mem'         => 'percentage',
+        'instant.apache_mem'        => 'percentage',
+        'instant.nginx_mem'         => 'percentage',
+        'instant.apache_proc'       => 'integer',
+        'instant.nginx_proc'        => 'integer',
+        'instant.mysql_proc'        => 'integer',
+
         /**
-         * Only b2 instance
+         * Only b2_instance
          */
-        'maintenance_enabled'       => 'boolean',
-        'docker_stats.CPUPerc'      => 'percentage',
-        'docker_stats.MemPerc'      => 'percentage',
+        'maintenance'               => 'boolean',
+
         /**
-         * Only backup
+         * Only tapu_backups
          */
         'instant.backup_tokens_qty' => 'integer',
-        'stats.backups_disk'        => 'percentage',
+        'instant.backups_disk'      => 'percentage'
     ];
 
     public static function getColumns(): array {
@@ -80,43 +72,35 @@ class AlertTrigger extends Model {
                 'description'       => "Name of the server status data used for the check if the alert must be triggered.",
                 'hep'               => "Some status data keys are only available for certain types of servers.",
                 'selection'         => [
-                    'up',                       // Only key that is always present in server status, true if the server was reachable when inventory\server\Status created.
-
                     /**
-                     * All server types
+                     * All
                      */
-                    'stats.net.rx',
-                    'stats.net.tx',
-                    'stats.net.total',
-                    'stats.net.avg_rate',
-                    'stats.cpu',
-                    'stats.uptime',
+                    'up',
                     'instant.total_proc',
                     'instant.ram_use',
                     'instant.cpu_use',
                     'instant.dsk_use',
-                    'instant.usr_active',
-                    'instant.usr_total',
+
                     /**
                      * Only b2
                      */
-                    'stats.mysql_mem',
-                    'stats.apache_mem',
-                    'stats.nginx_mem',
-                    'stats.apache_proc',
-                    'stats.nginx_proc',
-                    'stats.mysql_proc',
+                    'instant.mysql_mem',
+                    'instant.apache_mem',
+                    'instant.nginx_mem',
+                    'instant.apache_proc',
+                    'instant.nginx_proc',
+                    'instant.mysql_proc',
+
                     /**
-                     * Only b2 instance
+                     * Only b2_instance
                      */
-                    'maintenance_enabled',
-                    'docker_stats.CPUPerc',
-                    'docker_stats.MemPerc',
+                    'maintenance',
+
                     /**
-                     * Only backup
+                     * Only tapu_backups
                      */
                     'instant.backup_tokens_qty',
-                    'stats.backups_disk',
+                    'instant.backups_disk'
                 ]
             ],
 
@@ -149,18 +133,10 @@ class AlertTrigger extends Model {
 
         $global_keys = [
             'up',
-            'stats.net.rx',
-            'stats.net.tx',
-            'stats.net.total',
-            'stats.net.avg_rate',
-            'stats.cpu',
-            'stats.uptime',
             'instant.total_proc',
             'instant.ram_use',
             'instant.cpu_use',
-            'instant.disk_use',
-            'instant.usr_active',
-            'instant.usr_total',
+            'instant.disk_use'
         ];
 
         if(isset($event['trigger_type'])) {
@@ -170,24 +146,24 @@ class AlertTrigger extends Model {
                         'selection' => array_merge(
                             $global_keys,
                             [
-                                'stats.mysql_mem',
-                                'stats.apache_mem',
-                                'stats.nginx_mem',
-                                'stats.apache_proc',
-                                'stats.nginx_proc',
-                                'stats.mysql_proc'
+                                'instant.mysql_mem',
+                                'instant.apache_mem',
+                                'instant.nginx_mem',
+                                'instant.apache_proc',
+                                'instant.nginx_proc',
+                                'instant.mysql_proc'
                             ]
                         )
                     ];
                     break;
                 case 'b2_instance':
                     $result['key'] = [
-                        'selection' => [
-                            'up',
-                            'maintenance_enabled',
-                            'docker_stats.CPUPerc',
-                            'docker_stats.MemPerc',
-                        ]
+                        'selection' => array_merge(
+                            $global_keys,
+                            [
+                                'maintenance'
+                            ]
+                        )
                     ];
                     break;
                 case 'tapu_backups':
@@ -196,7 +172,7 @@ class AlertTrigger extends Model {
                             $global_keys,
                             [
                                 'instant.backup_tokens_qty',
-                                'stats.backups_disk'
+                                'instant.backups_disk'
                             ]
                         )
                     ];
@@ -227,12 +203,7 @@ class AlertTrigger extends Model {
                 break;
             case 'integer':
             case 'percentage':
-            case 'days':
                 $value = intval($value);
-                break;
-            case 'data_size':
-            case 'data_rate':
-                $value = floatval($value);
                 break;
         }
 
@@ -244,21 +215,21 @@ class AlertTrigger extends Model {
      * If key "stats.uptime" then return ['stats' => ['uptime' => '14days']]
      *
      * @param string $key
-     * @param array $server_status
+     * @param array $status_data
      * @return mixed|null
      */
-    public static function getServerStatusValue(string $key, array $server_status) {
+    public static function getServerStatusValue(string $key, array $status_data) {
         $keys = explode('.', $key);
         if(count($keys) === 1) {
-            return $server_status[$key] ?? null;
+            return $status_data[$key] ?? null;
         }
 
         $first_key = array_shift($keys);
-        if(!isset($server_status[$first_key]) || !is_array($server_status[$first_key])) {
+        if(!isset($status_data[$first_key]) || !is_array($status_data[$first_key])) {
             return null;
         }
 
-        return self::getServerStatusValue(implode('.', $keys), $server_status[$first_key]);
+        return self::getServerStatusValue(implode('.', $keys), $status_data[$first_key]);
     }
 
     public static function getConstraints(): array {
@@ -271,50 +242,35 @@ class AlertTrigger extends Model {
                             return true;
                         }
 
-                        $allowed_keys = [];
-                        $server_allowed_keys = [
+                        $allowed_keys = [
                             'up',
-                            'stats.net.rx',
-                            'stats.net.tx',
-                            'stats.net.total',
-                            'stats.net.avg_rate',
-                            'stats.cpu',
-                            'stats.uptime',
                             'instant.total_proc',
                             'instant.ram_use',
                             'instant.cpu_use',
-                            'instant.disk_use',
-                            'instant.usr_active',
-                            'instant.usr_total'
+                            'instant.dsk_use',
                         ];
 
                         switch($values['trigger_type']) {
                             case 'b2':
-                                $allowed_keys = array_merge($server_allowed_keys, [
-                                    'stats.mysql_mem',
-                                    'stats.apache_mem',
-                                    'stats.nginx_mem',
-                                    'stats.apache_proc',
-                                    'stats.nginx_proc',
-                                    'stats.mysql_proc'
+                                $allowed_keys = array_merge($allowed_keys, [
+                                    'instant.mysql_mem',
+                                    'instant.apache_mem',
+                                    'instant.nginx_mem',
+                                    'instant.apache_proc',
+                                    'instant.nginx_proc',
+                                    'instant.mysql_proc'
                                 ]);
                                 break;
                             case 'b2_instance':
-                                $allowed_keys = [
-                                    'up',
-                                    'maintenance_enabled',
-                                    'docker_stats.CPUPerc',
-                                    'docker_stats.MemPerc',
-                                ];
-                                break;
-                            case 'tapu_backups':
-                                $allowed_keys = array_merge($server_allowed_keys, [
-                                    'instant.backup_tokens_qty',
-                                    'stats.backups_disk'
+                                $allowed_keys = array_merge($allowed_keys, [
+                                    'maintenance'
                                 ]);
                                 break;
-                            default:
-                                $allowed_keys = $server_allowed_keys;
+                            case 'tapu_backups':
+                                $allowed_keys = array_merge($allowed_keys, [
+                                    'instant.backup_tokens_qty',
+                                    'instant.backups_disk'
+                                ]);
                                 break;
                         }
 

@@ -147,6 +147,7 @@ $servers = Server::search(['server_type', 'in', ['b2', 'tapu_backups', 'sapu_sta
     ])
     ->get();
 
+// Send servers alerts if triggers matches
 foreach($servers as $server) {
     if(count($server['alerts_ids']) === 0) {
         // No alert configured
@@ -160,84 +161,86 @@ foreach($servers as $server) {
             $max_repetition = max($max_repetition, $alert_trigger['repetition']);
         }
     }
-    if($server['server_type'] === 'b2') {
-        foreach($server['instances_ids'] as $instance) {
-            foreach($instance['alerts_ids'] as $alert) {
-                foreach($alert['alert_triggers_ids'] as $alert_trigger) {
-                    $max_repetition = max($max_repetition, $alert_trigger['repetition']);
-                }
-            }
-        }
-    }
 
-    // Get the quantity of statuses needed to check all the alerts (only 1 if no triggers with repetition)
-    $statuses = Status::search(
+    // Get the quantity of server statuses needed to check all the alerts (only 1 if no triggers with repetition)
+    $server_statuses = Status::search(
         ['server_id', '=', $server['id']],
         [
-            'sort' => ['created' => 'desc'],
+            'sort'  => ['created' => 'desc'],
             'limit' => $max_repetition + 1
         ]
     )
-        ->read(['up', 'server_status'])
+        ->read(['up', 'status_data'])
         ->get();
 
-    if(empty($statuses)) {
+    if(empty($server_statuses)) {
         // No statuses yet
         continue;
     }
 
-    // Create server statuses, add 'up' key to it
-    $server_statuses = [];
-    foreach($statuses as $status) {
-        if($status['up']) {
-            $server_statuses[] = array_merge(
-                ['up' => 'true'],
-                json_decode($status['server_status'] ?? [], true)
-            );
-        }
-        else {
-            $server_statuses[] = ['up' => 'false'];
-        }
-    }
+    $server_statuses_data = array_map(
+        function ($status_data) {
+            return json_decode($status_data, true);
+        },
+        array_column($server_statuses, 'status_data')
+    );
 
     // Send alerts if triggers matches
     foreach($server['alerts_ids'] as $alert) {
-        if(!$mustSendAlert($alert, $server_statuses)) {
+        if(!$mustSendAlert($alert, $server_statuses_data)) {
             continue;
         }
 
         $sendAlert($server['name'], $alert);
     }
+}
 
-    if($server['server_type'] === 'b2') {
-        foreach($server['instances_ids'] as $instance) {
-            if(count($instance['alerts_ids']) === 0) {
-                // No alert configured
+// Send instances alerts if triggers matches
+foreach($servers as $server) {
+    foreach($server['instances_ids'] as $instance) {
+        if(count($instance['alerts_ids']) === 0) {
+            // No alert configured
+            continue;
+        }
+
+        // Handle trigger repetition to get right quantity of statuses to check against triggers
+        $max_repetition = 0;
+        foreach($instance['alerts_ids'] as $alert) {
+            foreach($alert['alert_triggers_ids'] as $alert_trigger) {
+                $max_repetition = max($max_repetition, $alert_trigger['repetition']);
+            }
+        }
+
+        // Get the quantity of instance statuses needed to check all the alerts (only 1 if no triggers with repetition)
+        $instance_statuses = Status::search(
+            ['instance_id', '=', $instance['id']],
+            [
+                'sort'  => ['created' => 'desc'],
+                'limit' => $max_repetition + 1
+            ]
+        )
+            ->read(['up', 'status_data'])
+            ->get();
+
+        if(empty($instance_statuses)) {
+            // No statuses yet
+            continue;
+        }
+
+        $instance_statuses_data = array_map(
+            function ($status_data) {
+                return json_decode($status_data, true);
+            },
+            array_column($instance_statuses, 'status_data')
+        );
+
+        // Send alerts if triggers matches
+        foreach($instance['alerts_ids'] as $alert) {
+            if(!$mustSendAlert($alert, $instance_statuses_data)) {
                 continue;
             }
 
-            // Create instance statuses, add 'up' key to it
-            $instance_statuses = [];
-            foreach($server_statuses as $server_status) {
-                if(isset($server_status['b2_instances'][$instance['name']])) {
-                    $instance_statuses[] = array_merge(
-                        ['up' => true],
-                        $server_status['b2_instances'][$instance['name']]
-                    );
-                }
-                else {
-                    $instance_statuses[] = ['up' => 'false'];
-                }
-            }
-
-            // Send alerts if triggers matches
-            foreach($instance['alerts_ids'] as $alert) {
-                if(!$mustSendAlert($alert, $instance_statuses)) {
-                    continue;
-                }
-
-                $sendAlert($server['name'].' ('.$instance['name'].')', $alert);
-            }
+            $sendAlert($server['name'].' ('.$instance['name'].')', $alert);
         }
     }
 }

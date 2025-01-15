@@ -98,6 +98,13 @@ class Instance extends Model {
                 'description'       => 'Information about the list of  software running on the instance.'
             ],
 
+            'statuses_ids' => [
+                'type'              => 'one2many',
+                'foreign_object'    => 'inventory\server\Status',
+                'foreign_field'     => 'instance_id',
+                'description'       => 'Statuses of the instance.'
+            ],
+
             'alerts_ids' => [
                 'type'              => 'many2many',
                 'foreign_object'    => 'inventory\server\Alert',
