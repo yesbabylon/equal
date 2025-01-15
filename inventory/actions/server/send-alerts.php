@@ -162,19 +162,19 @@ foreach($servers as $server) {
     }
 
     // Handle trigger repetition to get right quantity of statuses to check against triggers
-    $max_repetition = 0;
+    $max_repetition = 1;
     foreach($server_alerts as $alert) {
         foreach($alert['alert_triggers_ids'] as $alert_trigger) {
             $max_repetition = max($max_repetition, $alert_trigger['repetition']);
         }
     }
 
-    // Get the quantity of server statuses needed to check all the alerts (only 1 if no triggers with repetition)
+    // Get the quantity of server statuses needed to check all the alerts
     $server_statuses = Status::search(
         ['server_id', '=', $server['id']],
         [
             'sort'  => ['created' => 'desc'],
-            'limit' => $max_repetition + 1
+            'limit' => $max_repetition
         ]
     )
         ->read(['up', 'status_data'])
@@ -218,19 +218,19 @@ foreach($servers as $server) {
         }
 
         // Handle trigger repetition to get right quantity of statuses to check against triggers
-        $max_repetition = 0;
+        $max_repetition = 1;
         foreach($instance_alerts as $alert) {
             foreach($alert['alert_triggers_ids'] as $alert_trigger) {
                 $max_repetition = max($max_repetition, $alert_trigger['repetition']);
             }
         }
 
-        // Get the quantity of instance statuses needed to check all the alerts (only 1 if no triggers with repetition)
+        // Get the quantity of instance statuses needed to check all the alerts
         $instance_statuses = Status::search(
             ['instance_id', '=', $instance['id']],
             [
                 'sort'  => ['created' => 'desc'],
-                'limit' => $max_repetition + 1
+                'limit' => $max_repetition
             ]
         )
             ->read(['up', 'status_data'])

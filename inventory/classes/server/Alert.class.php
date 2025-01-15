@@ -23,7 +23,8 @@ class Alert extends Model {
             'alert_type' => [
                 'type'              => 'string',
                 'description'       => "The type of server/instance this alert is meant for.",
-                'selection'         => ['all', 'b2', 'b2_instance', 'tapu_backups', 'sapu_stats', 'seru_admin']
+                'selection'         => ['all', 'b2', 'b2_instance', 'tapu_backups', 'sapu_stats', 'seru_admin'],
+                'default'           => 'all'
             ],
 
             'alert_triggers_ids' => [

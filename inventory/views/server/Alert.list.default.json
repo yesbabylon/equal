@@ -1,20 +1,42 @@
 {
     "name": "Alerts",
     "description": "Default listing of all alerts.",
-    "order": "name",
+    "header": {
+        "actions": {
+            "ACTION.CREATE": [
+                {
+                    "view": "form.create",
+                    "description": "Overload form to use for alert creation."
+                }
+            ]
+        }
+    },
+    "group_by": [
+        {
+            "field": "alert_type",
+            "open":  true
+        }
+    ],
     "layout": {
         "items": [
             {
                 "type": "field",
                 "value": "id",
-                "width": "15%",
+                "width": "5%",
                 "sortable": true,
                 "readonly": true
             },
             {
                 "type": "field",
                 "value": "name",
-                "width": "85%",
+                "width": "66%",
+                "sortable": true,
+                "readonly": true
+            },
+            {
+                "type": "field",
+                "value": "alert_type",
+                "width": "15%",
                 "sortable": true,
                 "readonly": true
             }

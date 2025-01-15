@@ -47,9 +47,11 @@ class AlertTrigger extends Model {
         return [
 
             'name' => [
-                'type'              => 'string',
+                'type'              => 'computed',
+                'result_type'       => 'string',
                 'description'       => "Name of the trigger.",
-                'required'          => true
+                'function'          => 'calcName',
+                'store'             => true
             ],
 
             'trigger_type' => [
@@ -103,31 +105,50 @@ class AlertTrigger extends Model {
                      */
                     'instant.backup_tokens_qty',
                     'instant.backups_disk'
-                ]
+                ],
+                'required'          => true,
+                'dependencies'      => ['name']
             ],
 
             'operator' => [
                 'type'              => 'string',
                 'description'       => "Operator used for the check if the alert must be triggered.",
                 'selection'         => ['eq', 'ne', 'gt', 'gte', 'lt', 'lte', 'contains', 'does_not_contain'],
-                'default'           => 'eq'
+                'default'           => 'eq',
+                'required'          => true,
+                'dependencies'      => ['name']
             ],
 
             'value' => [
                 'type'              => 'string',
                 'description'       => "Value used for the check if the alert must be triggered.",
-                'required'          => true
+                'required'          => true,
+                'dependencies'      => ['name']
             ],
 
             'repetition' => [
                 'type'              => 'integer',
                 'description'       => "Number of repetitions needed for the alert to be triggered.",
                 'help'              => "If repetition is 1, then the trigger must match twice in a row.",
-                'min'               => 0,
-                'default'           => 0
+                'min'               => 1,
+                'default'           => 1,
+                'dependencies'      => ['name']
             ]
 
         ];
+    }
+
+    public static function calcName($self): array {
+        $result = [];
+        $self->read(['key', 'operator', 'value', 'repetition']);
+        foreach($self as $id => $trigger) {
+            $result[$id] = $trigger['key'].' '.$trigger['operator'].' '.$trigger['value'];
+            if($trigger['repetition'] > 1) {
+                $result[$id] .= ' ('.$trigger['repetition'].' times)';
+            }
+        }
+
+        return $result;
     }
 
     public static function onchange($event, $values) {
