@@ -62,7 +62,7 @@ $mustSendAlert = function(array $alert, array $statuses) use($comparison_methods
             break;
         }
 
-        for($i = 0; $i <= $trigger['repetition']; $i++) {
+        for($i = 0; $i < $trigger['repetition']; $i++) {
             $status = $statuses[$i];
 
             $status_value = AlertTrigger::getServerStatusValue($trigger['key'], $status);
@@ -108,10 +108,10 @@ $sendAlert = function(string $server_name, array $alert) {
     foreach($users_emails as $email) {
         $message = new Email();
 
-        $body = "Alert {$alert['name']} for server $server_name:";
+        $body = "Alert \"{$alert['name']}\" for server $server_name:";
         $body .= "<ul>";
         foreach ($alert['alert_triggers_ids'] as $trigger) {
-            $body .= "<li>{$trigger['key']} {$trigger['operator']} {$trigger['value']} (repetition: {$trigger['repetition']})</li>";
+            $body .= "<li>{$trigger['name']}</li>";
         }
         $body .= "</ul>";
 
@@ -143,7 +143,7 @@ $alerts = Alert::search()
         'alert_type',
         'users_ids'             => ['login'],
         'groups_ids'            => ['users_ids' => ['login']],
-        'alert_triggers_ids'    => ['key', 'operator', 'value', 'repetition']
+        'alert_triggers_ids'    => ['name', 'key', 'operator', 'value', 'repetition']
     ])
     ->get();
 
@@ -151,7 +151,7 @@ $alerts = Alert::search()
 foreach($servers as $server) {
     $server_alerts = array_filter(
         $alerts,
-        function($alert) use($server) {
+        function ($alert) use($server) {
             return in_array($alert['alert_type'], ['all', $server['server_type']]);
         }
     );
@@ -207,7 +207,7 @@ foreach($servers as $server) {
     foreach($server['instances_ids'] as $instance) {
         $instance_alerts = array_filter(
             $alerts,
-            function($alert) use($server) {
+            function ($alert) {
                 return in_array($alert['alert_type'], ['all', 'b2_instance']);
             }
         );
