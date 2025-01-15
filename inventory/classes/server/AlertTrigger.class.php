@@ -212,7 +212,7 @@ class AlertTrigger extends Model {
 
     /**
      * Use the given key to return specific data from server status array
-     * If key "stats.uptime" then return ['stats' => ['uptime' => '14days']]
+     * If key "instant.ram_use" then return ['instant' => ['ram_use' => '11.23%']]
      *
      * @param string $key
      * @param array $status_data
