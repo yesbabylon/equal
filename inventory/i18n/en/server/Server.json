@@ -1,97 +1,97 @@
 {
-  "name": "Server",
-  "plural": "Servers",
-  "description": "Server that host instances or other software.",
-  "model": {
-    "name": {
-      "label": "Host name",
-      "description": "Server name (hostname).",
-      "help": ""
-    },
-    "description": {
-      "label": "Description",
-      "description": "Description of server.",
-      "help": ""
-    },
-    "server_type": {
-      "label": "Type",
-      "description": "Server type.",
-      "selection": {
-        "front": "Front",
-        "node": "Node",
-        "storage": "Storage",
-        "b2": "B2",
-        "tapu_backups": "Tapu Backups",
-        "satu_stats": "Satu Stats",
-        "seru_admin": "Seru Admin"
-      },
-      "help": ""
-    },
-    "accesses_ids": {
-      "label": "Accesses",
-      "description": "Server accesses.",
-      "help": ""
-    },
-    "instances_ids": {
-      "label": "Instances",
-      "description": "Instances that run on server.",
-      "help": ""
-    },
-    "instances_count": {
-      "label": "Quantity of instances",
-      "description": "Quantity of instance running on server.",
-      "help": ""
-    },
-    "products_ids": {
-      "label": "Products",
-      "description": "List of products using server.",
-      "help": ""
-    },
-    "products_count": {
-      "label": "Products count",
-      "description": "Quantity of products using server.",
-      "help": ""
-    },
-    "ip_address_ids": {
-      "label": "IP addresses",
-      "description": "Server's IP addresses.",
-      "help": ""
-    },
-    "softwares_ids": {
-      "label": "Software",
-      "description": "Installed software on server.",
-      "help": ""
-    }
-  },
-  "view": {
-    "form.default": {
-      "name": "server",
-      "description": "",
-      "layout": {
-        "section.description": {
-          "label": "Description"
+    "name": "Server",
+    "plural": "Servers",
+    "description": "Server that host instances or other software.",
+    "model": {
+        "name": {
+            "label": "Host name",
+            "description": "Server name (hostname).",
+            "help": ""
         },
-        "section.accesses": {
-          "label": "Accesses"
+        "description": {
+            "label": "Description",
+            "description": "Description of server.",
+            "help": ""
         },
-        "section.ip-addresses": {
-          "label": "IP Addresses"
+        "server_type": {
+            "label": "Type",
+            "description": "Server type.",
+            "selection": {
+                "front": "Front",
+                "node": "Node",
+                "storage": "Storage",
+                "b2": "B2",
+                "tapu_backups": "Tapu Backups",
+                "satu_stats": "Satu Stats",
+                "seru_admin": "Seru Admin"
+            },
+            "help": ""
         },
-        "section.products": {
-          "label": "Products"
+        "accesses_ids": {
+            "label": "Accesses",
+            "description": "Server accesses.",
+            "help": ""
         },
-        "section.instances": {
-          "label": "Instances"
+        "instances_ids": {
+            "label": "Instances",
+            "description": "Instances that run on server.",
+            "help": ""
         },
-        "section.softwares": {
-          "label": "Software"
+        "instances_count": {
+            "label": "Quantity of instances",
+            "description": "Quantity of instance running on server.",
+            "help": ""
+        },
+        "products_ids": {
+            "label": "Products",
+            "description": "List of products using server.",
+            "help": ""
+        },
+        "products_count": {
+            "label": "Products count",
+            "description": "Quantity of products using server.",
+            "help": ""
+        },
+        "ip_address_ids": {
+            "label": "IP addresses",
+            "description": "Server's IP addresses.",
+            "help": ""
+        },
+        "softwares_ids": {
+            "label": "Software",
+            "description": "Installed software on server.",
+            "help": ""
         }
-      }
     },
-    "list.default": {
-      "name": "Servers",
-      "description": "List of servers.",
-      "layout": {}
+    "view": {
+        "form.default": {
+            "name": "server",
+            "description": "",
+            "layout": {
+                "section.description": {
+                    "label": "Description"
+                },
+                "section.accesses": {
+                    "label": "Accesses"
+                },
+                "section.ip-addresses": {
+                    "label": "IP Addresses"
+                },
+                "section.products": {
+                    "label": "Products"
+                },
+                "section.instances": {
+                    "label": "Instances"
+                },
+                "section.softwares": {
+                    "label": "Software"
+                }
+            }
+        },
+        "list.default": {
+            "name": "Servers",
+            "description": "List of servers.",
+            "layout": {}
+        }
     }
-  }
 }

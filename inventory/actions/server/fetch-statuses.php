@@ -56,7 +56,7 @@ $getServerApiUrl = function(array $accesses) {
  * @param string $access_url
  * @return array
  */
-$getServerStatus = function(string $access_url) {
+$getServerStatus = function(string $access_url): array {
     $server_status_res = file_get_contents("$access_url/status");
     if($server_status_res === false) {
         return ['up' => false];
