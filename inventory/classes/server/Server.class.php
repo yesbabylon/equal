@@ -55,7 +55,8 @@ class Server extends Model {
                 'type'              => 'boolean',
                 'description'       => "Are monitoring alerts sent for that server.",
                 'default'           => true,
-                'visible'           => ['server_type', 'in', ['b2', 'tapu_backups', 'sapu_stats', 'seru_admin']]
+                'visible'           => ['server_type', 'in', ['b2', 'tapu_backups', 'sapu_stats', 'seru_admin']],
+                'onupdate'          => 'onupdateSendAlerts'
             ],
 
             'accesses_ids' => [
@@ -140,5 +141,15 @@ class Server extends Model {
         }
 
         return $result;
+    }
+
+    public static function onupdateSendAlerts($self) {
+        $self->read(['send_alerts', 'server_type', 'instances_ids']);
+        foreach($self as $server) {
+            if($server['server_type'] === 'b2' && !$server['send_alerts']) {
+                Instance::ids($server['instances_ids'])
+                    ->update(['send_alerts' => false]);
+            }
+        }
     }
 }
