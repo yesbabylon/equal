@@ -50,7 +50,8 @@ class IpAddress extends Model {
                 'default'           => 'public',
                 'selection'         => ['public', 'private', 'protected'],
                 'description'       => 'Visibility indicates how an IP address is exposed to the cloud.',
-                'help'              => 'A public address is associated with a reverse DNS entry. A protected address is a public IP not associated with any DNS record. A private address is not public and is only accessible through a private network.'
+                'help'              => 'A public address is associated with a reverse DNS entry. A protected address is a public IP not associated with any DNS record. A private address is not public and is only accessible through a private network.',
+                'onupdate'          => 'onupdateVisibility'
             ],
 
             'server_id' => [
@@ -77,5 +78,13 @@ class IpAddress extends Model {
         }
 
         return $result;
+    }
+
+    public static function onupdateVisibility($self) {
+        $self->read(['server_id']);
+        foreach($self as $ip_address) {
+            Server::id($ip_address['server_id'])
+                ->do('create_management_api_access');
+        }
     }
 }

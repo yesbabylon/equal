@@ -8,6 +8,7 @@
 namespace inventory\server;
 
 use equal\orm\Model;
+use inventory\Access;
 
 class Server extends Model {
 
@@ -16,8 +17,8 @@ class Server extends Model {
         return 'The Server includes its name, description, type, access, instances, associated products, IP addresses, and installed software.';
     }
 
-    public static function getColumns()
-    {
+    public static function getColumns() {
+
         return [
 
             'name' => [
@@ -36,7 +37,8 @@ class Server extends Model {
                 'type'              => 'string',
                 'description'       => 'Type of the server.',
                 'selection'         => ['front', 'node', 'storage', 'b2', 'tapu_backups', 'sapu_stats', 'seru_admin'],
-                'default'           => 'front'
+                'default'           => 'front',
+                'onupdate'          => 'onupdateServerType'
             ],
 
             'synced' => [
@@ -143,6 +145,16 @@ class Server extends Model {
         return $result;
     }
 
+    public static function getActions(): array {
+        return [
+            'create_management_api_access' => [
+                'description'   => "Creates the management api access if needed.",
+                'policies'      => [],
+                'function'      => 'doCreateManagementApiAccess'
+            ]
+        ];
+    }
+
     public static function onupdateSendAlerts($self) {
         $self->read(['send_alerts', 'server_type', 'instances_ids']);
         foreach($self as $server) {
@@ -150,6 +162,51 @@ class Server extends Model {
                 Instance::ids($server['instances_ids'])
                     ->update(['send_alerts' => false]);
             }
+        }
+    }
+
+    public static function onupdateServerType($self) {
+        $self->do('create_management_api_access');
+    }
+
+    public static function doCreateManagementApiAccess($self) {
+        $self->read([
+            'server_type',
+            'accesses_ids'      => ['access_type', 'protocol', 'port'],
+            'ip_address_ids'    => ['ip_v4', 'visibility']
+        ]);
+
+        foreach($self as $server) {
+            if(!in_array($server['server_type'], ['b2', 'tapu_backups', 'sapu_stats', 'seru_admin'])) {
+                continue;
+            }
+
+            foreach($server['accesses_ids'] as $access) {
+                if(in_array($access['access_type'], ['http', 'https']) && $access['port'] === '8000') {
+                    continue 2;
+                }
+            }
+
+            $private_ip_address = null;
+            foreach($server['ip_address_ids'] as $ip_address) {
+                if($ip_address['visibility'] === 'private') {
+                    $private_ip_address = $ip_address;
+                    break;
+                }
+            }
+            if(is_null($private_ip_address) || is_null($private_ip_address['ip_v4'])) {
+                continue;
+            }
+
+            Access::create([
+                'name'          => 'Management API',
+                'server_id'     => $server['id'],
+                'access_type'   => 'https',
+                'port'          => '8000',
+                'host'          => explode('/', $private_ip_address['ip_v4'])[0],
+                'username'      => '',
+                'password'      => ''
+            ]);
         }
     }
 }

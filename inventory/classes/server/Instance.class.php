@@ -15,8 +15,8 @@ class Instance extends Model {
         return 'Instance manages service or product instances, detailing type, version, URL, access information, and running software.';
     }
 
-    public static function getColumns()
-    {
+    public static function getColumns() {
+
         return [
 
             'name'    => [
