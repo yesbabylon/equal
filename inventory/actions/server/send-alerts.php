@@ -129,11 +129,14 @@ $sendAlert = function(array $alert, string $alert_email_subject) {
  * Action
  */
 
-$servers = Server::search(['server_type', 'in', ['b2', 'tapu_backups', 'sapu_stats', 'seru_admin']])
+$servers = Server::search([
+    ['server_type', 'in', ['b2', 'tapu_backups', 'sapu_stats', 'seru_admin']],
+    ['send_alerts', '=', true]
+])
     ->read([
         'name',
         'server_type',
-        'instances_ids' => ['name']
+        'instances_ids' => ['name', 'send_alerts']
     ])
     ->get();
 
@@ -208,6 +211,10 @@ foreach($servers as $server) {
 // Send instances alerts if triggers matches
 foreach($servers as $server) {
     foreach($server['instances_ids'] as $instance) {
+        if(!$instance['send_alerts']) {
+            continue;
+        }
+
         $instance_alerts = array_filter(
             $alerts,
             function ($alert) {

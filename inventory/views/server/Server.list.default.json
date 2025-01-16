@@ -45,6 +45,13 @@
                 "width": "33%",
                 "sortable": true,
                 "readonly": true
+            },
+            {
+                "type": "field",
+                "value": "send_alerts",
+                "label": "Send alerts",
+                "width": "15%",
+                "sortable": true
             }
         ]
     }

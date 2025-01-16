@@ -69,6 +69,12 @@ class Instance extends Model {
                 'default'           => false
             ],
 
+            'send_alerts' => [
+                'type'              => 'boolean',
+                'description'       => "Are monitoring alerts sent for that instance.",
+                'default'           => true
+            ],
+
             'product_id' => [
                 'type'              => 'many2one',
                 'foreign_object'    => 'inventory\Product',

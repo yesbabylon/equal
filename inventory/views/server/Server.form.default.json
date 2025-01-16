@@ -10,26 +10,49 @@
                             {
                                 "columns": [
                                     {
-                                        "width": "75%",
+                                        "width": "50%",
                                         "items": [
                                             {
                                                 "type": "field",
                                                 "value": "name",
-                                                "width": "50%",
+                                                "width": "66%",
                                                 "widget": {
                                                     "heading": true
                                                 }
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "width": "25%",
-                                        "items": [
+                                            },
                                             {
                                                 "type": "field",
                                                 "label": "Type",
                                                 "value": "server_type",
-                                                "width": "100%"
+                                                "width": "33%"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "width": "50%",
+                                        "items": [
+                                            {
+                                                "type": "label",
+                                                "width": "33%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "up",
+                                                "width": "33%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "synced",
+                                                "width": "33%"
+                                            },
+                                            {
+                                                "type": "label",
+                                                "width": "75%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "send_alerts",
+                                                "width": "25%"
                                             }
                                         ]
                                     }
@@ -41,31 +64,6 @@
             },
             {
                 "sections": [
-                    {
-                        "id": "section.status",
-                        "label": "Status",
-                        "rows": [
-                            {
-                                "columns": [
-                                    {
-                                        "width": "33%",
-                                        "items": [
-                                            {
-                                                "type": "field",
-                                                "value": "synced",
-                                                "width": "50%"
-                                            },
-                                            {
-                                                "type": "field",
-                                                "value": "up",
-                                                "width": "50%"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
                     {
                         "id": "section.description",
                         "label": "Description",

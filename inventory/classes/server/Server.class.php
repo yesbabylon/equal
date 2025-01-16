@@ -51,6 +51,13 @@ class Server extends Model {
                 'default'           => false
             ],
 
+            'send_alerts' => [
+                'type'              => 'boolean',
+                'description'       => "Are monitoring alerts sent for that server.",
+                'default'           => true,
+                'visible'           => ['server_type', 'in', ['b2', 'tapu_backups', 'sapu_stats', 'seru_admin']]
+            ],
+
             'accesses_ids' => [
                 'type'              => 'one2many',
                 'foreign_object'    => 'inventory\Access',
