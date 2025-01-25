@@ -30,12 +30,6 @@ class Status extends Model {
                 'help'              => "A status can either concern an instance or a server."
             ],
 
-            'up' => [
-                'type'              => 'boolean',
-                'description'       => "True if the the server/instance is up.",
-                'default'           => true
-            ],
-
             'status_data' => [
                 'type'              => 'string',
                 'usage'             => 'text/json',

@@ -15,7 +15,7 @@ class AlertTrigger extends Model {
         /**
          * All
          */
-        'up'                        => 'boolean',
+        'state.up'                  => 'boolean',
         'instant.total_proc'        => 'integer',
         'instant.ram_use'           => 'percentage',
         'instant.cpu_use'           => 'percentage',
@@ -34,10 +34,10 @@ class AlertTrigger extends Model {
         /**
          * Only b2_instance
          */
-        'maintenance'               => 'boolean',
+        'state.maintenance'               => 'boolean',
 
         /**
-         * Only tapu_backups
+         * Only k2 (backups)
          */
         'instant.backup_tokens_qty' => 'integer',
         'instant.backups_disk'      => 'percentage'
@@ -57,7 +57,7 @@ class AlertTrigger extends Model {
             'trigger_type' => [
                 'type'              => 'string',
                 'description'       => "The type of server this alert is meant for.",
-                'selection'         => ['all', 'b2', 'b2_instance', 'tapu_backups', 'sapu_stats', 'seru_admin'],
+                'selection'         => ['all', 'b2', 'b2_instance', 'k2', 's2', 'admin'],
                 'required'          => true
             ],
 
@@ -79,7 +79,7 @@ class AlertTrigger extends Model {
                     /**
                      * All
                      */
-                    'up',
+                    'state.up',
                     'instant.total_proc',
                     'instant.ram_use',
                     'instant.cpu_use',
@@ -98,10 +98,10 @@ class AlertTrigger extends Model {
                     /**
                      * Only b2_instance
                      */
-                    'maintenance',
+                    'state.maintenance',
 
                     /**
-                     * Only tapu_backups
+                     * Only k2 (backups)
                      */
                     'instant.backup_tokens_qty',
                     'instant.backups_disk'
@@ -155,7 +155,7 @@ class AlertTrigger extends Model {
         $result = [];
 
         $global_keys = [
-            'up',
+            'state.up',
             'instant.total_proc',
             'instant.ram_use',
             'instant.cpu_use',
@@ -184,12 +184,12 @@ class AlertTrigger extends Model {
                         'selection' => array_merge(
                             $global_keys,
                             [
-                                'maintenance'
+                                'state.maintenance'
                             ]
                         )
                     ];
                     break;
-                case 'tapu_backups':
+                case 'k2':
                     $result['key'] = [
                         'selection' => array_merge(
                             $global_keys,
@@ -215,7 +215,7 @@ class AlertTrigger extends Model {
         return $result;
     }
 
-    public static function adaptValue(string $key, string $value) {
+    public static function getAdaptedValue(string $key, string $value) {
         if(!isset(self::MAP_STATUS_KEYS_TYPES[$key])) {
             return $value;
         }
@@ -266,7 +266,7 @@ class AlertTrigger extends Model {
                         }
 
                         $allowed_keys = [
-                            'up',
+                            'state.up',
                             'instant.total_proc',
                             'instant.ram_use',
                             'instant.cpu_use',
@@ -286,10 +286,10 @@ class AlertTrigger extends Model {
                                 break;
                             case 'b2_instance':
                                 $allowed_keys = array_merge($allowed_keys, [
-                                    'maintenance'
+                                    'state.maintenance'
                                 ]);
                                 break;
-                            case 'tapu_backups':
+                            case 'k2':
                                 $allowed_keys = array_merge($allowed_keys, [
                                     'instant.backup_tokens_qty',
                                     'instant.backups_disk'

@@ -10,8 +10,8 @@ use inventory\server\Server;
 use inventory\server\Status;
 
 [$params, $providers] = eQual::announce([
-    'description'       => "Fetches and saves statuses from servers of b2, tapu_backups, sapu_stats and seru_admin type. It also handles the statuses of b2 instances.",
-    'help'              => "Updates servers and instances 'up' fields.",
+    'description'       => "Fetches and saves statuses of servers (b2, k2, s2) and b2 instances.",
+    'help'              => "Calls hosts API to fetch 'instant' statuses and updates servers and instances 'up' fields accordingly.",
     'params'            => [],
     'access'            => [
         'visibility'        => 'private'
@@ -29,144 +29,51 @@ use inventory\server\Status;
  */
 ['context' => $context] = $providers;
 
-/**
- * Methods
- */
-
-/**
- * Returns api url from given accesses (http/https on port 8000)
- *
- * @param array $accesses
- * @return string|null
- */
-$getServerApiUrl = function(array $accesses) {
-    $access_url = null;
-    foreach($accesses as $access) {
-        if(in_array($access['access_type'], ['http', 'https']) && $access['port'] === '8000') {
-            $access_url = $access['url'];
-        }
-    }
-
-    return $access_url;
-};
-
-/**
- * Returns server status for the given server's access url
- *
- * @param string $access_url
- * @return array
- */
-$getServerStatus = function(string $access_url): array {
-    $server_status_res = file_get_contents("$access_url/status");
-    if($server_status_res === false) {
-        return ['up' => false];
-    }
-
-    $server_status_res = json_decode($server_status_res, true);
-
-    return array_merge(
-        ['up' => true],
-        $server_status_res['result']
-    );
-};
-
-/**
- * Returns instance status for given b2 server's access url
- *
- * @param string $instance
- * @param string $access_url
- * @return array
- */
-$getInstanceStatus = function(string $instance, string $access_url): array {
-    $instance_status = file_get_contents("$access_url/instance/status?instance=$instance");
-    if($instance_status === false) {
-        return ['up' => false];
-    }
-
-    $instance_status = json_decode($instance_status, true);
-
-    return $instance_status['result'];
-};
-
-/**
- * Action
- */
-
-$servers = Server::search(['server_type', 'in', ['b2', 'tapu_backups', 'sapu_stats', 'seru_admin']])
+$servers = Server::search(['server_type', 'in', ['b2', 'k2', 's2']])
     ->read([
+        'id',
         'server_type',
         'accesses_ids'  => ['access_type', 'port', 'url'],
-        'instances_ids' => ['name']
+        'instances_ids' => ['id', 'name']
     ])
     ->get();
 
-$map_up_down_servers_ids = $map_up_down_instances_ids = ['up' => [], 'down' => []];
 foreach($servers as $server) {
-    $access_url = $getServerApiUrl($server['accesses_ids']);
-    if(is_null($access_url)) {
+
+    try {
+        $status = equal::run('get', 'inventory_server_status', ['id' => $server['id']]);
+
+        Status::create([
+            'server_id'     => $server['id'],
+            'status_data'   => json_encode($status)
+        ]);
+
+        // server is up
+        Server::id($server['id'])->update(['up' => true, 'synced' => time()]);
+    }
+    catch(Exception $e) {
+        // server is down (will cascade to instances)
+        Server::id($server['id'])->update(['up' => false, 'synced' => time()]);
+
         continue;
     }
 
-    $server_status = $getServerStatus($access_url);
-
-    Status::create([
-        'server_id'     => $server['id'],
-        'up'            => $server_status['up'],
-        'status_data'   => json_encode($server_status)
-    ]);
-
-    $map_up_down_servers_ids[$server_status['up'] ? 'up' : 'down'][] = $server['id'];
-
     if($server['server_type'] === 'b2' && !empty($server['instances_ids'])) {
-        if($server_status['up']) {
-            foreach($server['instances_ids'] as $instance) {
-                $instance_status = $getInstanceStatus($instance['name'], $access_url);
+        foreach($server['instances_ids'] as $instance) {
+            try {
+                $status = equal::run('get', 'inventory_instance_status', ['id' => $server['id'], 'instance' => $instance['name']]);
 
                 Status::create([
                     'instance_id'   => $instance['id'],
-                    'up'            => $instance_status['up'],
-                    'status_data'   => json_encode($instance_status)
-                ]);
-
-                $map_up_down_instances_ids[$instance_status['up'] ? 'up' : 'down'][] = $instance['id'];
-            }
-        }
-        else {
-            foreach($server['instances_ids'] as $instance) {
-                Status::create([
-                    'instance_id'   => $instance['id'],
-                    'up'            => false,
-                    'status_data'   => json_encode(['up' => false])
+                    'status_data'   => json_encode($status)
                 ]);
             }
-
-            // All instances set to down because b2 server down
-            $map_up_down_instances_ids['down'] = array_merge(
-                $map_up_down_instances_ids['down'],
-                array_column($server['instances_ids'], 'id')
-            );
+            catch(Exception $e) {
+                // server is down (will cascade to instances)
+                Instance::id($instance['id'])->update(['up' => false, 'synced' => time()]);
+            }
         }
     }
-}
-
-// Sync current status of servers
-if(!empty($map_up_down_servers_ids['up'])) {
-    Server::search(['id', 'in', $map_up_down_servers_ids['up']])
-        ->update(['up' => true, 'synced' => time()]);
-}
-if(!empty($map_up_down_servers_ids['down'])) {
-    Server::search(['id', 'in', $map_up_down_servers_ids['down']])
-        ->update(['up' => false, 'synced' => time()]);
-}
-
-// Sync current status of instances
-if(!empty($map_up_down_instances_ids['up'])) {
-    Instance::search(['id', 'in', $map_up_down_instances_ids['up']])
-        ->update(['up' => true, 'synced' => time()]);
-}
-if(!empty($map_up_down_instances_ids['down'])) {
-    Instance::search(['id', 'in', $map_up_down_instances_ids['down']])
-        ->update(['up' => false, 'synced' => time()]);
 }
 
 $context->httpResponse()

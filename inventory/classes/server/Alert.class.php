@@ -20,47 +20,37 @@ class Alert extends Model {
                 'required'          => true
             ],
 
-            'alert_type' => [
+            'status' => [
                 'type'              => 'string',
-                'description'       => "The type of server/instance this alert is meant for.",
-                'selection'         => ['all', 'b2', 'b2_instance', 'tapu_backups', 'sapu_stats', 'seru_admin'],
-                'default'           => 'all'
+                'selection'         => [
+                    'pending',
+                    'sent'
+                ],
+                'default'           => 'pending'
             ],
 
-            'alert_triggers_ids' => [
-                'type'              => 'many2many',
-                'foreign_object'    => 'inventory\server\AlertTrigger',
-                'foreign_field'     => 'alerts_ids',
-                'rel_table'         => 'inventory_alert_rel_alert_trigger',
-                'rel_foreign_key'   => 'alert_trigger_id',
-                'rel_local_key'     => 'alert_id',
-                'description'       => "Send the alert when its triggers matches.",
-                'domain'            => [
-                    [['trigger_type', '=', 'all']],
-                    [['trigger_type', '=', 'object.alert_type']]
-                ]
+            'alert_policy_id' => [
+                'type'              => 'many2one',
+                'foreign_object'    => 'inventory\server\AlertPolicy'
             ],
 
-            'users_ids' => [
-                'type'              => 'many2many',
-                'foreign_object'    => 'inventory\core\User',
-                'foreign_field'     => 'server_alerts_ids',
-                'rel_table'         => 'inventory_server_alert_rel_core_user',
-                'rel_foreign_key'   => 'user_id',
-                'rel_local_key'     => 'alert_id',
-                'description'       => "Users to which the alert will be sent if triggers matches."
+            'server_id' => [
+                'type'              => 'many2one',
+                'foreign_object'    => 'inventory\server\Server',
+                'ondelete'          => 'cascade',
+                'description'       => "Server concerned by the status.",
+                'help'              => "A status can either concern a server or an instance."
             ],
 
-            'groups_ids' => [
-                'type'              => 'many2many',
-                'foreign_object'    => 'inventory\core\Group',
-                'foreign_field'     => 'server_alerts_ids',
-                'rel_table'         => 'inventory_server_alert_rel_core_group',
-                'rel_foreign_key'   => 'group_id',
-                'rel_local_key'     => 'alert_id',
-                'description'       => "Group of users to which the alert will be sent if triggers matches."
+            'instance_id' => [
+                'type'              => 'many2one',
+                'foreign_object'    => 'inventory\server\Instance',
+                'ondelete'          => 'cascade',
+                'description'       => "Instance concerned by the status.",
+                'help'              => "A status can either concern an instance or a server."
             ]
 
         ];
     }
+
 }

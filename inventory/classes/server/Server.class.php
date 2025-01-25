@@ -36,7 +36,7 @@ class Server extends Model {
             'server_type' => [
                 'type'              => 'string',
                 'description'       => 'Type of the server.',
-                'selection'         => ['front', 'node', 'storage', 'b2', 'tapu_backups', 'sapu_stats', 'seru_admin'],
+                'selection'         => ['front', 'node', 'storage', 'b2', 'k2', 's2', 'admin'],
                 'default'           => 'front',
                 'onupdate'          => 'onupdateServerType'
             ],
@@ -50,14 +50,15 @@ class Server extends Model {
             'up' => [
                 'type'              => 'boolean',
                 'description'       => 'Is the server currently up, is set according to the last inventory\server\Status retrieval.',
-                'default'           => false
+                'default'           => false,
+                'onupdate'          => 'onupdateUp'
             ],
 
             'send_alerts' => [
                 'type'              => 'boolean',
                 'description'       => "Are monitoring alerts sent for that server.",
                 'default'           => true,
-                'visible'           => ['server_type', 'in', ['b2', 'tapu_backups', 'sapu_stats', 'seru_admin']],
+                'visible'           => ['server_type', 'in', ['b2', 'k2', 's2', 'admin']],
                 'onupdate'          => 'onupdateSendAlerts'
             ],
 
@@ -155,6 +156,15 @@ class Server extends Model {
         ];
     }
 
+    public static function onupdateUp($self) {
+        $self->read(['up', 'server_type', 'instances_ids']);
+        foreach($self as $server) {
+            if($server['server_type'] === 'b2' && !$server['up']) {
+                Instance::ids($server['instances_ids'])->update(['up' => false]);
+            }
+        }
+    }
+
     public static function onupdateSendAlerts($self) {
         $self->read(['send_alerts', 'server_type', 'instances_ids']);
         foreach($self as $server) {
@@ -177,7 +187,7 @@ class Server extends Model {
         ]);
 
         foreach($self as $server) {
-            if(!in_array($server['server_type'], ['b2', 'tapu_backups', 'sapu_stats', 'seru_admin'])) {
+            if(!in_array($server['server_type'], ['b2', 'k2', 's2', 'admin'])) {
                 continue;
             }
 

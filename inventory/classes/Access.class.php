@@ -164,7 +164,7 @@ class Access extends Model {
                 */
             ]);
         foreach($self as $id => $access) {
-            $result[$id] = self::createUrl($access);
+            $result[$id] = self::computeUrl($access);
         }
         return $result;
     }
@@ -183,7 +183,7 @@ class Access extends Model {
             || isset($event['port']) ) {
 
             // #memo - result could still be invalid
-            $result['url'] = self::createUrl([
+            $result['url'] = self::computeUrl([
                     'access_type'   => $event['access_type'] ?? $values['access_type'],
                     /*
                     // #memo - there is no practical use with this syntax
@@ -198,7 +198,7 @@ class Access extends Model {
         return $result;
     }
 
-    private static function createUrl($access) {
+    private static function computeUrl($access) {
         $format = '%s://';
         $values = [ $access['access_type'] ];
         if(isset($access['username'])) {
@@ -213,14 +213,14 @@ class Access extends Model {
             $format .= '@';
         }
         $format .= '%s';
-        $values[] = self::createAuthority($access);
+        $values[] = self::computeAuthority($access);
         return sprintf(
                 $format,
                 ...$values
             );
     }
 
-    private static function createAuthority($access) {
+    private static function computeAuthority($access) {
         $authority = $access['host'];
         if(!empty($access['port'])) {
             $authority .= ':'.$access['port'];

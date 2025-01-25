@@ -7,7 +7,7 @@
 
 use core\Mail;
 use equal\email\Email;
-use inventory\server\Alert;
+use inventory\server\AlertPolicy;
 use inventory\server\AlertTrigger;
 use inventory\server\Server;
 use inventory\server\Status;
@@ -71,8 +71,8 @@ $mustSendAlert = function(array $alert, array $statuses) use($comparison_methods
                 break 2;
             }
 
-            $status_value = AlertTrigger::adaptValue($trigger['key'], $status_value);
-            $trigger_value = AlertTrigger::adaptValue($trigger['key'], $trigger['value']);
+            $status_value = AlertTrigger::getAdaptedValue($trigger['key'], $status_value);
+            $trigger_value = AlertTrigger::getAdaptedValue($trigger['key'], $trigger['value']);
 
             if(
                 !in_array($trigger['operator'], array_keys($comparison_methods))
@@ -130,9 +130,9 @@ $sendAlert = function(array $alert, string $alert_email_subject) {
  */
 
 $servers = Server::search([
-    ['server_type', 'in', ['b2', 'tapu_backups', 'sapu_stats', 'seru_admin']],
-    ['send_alerts', '=', true]
-])
+        ['server_type', 'in', ['b2', 'k2', 's2', 'admin']],
+        ['send_alerts', '=', true]
+    ])
     ->read([
         'name',
         'server_type',
@@ -140,7 +140,7 @@ $servers = Server::search([
     ])
     ->get();
 
-$alerts = Alert::search()
+$alerts = AlertPolicy::search()
     ->read([
         'name',
         'alert_type',
@@ -174,12 +174,12 @@ foreach($servers as $server) {
 
     // Get the quantity of server statuses needed to check all the alerts
     $server_statuses = Status::search(
-        ['server_id', '=', $server['id']],
-        [
-            'sort'  => ['created' => 'desc'],
-            'limit' => $max_repetition
-        ]
-    )
+            ['server_id', '=', $server['id']],
+            [
+                'sort'  => ['created' => 'desc'],
+                'limit' => $max_repetition
+            ]
+        )
         ->read(['up', 'status_data'])
         ->get();
 
@@ -237,12 +237,12 @@ foreach($servers as $server) {
 
         // Get the quantity of instance statuses needed to check all the alerts
         $instance_statuses = Status::search(
-            ['instance_id', '=', $instance['id']],
-            [
-                'sort'  => ['created' => 'desc'],
-                'limit' => $max_repetition
-            ]
-        )
+                ['instance_id', '=', $instance['id']],
+                [
+                    'sort'  => ['created' => 'desc'],
+                    'limit' => $max_repetition
+                ]
+            )
             ->read(['up', 'status_data'])
             ->get();
 
