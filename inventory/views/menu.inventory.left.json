@@ -183,7 +183,7 @@
                                         "icon": "notifications",
                                         "description": "",
                                         "context": {
-                                            "entity": "inventory\\server\\Alert",
+                                            "entity": "inventory\\server\\AlertPolicy",
                                             "view": "list.default",
                                             "order": "id",
                                             "sort": "asc"
