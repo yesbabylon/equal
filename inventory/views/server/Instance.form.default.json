@@ -22,7 +22,8 @@
                                             },
                                             {
                                                 "type": "field",
-                                                "value": "type",
+                                                "label": "Type",
+                                                "value": "instance_type",
                                                 "width": "33%"
                                             }
                                         ]
@@ -32,23 +33,26 @@
                                         "items": [
                                             {
                                                 "type": "label",
-                                                "width": "50%"
+                                                "width": "33%"
                                             },
                                             {
                                                 "type": "field",
-                                                "value": "product_id",
-                                                "label": "Product",
-                                                "width": "50%"
+                                                "value": "up",
+                                                "width": "33%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "synced",
+                                                "width": "33%"
                                             },
                                             {
                                                 "type": "label",
-                                                "width": "50%"
+                                                "width": "75%"
                                             },
                                             {
                                                 "type": "field",
-                                                "value": "server_id",
-                                                "label": "Server",
-                                                "width": "50%"
+                                                "value": "send_alerts",
+                                                "width": "25%"
                                             }
                                         ]
                                     }
@@ -83,6 +87,31 @@
                                                 "type": "field",
                                                 "value": "url",
                                                 "width": "100%"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "width": "50%",
+                                        "items": [
+                                            {
+                                                "type": "label",
+                                                "width": "50%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "product_id",
+                                                "label": "Product",
+                                                "width": "50%"
+                                            },
+                                            {
+                                                "type": "label",
+                                                "width": "50%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "server_id",
+                                                "label": "Server",
+                                                "width": "50%"
                                             }
                                         ]
                                     }
@@ -153,6 +182,27 @@
                                                 "widget": {
                                                     "view": "list.selection"
                                                 }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "section.statuses",
+                        "label": "Statuses",
+                        "rows": [
+                            {
+                                "columns": [
+                                    {
+                                        "width": "100%",
+                                        "items": [
+                                            {
+                                                "type": "field",
+                                                "value": "statuses_ids",
+                                                "width": "100%",
+                                                "label": "Statuses"
                                             }
                                         ]
                                     }

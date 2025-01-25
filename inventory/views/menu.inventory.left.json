@@ -168,6 +168,41 @@
                                     "order": "id",
                                     "sort": "asc"
                                 }
+                            },
+                            {
+                                "id": "item.advanced.all-servers.alerts",
+                                "type": "parent",
+                                "label": "Alerts",
+                                "icon": "notification_important",
+                                "description": "",
+                                "children": [
+                                    {
+                                        "id": "item.advanced.all-servers.alerts.alerts",
+                                        "type": "entry",
+                                        "label": "Alerts",
+                                        "icon": "notifications",
+                                        "description": "",
+                                        "context": {
+                                            "entity": "inventory\\server\\Alert",
+                                            "view": "list.default",
+                                            "order": "id",
+                                            "sort": "asc"
+                                        }
+                                    },
+                                    {
+                                        "id": "item.advanced.all-servers.alerts.alert-triggers",
+                                        "type": "entry",
+                                        "label": "Alert Triggers",
+                                        "icon": "list",
+                                        "description": "",
+                                        "context": {
+                                            "entity": "inventory\\server\\AlertTrigger",
+                                            "view": "list.default",
+                                            "order": "id",
+                                            "sort": "asc"
+                                        }
+                                    }
+                                ]
                             }
                         ]
                     },

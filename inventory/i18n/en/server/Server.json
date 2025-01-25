@@ -1,25 +1,25 @@
 {
-    "name": "Serveur",
-    "plural": "Serveurs",
-    "description": "Vue par défaut pour la liste des serveurs.",
+    "name": "Server",
+    "plural": "Servers",
+    "description": "Server that host instances or other software.",
     "model": {
         "name": {
-            "label": "Nom d'hôte",
-            "description": "Nom du serveur (hostname).",
+            "label": "Host name",
+            "description": "Server name (hostname).",
             "help": ""
         },
         "description": {
             "label": "Description",
-            "description": "Description du serveur.",
+            "description": "Description of server.",
             "help": ""
         },
         "server_type": {
             "label": "Type",
-            "description": "Type du serveur.",
+            "description": "Server type.",
             "selection": {
                 "front": "Front",
-                "node": "Nœud",
-                "storage": "Stockage",
+                "node": "Node",
+                "storage": "Storage",
                 "b2": "B2",
                 "tapu_backups": "Tapu Backups",
                 "satu_stats": "Satu Stats",
@@ -28,69 +28,69 @@
             "help": ""
         },
         "accesses_ids": {
-            "label": "Accès",
-            "description": "Accès au serveur.",
+            "label": "Accesses",
+            "description": "Server accesses.",
             "help": ""
         },
         "instances_ids": {
             "label": "Instances",
-            "description": "Instances executées sur le serveur",
+            "description": "Instances that run on server.",
             "help": ""
         },
         "instances_count": {
-            "label": "Nombre d'instances",
-            "description": "Nombre d'instances executées sur le serveur.",
+            "label": "Quantity of instances",
+            "description": "Quantity of instance running on server.",
             "help": ""
         },
         "products_ids": {
-            "label": "Produits",
-            "description": "Liste des produits qui utilisent ce serveur.",
+            "label": "Products",
+            "description": "List of products using server.",
             "help": ""
         },
         "products_count": {
-            "label": "Nombre de produits",
-            "description": "Nombre de produits utilisant ce serveur.",
+            "label": "Products count",
+            "description": "Quantity of products using server.",
             "help": ""
         },
         "ip_address_ids": {
-            "label": "Adresses IP",
-            "description": "Adresses IP du serveur.",
+            "label": "IP addresses",
+            "description": "Server's IP addresses.",
             "help": ""
         },
         "softwares_ids": {
-            "label": "Logiciels",
-            "description": "Logiciels installé sur le serveur.",
+            "label": "Software",
+            "description": "Installed software on server.",
             "help": ""
         }
     },
     "view": {
         "form.default": {
-            "name": "serveur",
+            "name": "server",
             "description": "",
             "layout": {
                 "section.description": {
                     "label": "Description"
                 },
                 "section.accesses": {
-                    "label": "Accès"
+                    "label": "Accesses"
                 },
                 "section.ip-addresses": {
-                    "label": "Adresses IP"
+                    "label": "IP Addresses"
                 },
                 "section.products": {
-                    "label": "Produits"
+                    "label": "Products"
                 },
                 "section.instances": {
                     "label": "Instances"
                 },
                 "section.softwares": {
-                    "label": "Logiciels"
+                    "label": "Software"
                 }
             }
         },
         "list.default": {
-            "name": "Serveurs",
-            "description": "Liste des serveurs.",
+            "name": "Servers",
+            "description": "List of servers.",
             "layout": {}
         }
     }

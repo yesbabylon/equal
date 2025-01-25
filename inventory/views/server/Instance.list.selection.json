@@ -43,6 +43,13 @@
                 "value": "branch",
                 "width": "15%",
                 "sortable": true
+            },
+            {
+                "type": "field",
+                "value": "send_alerts",
+                "label": "Send alerts",
+                "width": "15%",
+                "sortable": true
             }
         ]
     }

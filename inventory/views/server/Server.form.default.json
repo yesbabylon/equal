@@ -10,26 +10,49 @@
                             {
                                 "columns": [
                                     {
-                                        "width": "75%",
+                                        "width": "50%",
                                         "items": [
                                             {
                                                 "type": "field",
                                                 "value": "name",
-                                                "width": "50%",
+                                                "width": "66%",
                                                 "widget": {
                                                     "heading": true
                                                 }
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "width": "25%",
-                                        "items": [
+                                            },
                                             {
                                                 "type": "field",
                                                 "label": "Type",
                                                 "value": "server_type",
-                                                "width": "100%"
+                                                "width": "33%"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "width": "50%",
+                                        "items": [
+                                            {
+                                                "type": "label",
+                                                "width": "33%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "up",
+                                                "width": "33%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "synced",
+                                                "width": "33%"
+                                            },
+                                            {
+                                                "type": "label",
+                                                "width": "75%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "send_alerts",
+                                                "width": "25%"
                                             }
                                         ]
                                     }
@@ -181,6 +204,28 @@
                                                 "widget": {
                                                     "view": "list.selection"
                                                 }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "section.statuses",
+                        "label": "Statuses",
+                        "visible": ["server_type", "in", ["b2", "tapu_backups", "sapu_stats", "seru_admin"]],
+                        "rows": [
+                            {
+                                "columns": [
+                                    {
+                                        "width": "100%",
+                                        "items": [
+                                            {
+                                                "type": "field",
+                                                "value": "statuses_ids",
+                                                "width": "100%",
+                                                "label": "Statuses"
                                             }
                                         ]
                                     }

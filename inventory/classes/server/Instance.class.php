@@ -15,8 +15,8 @@ class Instance extends Model {
         return 'Instance manages service or product instances, detailing type, version, URL, access information, and running software.';
     }
 
-    public static function getColumns()
-    {
+    public static function getColumns() {
+
         return [
 
             'name'    => [
@@ -57,6 +57,24 @@ class Instance extends Model {
                 'description'       => 'Front-end home URL.'
             ],
 
+            'synced' => [
+                'type'              => 'datetime',
+                'description'       => 'Date of last automatic status update.',
+                'help'              => 'The "up" field can be auto updated by the action "inventory_server_fetch-status".'
+            ],
+
+            'up' => [
+                'type'              => 'boolean',
+                'description'       => 'Is the instance currently up, is set according to the last inventory\server\Status retrieval.',
+                'default'           => false
+            ],
+
+            'send_alerts' => [
+                'type'              => 'boolean',
+                'description'       => "Are monitoring alerts sent for that instance.",
+                'default'           => true
+            ],
+
             'product_id' => [
                 'type'              => 'many2one',
                 'foreign_object'    => 'inventory\Product',
@@ -84,6 +102,13 @@ class Instance extends Model {
                 'foreign_object'    => 'inventory\Software',
                 'foreign_field'     => 'instance_id',
                 'description'       => 'Information about the list of  software running on the instance.'
+            ],
+
+            'statuses_ids' => [
+                'type'              => 'one2many',
+                'foreign_object'    => 'inventory\server\Status',
+                'foreign_field'     => 'instance_id',
+                'description'       => 'Statuses of the instance.'
             ]
 
         ];
