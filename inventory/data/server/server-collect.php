@@ -9,7 +9,7 @@ use equal\orm\Domain;
 use inventory\server\Server;
 
 list($params, $providers) = eQual::announce([
-    'description'   => 'Advanced search for Servers: returns a collection of Reports according to extra parameters.',
+    'description'   => 'Advanced search for Servers: returns a collection according to extra parameters.',
     'extends'       => 'core_model_collect',
     'params'        => [
 
@@ -67,7 +67,7 @@ list($params, $providers) = eQual::announce([
  */
 $context = $providers['context'];
 
-//   Add conditions to the domain to consider advanced parameters
+// Add conditions to the domain to consider advanced parameters
 $domain = [];
 
 
