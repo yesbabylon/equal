@@ -74,7 +74,7 @@ class AlertTrigger extends Model {
             'key' => [
                 'type'              => 'string',
                 'description'       => "Name of the server status data used for the check if the alert must be triggered.",
-                'hep'               => "Some status data keys are only available for certain types of servers.",
+                'help'              => "Some status data keys are only available for certain types of servers.",
                 'selection'         => [
                     /**
                      * All
@@ -154,7 +154,7 @@ class AlertTrigger extends Model {
     public static function onchange($event, $values) {
         $result = [];
 
-        $global_keys = [
+        $common_keys = [
             'state.up',
             'instant.total_proc',
             'instant.ram_use',
@@ -162,53 +162,62 @@ class AlertTrigger extends Model {
             'instant.disk_use'
         ];
 
+        $b2_keys = [
+            'instant.mysql_mem',
+            'instant.apache_mem',
+            'instant.nginx_mem',
+            'instant.apache_proc',
+            'instant.nginx_proc',
+            'instant.mysql_proc'
+        ];
+
+        $b2_instance_keys = [
+            'state.maintenance'
+        ];
+
+        $k2_keys = [
+            'instant.backup_tokens_qty',
+            'instant.backups_disk'
+        ];
+
         if(isset($event['trigger_type'])) {
             switch($event['trigger_type']) {
                 case 'b2':
                     $result['key'] = [
                         'selection' => array_merge(
-                            $global_keys,
-                            [
-                                'instant.mysql_mem',
-                                'instant.apache_mem',
-                                'instant.nginx_mem',
-                                'instant.apache_proc',
-                                'instant.nginx_proc',
-                                'instant.mysql_proc'
-                            ]
+                            $common_keys,
+                            $b2_keys
                         )
                     ];
                     break;
                 case 'b2_instance':
                     $result['key'] = [
                         'selection' => array_merge(
-                            $global_keys,
-                            [
-                                'state.maintenance'
-                            ]
+                            $common_keys,
+                            $b2_instance_keys
                         )
                     ];
                     break;
                 case 'k2':
                     $result['key'] = [
                         'selection' => array_merge(
-                            $global_keys,
-                            [
-                                'instant.backup_tokens_qty',
-                                'instant.backups_disk'
-                            ]
+                            $common_keys,
+                            $k2_keys
                         )
                     ];
                     break;
                 default:
                     $result['key'] = [
-                        'selection' => $global_keys
+                        'selection' => $common_keys
                     ];
                     break;
             }
 
             if(!in_array($values['key'], $result['key']['selection'])) {
                 $result['key']['value'] = $result['key']['selection'][0];
+            }
+            else {
+                $result['key']['value'] = $values['key'];
             }
         }
 
