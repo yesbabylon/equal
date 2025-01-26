@@ -12,35 +12,31 @@ use equal\orm\Model;
 class AlertTrigger extends Model {
 
     const MAP_STATUS_KEYS_TYPES = [
-        /**
-         * All
-         */
-        'state.up'                  => 'boolean',
-        'instant.total_proc'        => 'integer',
-        'instant.ram_use'           => 'percentage',
-        'instant.cpu_use'           => 'percentage',
-        'instant.dsk_use'           => 'percentage',
+        'common' => [
+            'state.up'                  => 'boolean',
+            'instant.total_proc'        => 'integer',
+            'instant.ram_use'           => 'percentage',
+            'instant.cpu_use'           => 'percentage',
+            'instant.dsk_use'           => 'percentage',
+        ],
 
-        /**
-         * Only b2
-         */
-        'instant.mysql_mem'         => 'percentage',
-        'instant.apache_mem'        => 'percentage',
-        'instant.nginx_mem'         => 'percentage',
-        'instant.apache_proc'       => 'integer',
-        'instant.nginx_proc'        => 'integer',
-        'instant.mysql_proc'        => 'integer',
+        'b2' => [
+            'instant.mysql_mem'         => 'percentage',
+            'instant.apache_mem'        => 'percentage',
+            'instant.nginx_mem'         => 'percentage',
+            'instant.apache_proc'       => 'integer',
+            'instant.nginx_proc'        => 'integer',
+            'instant.mysql_proc'        => 'integer',
+        ],
 
-        /**
-         * Only b2_instance
-         */
-        'state.maintenance'               => 'boolean',
+        'b2_instance' => [
+            'state.maintenance'         => 'boolean',
+        ],
 
-        /**
-         * Only k2 (backups)
-         */
-        'instant.backup_tokens_qty' => 'integer',
-        'instant.backups_disk'      => 'percentage'
+        'k2' => [
+            'instant.backup_tokens_qty' => 'integer',
+            'instant.backups_disk'      => 'percentage'
+        ]
     ];
 
     public static function getColumns(): array {
@@ -74,40 +70,9 @@ class AlertTrigger extends Model {
             'key' => [
                 'type'              => 'string',
                 'description'       => "Name of the server status data used for the check if the alert must be triggered.",
-                'help'              => "Some status data keys are only available for certain types of servers.",
-                'selection'         => [
-                    /**
-                     * All
-                     */
-                    'state.up',
-                    'instant.total_proc',
-                    'instant.ram_use',
-                    'instant.cpu_use',
-                    'instant.dsk_use',
-
-                    /**
-                     * Only b2
-                     */
-                    'instant.mysql_mem',
-                    'instant.apache_mem',
-                    'instant.nginx_mem',
-                    'instant.apache_proc',
-                    'instant.nginx_proc',
-                    'instant.mysql_proc',
-
-                    /**
-                     * Only b2_instance
-                     */
-                    'state.maintenance',
-
-                    /**
-                     * Only k2 (backups)
-                     */
-                    'instant.backup_tokens_qty',
-                    'instant.backups_disk'
-                ],
+                'help'              => "A selection is applied when trigger_type is changed. Some status data keys are only available for certain types of servers (@see MAP_STATUS_KEYS_TYPES).",
                 'required'          => true,
-                'dependencies'      => ['name']
+                'dependents'        => ['name']
             ],
 
             'operator' => [
@@ -116,14 +81,14 @@ class AlertTrigger extends Model {
                 'selection'         => ['eq', 'ne', 'gt', 'gte', 'lt', 'lte', 'contains', 'does_not_contain'],
                 'default'           => 'eq',
                 'required'          => true,
-                'dependencies'      => ['name']
+                'dependents'        => ['name']
             ],
 
             'value' => [
                 'type'              => 'string',
                 'description'       => "Value used for the check if the alert must be triggered.",
                 'required'          => true,
-                'dependencies'      => ['name']
+                'dependents'        => ['name']
             ],
 
             'repetition' => [
@@ -132,7 +97,7 @@ class AlertTrigger extends Model {
                 'help'              => "If repetition is 1, then the trigger must match twice in a row.",
                 'min'               => 1,
                 'default'           => 1,
-                'dependencies'      => ['name']
+                'dependents'        => ['name']
             ]
 
         ];
@@ -154,64 +119,15 @@ class AlertTrigger extends Model {
     public static function onchange($event, $values) {
         $result = [];
 
-        $common_keys = [
-            'state.up',
-            'instant.total_proc',
-            'instant.ram_use',
-            'instant.cpu_use',
-            'instant.disk_use'
-        ];
-
-        $b2_keys = [
-            'instant.mysql_mem',
-            'instant.apache_mem',
-            'instant.nginx_mem',
-            'instant.apache_proc',
-            'instant.nginx_proc',
-            'instant.mysql_proc'
-        ];
-
-        $b2_instance_keys = [
-            'state.maintenance'
-        ];
-
-        $k2_keys = [
-            'instant.backup_tokens_qty',
-            'instant.backups_disk'
-        ];
-
         if(isset($event['trigger_type'])) {
-            switch($event['trigger_type']) {
-                case 'b2':
-                    $result['key'] = [
-                        'selection' => array_merge(
-                            $common_keys,
-                            $b2_keys
-                        )
-                    ];
-                    break;
-                case 'b2_instance':
-                    $result['key'] = [
-                        'selection' => array_merge(
-                            $common_keys,
-                            $b2_instance_keys
-                        )
-                    ];
-                    break;
-                case 'k2':
-                    $result['key'] = [
-                        'selection' => array_merge(
-                            $common_keys,
-                            $k2_keys
-                        )
-                    ];
-                    break;
-                default:
-                    $result['key'] = [
-                        'selection' => $common_keys
-                    ];
-                    break;
-            }
+            $specific_keys = self::MAP_STATUS_KEYS_TYPES[$event['trigger_type']] ?? [];
+
+            $result['key'] = [
+                'selection' => array_merge(
+                    self::MAP_STATUS_KEYS_TYPES['common'],
+                    $specific_keys
+                )
+            ];
 
             if(!in_array($values['key'], $result['key']['selection'])) {
                 $result['key']['value'] = $result['key']['selection'][0];
@@ -313,3 +229,4 @@ class AlertTrigger extends Model {
         ];
     }
 }
+
