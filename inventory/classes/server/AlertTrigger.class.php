@@ -72,7 +72,23 @@ class AlertTrigger extends Model {
                 'description'       => "Name of the server status data used for the check if the alert must be triggered.",
                 'help'              => "A selection is applied when trigger_type is changed. Some status data keys are only available for certain types of servers (@see MAP_STATUS_KEYS_TYPES).",
                 'required'          => true,
-                'dependents'        => ['name']
+                'dependents'        => ['name'],
+                'selection'         => [
+                    'state.up',
+                    'state.maintenance',
+                    'instant.total_proc',
+                    'instant.ram_use',
+                    'instant.cpu_use',
+                    'instant.dsk_use',
+                    'instant.mysql_mem',
+                    'instant.apache_mem',
+                    'instant.nginx_mem',
+                    'instant.apache_proc',
+                    'instant.nginx_proc',
+                    'instant.mysql_proc',
+                    'instant.backup_tokens_qty',
+                    'instant.backups_disk'
+                ],
             ],
 
             'operator' => [
