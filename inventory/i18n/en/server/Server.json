@@ -20,10 +20,10 @@
                 "front": "Front",
                 "node": "Node",
                 "storage": "Storage",
-                "b2": "B2",
-                "tapu_backups": "Tapu Backups",
-                "satu_stats": "Satu Stats",
-                "seru_admin": "Seru Admin"
+                "b2": "Host (b2)",
+                "k2": "Backup (k2)",
+                "s2": "Stats (s2)",
+                "admin": "Admin"
             },
             "help": ""
         },
