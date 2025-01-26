@@ -67,6 +67,8 @@ foreach($servers as $server) {
                     'instance_id'   => $instance['id'],
                     'status_data'   => json_encode($status)
                 ]);
+                // instance is up
+                Instance::id($instance['id'])->update(['up' => true, 'synced' => time()]);
             }
             catch(Exception $e) {
                 // server is down (will cascade to instances)
