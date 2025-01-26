@@ -95,16 +95,16 @@
                 "description": "",
                 "children": [
                     {
-                        "id": "item.advanced.all-services",
+                        "id": "item.advanced.services",
                         "type": "parent",
-                        "label": "All Services",
+                        "label": "Services",
                         "icon": "work",
                         "description": "",
                         "children": [
                             {
-                                "id": "item.advanced.all-services.services",
+                                "id": "item.advanced.services.all-services",
                                 "type": "entry",
-                                "label": "Services",
+                                "label": "All Services",
                                 "icon": "support_agent",
                                 "description": "",
                                 "context": {
@@ -113,7 +113,7 @@
                                 }
                             },
                             {
-                                "id": "item.advanced.all-services.subscription",
+                                "id": "item.advanced.services.subscription",
                                 "type": "entry",
                                 "label": "Subscriptions",
                                 "icon": "subscriptions",
@@ -126,16 +126,16 @@
                         ]
                     },
                     {
-                        "id": "item.advanced.all-servers",
+                        "id": "item.advanced.servers",
                         "type": "parent",
                         "label": "All Servers",
                         "icon": "lan",
                         "description": "",
                         "children": [
                             {
-                                "id": "item.advanced.all-servers.servers",
+                                "id": "item.advanced.servers.all-servers",
                                 "type": "entry",
-                                "label": "Servers",
+                                "label": "All Servers",
                                 "icon": "storage",
                                 "description": "",
                                 "context": {
@@ -144,7 +144,7 @@
                                 }
                             },
                             {
-                                "id": "item.advanced.all-servers.instances",
+                                "id": "item.advanced.servers.instances",
                                 "type": "entry",
                                 "label": "Instances",
                                 "icon": "article",
@@ -157,7 +157,7 @@
                                 }
                             },
                             {
-                                "id": "item.advanced.all-servers.ip-addresses",
+                                "id": "item.advanced.servers.ip-addresses",
                                 "type": "entry",
                                 "label": "IP addresses",
                                 "icon": "location_on",
@@ -170,14 +170,14 @@
                                 }
                             },
                             {
-                                "id": "item.advanced.all-servers.alerts",
+                                "id": "item.advanced.servers.alerts",
                                 "type": "parent",
                                 "label": "Alerts",
                                 "icon": "notification_important",
                                 "description": "",
                                 "children": [
                                     {
-                                        "id": "item.advanced.all-servers.alerts.alerts",
+                                        "id": "item.advanced.servers.alerts.alerts",
                                         "type": "entry",
                                         "label": "Alerts",
                                         "icon": "notifications",
@@ -190,7 +190,7 @@
                                         }
                                     },
                                     {
-                                        "id": "item.advanced.all-servers.alerts.alert-triggers",
+                                        "id": "item.advanced.servers.alerts.alert-triggers",
                                         "type": "entry",
                                         "label": "Alert Triggers",
                                         "icon": "list",
