@@ -120,11 +120,12 @@ class AlertTrigger extends Model {
         $result = [];
 
         if(isset($event['trigger_type'])) {
-            $specific_keys = self::MAP_STATUS_KEYS_TYPES[$event['trigger_type']] ?? [];
+            $specific_keys = array_keys(self::MAP_STATUS_KEYS_TYPES[$event['trigger_type']] ?? []);
+            $common_keys = array_keys(self::MAP_STATUS_KEYS_TYPES['common']);
 
             $result['key'] = [
                 'selection' => array_merge(
-                    self::MAP_STATUS_KEYS_TYPES['common'],
+                    $common_keys,
                     $specific_keys
                 )
             ];
@@ -190,37 +191,10 @@ class AlertTrigger extends Model {
                             return true;
                         }
 
-                        $allowed_keys = [
-                            'state.up',
-                            'instant.total_proc',
-                            'instant.ram_use',
-                            'instant.cpu_use',
-                            'instant.dsk_use',
-                        ];
+                        $specific_keys = array_keys(self::MAP_STATUS_KEYS_TYPES[$values['trigger_type']] ?? []);
+                        $common_keys = array_keys(self::MAP_STATUS_KEYS_TYPES['common']);
 
-                        switch($values['trigger_type']) {
-                            case 'b2':
-                                $allowed_keys = array_merge($allowed_keys, [
-                                    'instant.mysql_mem',
-                                    'instant.apache_mem',
-                                    'instant.nginx_mem',
-                                    'instant.apache_proc',
-                                    'instant.nginx_proc',
-                                    'instant.mysql_proc'
-                                ]);
-                                break;
-                            case 'b2_instance':
-                                $allowed_keys = array_merge($allowed_keys, [
-                                    'state.maintenance'
-                                ]);
-                                break;
-                            case 'k2':
-                                $allowed_keys = array_merge($allowed_keys, [
-                                    'instant.backup_tokens_qty',
-                                    'instant.backups_disk'
-                                ]);
-                                break;
-                        }
+                        $allowed_keys = array_merge($common_keys, $specific_keys);
 
                         return in_array($key, $allowed_keys);
                     }
