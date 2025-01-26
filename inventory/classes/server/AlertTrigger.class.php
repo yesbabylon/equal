@@ -131,10 +131,7 @@ class AlertTrigger extends Model {
             ];
 
             if(!in_array($values['key'], $result['key']['selection'])) {
-                $result['key']['value'] = $result['key']['selection'][0];
-            }
-            else {
-                $result['key']['value'] = $values['key'];
+                $result['key']['value'] = null;
             }
         }
 
