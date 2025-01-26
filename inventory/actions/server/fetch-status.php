@@ -35,7 +35,7 @@ use inventory\server\Status;
  */
 ['context' => $context] = $providers;
 
-$server = Server::id($params['id'])->get();
+$server = Server::id($params['id'])->first();
 
 if(!$server) {
     throw new Exception('unknown_server', EQ_ERROR_INVALID_PARAM);

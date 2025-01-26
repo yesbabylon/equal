@@ -41,7 +41,7 @@ $instance = Instance::id($params['id'])
         'name',
         'server_id'
     ])
-    ->get();
+    ->first();
 
 if(!$instance) {
     throw new Exception('unknown_instance', EQ_ERROR_INVALID_PARAM);
