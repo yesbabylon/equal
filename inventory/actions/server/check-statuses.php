@@ -106,7 +106,7 @@ foreach($servers as $server) {
 
     // Create alerts if triggers matches
     foreach($serverAlertPolicies as $policy) {
-        if(AlertPolicy::getTriggerResult($policy, $statuses)) {
+        if(AlertPolicy::getTriggersResult($policy, $statuses)) {
             Alert::create([
                     'name'              => $policy['name'],
                     'alert_policy_id'   => $policy['id'],
@@ -155,7 +155,7 @@ foreach($servers as $server) {
 
         // Send alerts if triggers matches
         foreach($instanceAlertPolicies as $policy) {
-            if(AlertPolicy::getTriggerResult($policy, $statuses)) {
+            if(AlertPolicy::getTriggersResult($policy, $statuses)) {
                 Alert::create([
                         'name'              => $policy['name'],
                         'alert_policy_id'   => $policy['id'],

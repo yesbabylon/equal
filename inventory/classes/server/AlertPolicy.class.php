@@ -65,13 +65,13 @@ class AlertPolicy extends Model {
     }
 
     /**
-     * Returns true if the criteria of the given policyhave been met based on server statuses and policy triggers.
+     * Check a set of statuses against the policy triggers and return true if the policy is triggered.
      *
      * @param array $policy
      * @param array $statuses Server or instance statuses
      * @return bool
      */
-    public static function getTriggerResult(array $policy, array $statuses) {
+    public static function getTriggersResult(array $policy, array $statuses) {
 
         // Comparison methods to check the server status' value against the trigger's value
         static $comparison_methods = [
