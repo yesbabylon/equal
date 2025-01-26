@@ -147,7 +147,7 @@ class AlertTrigger extends Model {
             ];
 
             if(!in_array($values['key'], $result['key']['selection'])) {
-                $result['key']['value'] = null;
+                $result['key']['value'] = '';
             }
         }
 
