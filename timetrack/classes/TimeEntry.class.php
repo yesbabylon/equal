@@ -411,14 +411,14 @@ class TimeEntry extends SaleEntry {
                 $result[$id] = 7.5 * 3600;
                 if(!$entry['billable_duration']) {
                     // #memo - prevent change of the 'state' field
-                    self::id($id)->update(['state' => $entry['state'], 'billable_duration' => self::computeBillableDuration($id, 7 * 3600)]);
+                    $orm->update(self::getType(), $id, ['state' => $entry['state'], 'billable_duration' => self::computeBillableDuration($id, 7 * 3600)], true);
                 }
             }
             else {
                 $result[$id] = $entry['time_end'] - $entry['time_start'];
                 if(!$entry['billable_duration']) {
                     // #memo - prevent change of the 'state' field
-                    self::id($id)->update(['state' => $entry['state'], 'billable_duration' => self::computeBillableDuration($id, $result[$id])]);
+                    $orm->update(self::getType(), $id, ['state' => $entry['state'], 'billable_duration' => self::computeBillableDuration($id, $result[$id])], true);
                 }
             }
         }
