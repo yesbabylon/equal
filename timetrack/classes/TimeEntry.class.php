@@ -401,7 +401,7 @@ class TimeEntry extends SaleEntry {
 
     public static function calcDuration($self, $orm): array {
         $result = [];
-        $self->read(['is_full_day', 'time_start', 'time_end', 'billable_duration']);
+        $self->read(['state', 'is_full_day', 'time_start', 'time_end', 'billable_duration']);
         foreach($self as $id => $entry) {
             if(!isset($entry['time_start'], $entry['time_end'])) {
                 continue;
@@ -411,14 +411,14 @@ class TimeEntry extends SaleEntry {
                 $result[$id] = 7.5 * 3600;
                 if(!$entry['billable_duration']) {
                     // #memo - prevent change of the 'state' field
-                    $orm->update(self::getType(), $id, ['billable_duration' => self::computeBillableDuration($id, 7 * 3600)]);
+                    self::id($id)->update(['state' => $entry['state'], 'billable_duration' => self::computeBillableDuration($id, 7 * 3600)]);
                 }
             }
             else {
                 $result[$id] = $entry['time_end'] - $entry['time_start'];
                 if(!$entry['billable_duration']) {
                     // #memo - prevent change of the 'state' field
-                    $orm->update(self::getType(), $id, ['billable_duration' => self::computeBillableDuration($id, $result[$id])]);
+                    self::id($id)->update(['state' => $entry['state'], 'billable_duration' => self::computeBillableDuration($id, $result[$id])]);
                 }
             }
         }
