@@ -6,7 +6,7 @@
     "sort": "desc",
     "limit": 500,
     "domain": [
-        ["object_class", "=", "timetrack\\Project"],
+        ["object_class", "=", "timetrack\\TimeEntry"],
         ["status", "=", "validated"]
     ],
     "operations": {
