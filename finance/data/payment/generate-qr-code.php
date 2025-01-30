@@ -52,7 +52,7 @@ use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelMedium;
 /** @var \equal\php\Context $context */
 $context = $providers['context'];
 
-$payment_data = Data::create()
+$paymentData = Data::create()
     ->setServiceTag('BCD')
     ->setIdentification('SCT')
     ->setName($params['recipient_name'])
