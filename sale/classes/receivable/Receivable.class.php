@@ -18,6 +18,24 @@ class Receivable extends Model {
     public static function getColumns() {
 
         return [
+            'name' => [
+                'type'              => 'computed',
+                'result_type'       => 'string',
+                'description'       => 'Default label of the line, based on product.',
+                'function'          => 'calcName',
+                'store'             => true,
+                'readonly'          => true
+            ],
+
+            'description' => [
+                'type'              => 'computed',
+                'result_type'       => 'string',
+                'usage'             => 'text/plain',
+                'description'       => 'Description of the receivable.',
+                'relation'          => ['sale_entry_id' => ['description']],
+                'store'             => true,
+                'readonly'          => true
+            ],
 
             'receivables_queue_id' => [
                 'type'              => 'many2one',
@@ -54,23 +72,9 @@ class Receivable extends Model {
                 'readonly'          => true
             ],
 
-            'name' => [
-                'type'              => 'computed',
-                'result_type'       => 'string',
-                'description'       => 'Default label of the line, based on product.',
-                'function'          => 'calcName',
-                'store'             => true,
-                'readonly'          => true
-            ],
-
-            'description' => [
-                'type'              => 'computed',
-                'result_type'       => 'string',
-                'usage'             => 'text/plain',
-                'description'       => 'Description of the receivable.',
-                'relation'          => ['sale_entry_id' => ['description']],
-                'store'             => true,
-                'readonly'          => true
+            'invoice_group' => [
+                'type'              => 'string',
+                'description'       => 'Arbitrary name for grouping sales when invoicing (might be left unset).',
             ],
 
             'customer_id' => [
