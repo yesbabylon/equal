@@ -273,13 +273,6 @@ $createInvoicePaymentQrCodeUri = function($invoice) {
     return $result;
 };
 
-$formatInvoice = function(&$invoice) {
-    $invoice['payment_reference'] = DataFormatter::format($invoice['payment_reference'], 'scor');
-    $invoice['organisation_id']['bank_account_iban'] = DataFormatter::format($invoice['organisation_id']['bank_account_iban'], 'iban');
-    $invoice['organisation_id']['phone'] = DataFormatter::format($invoice['organisation_id']['phone'], 'phone');
-    $invoice['organisation_id']['fax'] = DataFormatter::format($invoice['organisation_id']['fax'], 'phone');
-};
-
 $invoice = Invoice::id($params['id'])
     ->read([
         'invoice_number', 'date', 'due_date', 'status', 'invoice_type', 'payment_reference', 'total', 'price', 'payment_status',
@@ -316,7 +309,11 @@ if(empty($invoice)) {
 }
 
 // adapt specific properties to TXT output
-$formatInvoice($invoice);
+$invoice['payment_reference'] = DataFormatter::format($invoice['payment_reference'], 'scor');
+$invoice['organisation_id']['bank_account_iban'] = DataFormatter::format($invoice['organisation_id']['bank_account_iban'], 'iban');
+$invoice['organisation_id']['phone'] = DataFormatter::format($invoice['organisation_id']['phone'], 'phone');
+$invoice['organisation_id']['fax'] = DataFormatter::format($invoice['organisation_id']['fax'], 'phone');
+
 
 $values = [
     'invoice'             => $invoice,
