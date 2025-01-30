@@ -337,7 +337,7 @@
                             "view": "list.default",
                             "order": "id",
                             "sort": "asc",
-                            "domain": [["status", "=", "invoice"], ["is_paid", "=", false]]
+                            "domain": [["status", "=", "invoice"], ["payment_status", "<>", "balanced"]]
                         }
                     },
                     {
@@ -351,7 +351,7 @@
                             "view": "list.default",
                             "order": "id",
                             "sort": "asc",
-                            "domain": [["status", "=", "invoice"], ["is_paid", "=", true]]
+                            "domain": [["status", "=", "invoice"], ["payment_status", "=", "balanced"]]
                         }
                     },
                     {
