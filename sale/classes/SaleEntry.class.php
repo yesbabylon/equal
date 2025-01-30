@@ -71,8 +71,18 @@ class SaleEntry extends Model {
                 'domain'          => ['customer_id', '=', 'object.customer_id']
             ],
 
+            /*
             'invoice_group' => [
                 'type'              => 'string',
+                'description'       => 'Arbitrary name for grouping sales when invoicing (might be left unset).',
+            ],
+            */
+
+            'invoice_group' => [
+                'type'              => 'computed',
+                'result_type'       => 'string',
+                'function'          => 'calcInvoiceGroup',
+                'store'             => true,
                 'description'       => 'Arbitrary name for grouping sales when invoicing (might be left unset).',
             ],
 
@@ -184,6 +194,15 @@ class SaleEntry extends Model {
             ]
 
         ];
+    }
+
+    public static function calcInvoiceGroup($self) {
+        $result = [];
+        $self->read(['project_id' => ['name']]);
+        foreach($self as $id => $entry) {
+            $result[$id] = $entry['project_id']['name'];
+        }
+        return $result;
     }
 
     public static function getPolicies(): array {

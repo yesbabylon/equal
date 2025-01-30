@@ -105,9 +105,9 @@ class SubscriptionEntry extends SaleEntry {
     protected static function computeFromSubscription($self, $column): array {
         $result = [];
         $self->read(['subscription_id' => [$column]]);
-        foreach($self as $id => $subscription_entry) {
-            if(isset($subscription_entry['subscription_id'][$column])) {
-                $result[$id] = $subscription_entry['subscription_id'][$column];
+        foreach($self as $id => $entry) {
+            if(isset($entry['subscription_id'][$column])) {
+                $result[$id] = $entry['subscription_id'][$column];
             }
         }
 
