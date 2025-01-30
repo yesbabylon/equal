@@ -223,9 +223,27 @@ class TimeEntry extends SaleEntry {
                 'function'          => 'calcIsInternal'
             ],
 
+            'invoice_group' => [
+                'type'              => 'computed',
+                'result_type'       => 'string',
+                'function'          => 'calcInvoiceGroup',
+                'store'             => true,
+                'description'       => 'Arbitrary name for grouping sales when invoicing (might be left unset).',
+            ],
+
 
         ];
     }
+
+    public static function calcInvoiceGroup($self) {
+        $result = [];
+        $self->read(['project_id' => ['name']]);
+        foreach($self as $id => $entry) {
+            $result[$id] = $entry['project_id']['name'];
+        }
+        return $result;
+    }
+
 
     private static function getTimeZoneCurrentHour(): int {
         $current_hour = (int) date('H');
