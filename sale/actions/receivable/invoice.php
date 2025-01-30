@@ -36,8 +36,7 @@ list($params, $providers) = eQual::announce([
 
         'invoice_line_group_name' =>  [
             'description'       => 'Name of the invoice line group.',
-            'type'              => 'string',
-            'default'           => 'Additional Services ('.date('Y-m-d').')',
+            'type'              => 'string'
         ]
     ],
     'response'      => [
@@ -67,6 +66,7 @@ $receivables = Receivable::search([
         'id',
         'name',
         'description',
+        'invoice_group',
         'customer_id',
         'product_id' => ['id', 'name'],
         'price_id',
@@ -117,9 +117,19 @@ foreach($receivables as $receivable) {
         }
     }
 
+    $invoice_line_group_name = 'Additional Services ('.date('Y-m-d').')';
+
+    if(isset($receivable['invoice_group'])) {
+        $invoice_line_group_name = $receivable['invoice_group'];
+    }
+
+    if($params['invoice_line_group_name']) {
+        $invoice_line_group_name = $params['invoice_line_group_name'];
+    }
+
     $invoice_line_group = InvoiceLineGroup::search([
             ['invoice_id', '=', $invoice['id']],
-            ['name', '=', $params['invoice_line_group_name']]
+            ['name', '=', $invoice_line_group_name]
         ])
         ->read(['id'])
         ->first();
@@ -127,7 +137,7 @@ foreach($receivables as $receivable) {
     if(!isset($invoice_line_group)) {
         $invoice_line_group = InvoiceLineGroup::create([
                 'invoice_id' => $invoice['id'],
-                'name'       => $params['invoice_line_group_name']
+                'name'       => $invoice_line_group_name
             ])
             ->first();
     }
