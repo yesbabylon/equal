@@ -121,20 +121,21 @@ class TimeEntry extends SaleEntry {
                 'type'           => 'time',
                 'description'    => 'Start time of the entry.',
                 'default'        => function () { return self::getTimeZoneCurrentHour() * 3600; },
-                'dependents'     => ['duration', 'qty', 'total']
+                'dependents'     => ['billable_duration', 'duration', 'qty', 'total']
             ],
 
             'time_end' => [
                 'type'           => 'time',
                 'description'    => 'End time of the entry.',
                 'default'        => function () { return (self::getTimeZoneCurrentHour() + 1) * 3600; },
-                'dependents'     => ['duration', 'qty', 'total']
+                'dependents'     => ['billable_duration', 'duration', 'qty', 'total']
             ],
 
             'is_full_day' => [
                 'type'           => 'boolean',
                 'description'    => 'The task of the entry was performed for a whole day.',
-                'default'        => false
+                'default'        => false,
+                'dependents'     => ['billable_duration']
             ],
 
             'duration' => [
@@ -148,10 +149,12 @@ class TimeEntry extends SaleEntry {
             ],
 
             'billable_duration' => [
-                'type'           => 'time',
+                'type'           => 'computed',
+                'result_type'    => 'time',
+                'store'          => true,
+                'function'       => 'calcBillableDuration',
                 'description'    => 'Duration that can be actually invoiced.',
-                'help'           => 'The duration (part of the entry) that can be billed to the Customer according to the related requested Task. By default has the same value as duration. Unlike duration, billable duration is meant to be set manually.',
-                'dependents'     => ['qty', 'total']
+                'help'           => 'The duration (part of the entry) that can be billed to the Customer according to the related requested Task. By default has the same value as duration. Unlike duration, billable duration is meant to be set manually.'
             ],
 
             'user_id' => [
@@ -399,9 +402,24 @@ class TimeEntry extends SaleEntry {
         return $result;
     }
 
+    public static function calcBillableDuration($self): array {
+        $result = [];
+        $self->read(['is_full_day', 'time_start', 'time_end']);
+        foreach($self as $id => $entry) {
+            if($entry['is_full_day']) {
+                // #todo - read from settings
+                $result[$id] = self::computeBillableDuration($id, 7 * 3600);
+            }
+            elseif(isset($entry['time_start'], $entry['time_end'])) {
+                $result[$id] =  self::computeBillableDuration($id, $entry['time_end'] - $entry['time_start']);
+            }
+        }
+        return $result;
+    }
+
     public static function calcDuration($self, $orm): array {
         $result = [];
-        $self->read(['state', 'is_full_day', 'time_start', 'time_end', 'billable_duration']);
+        $self->read(['state', 'is_full_day', 'time_start', 'time_end']);
         foreach($self as $id => $entry) {
             if(!isset($entry['time_start'], $entry['time_end'])) {
                 continue;
@@ -409,17 +427,9 @@ class TimeEntry extends SaleEntry {
             if($entry['is_full_day']) {
                 // #todo - read from settings
                 $result[$id] = 7.5 * 3600;
-                if(!$entry['billable_duration']) {
-                    // #memo - prevent change of the 'state' field
-                    $orm->update(self::getType(), $id, ['state' => $entry['state'], 'billable_duration' => self::computeBillableDuration($id, 7 * 3600)], true);
-                }
             }
             else {
                 $result[$id] = $entry['time_end'] - $entry['time_start'];
-                if(!$entry['billable_duration']) {
-                    // #memo - prevent change of the 'state' field
-                    $orm->update(self::getType(), $id, ['state' => $entry['state'], 'billable_duration' => self::computeBillableDuration($id, $result[$id])], true);
-                }
             }
         }
         return $result;
