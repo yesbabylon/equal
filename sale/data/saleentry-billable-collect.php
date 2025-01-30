@@ -46,20 +46,7 @@ $context = $providers['context'];
 
 $domain = [
     [
-        ['object_class', '=', null],
         ['status', '=', 'pending'],
-        ['is_billable', '=', true],
-        ['has_receivable', '=', false]
-    ],
-    [
-        ['object_class', '=', 'sale\subscription\Subscription'],
-        ['status', '=', 'pending'],
-        ['is_billable', '=', true],
-        ['has_receivable', '=', false]
-    ],
-    [
-        ['object_class', '=', 'timetrack\Project'],
-        ['status', '=', 'validated'],
         ['is_billable', '=', true],
         ['has_receivable', '=', false]
     ]
