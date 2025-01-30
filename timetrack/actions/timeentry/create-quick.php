@@ -117,15 +117,15 @@ else {
 }
 
 TimeEntry::create([
-        'date'        => $date,
-        'time_start'  => $start,
-        'time_end'    => $end
+        'description' => $params['description'],
+        'reference'   => $params['reference'] ?? '',
     ])
     ->update([
         'project_id'  => $params['project_id'],
         'origin'      => $params['origin'],
-        'reference'   => $params['reference'] ?? '',
-        'description' => $params['description']
+        'date'        => $date,
+        'time_start'  => $start,
+        'time_end'    => $end
     ])
     ->transition('submit');
 

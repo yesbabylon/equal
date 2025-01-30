@@ -91,8 +91,7 @@ class TimeEntry extends SaleEntry {
                 'foreign_object' => 'sale\price\Price',
                 'description'    => 'Price of the sale.',
                 'function'       => 'calcPriceId',
-                'store'          => true,
-                'dependents'     => ['unit_price']
+                'store'          => true
             ],
 
             'unit_price' => [
@@ -253,15 +252,6 @@ class TimeEntry extends SaleEntry {
         return $result;
     }
 
-    public static function calcIsInternal($self) {
-        $result = [];
-        $self->read(['project_id' => ['is_internal'], 'inventory_product_id' => ['is_internal']]);
-        foreach($self as $id => $entry) {
-            $result[$id] = ($entry['project_id']['is_internal'] ?? false) || ($entry['inventory_product_id']['is_internal'] ?? false);
-        }
-        return $result;
-    }
-
     public static function defaultUserId($auth) {
         return $auth->userId();
     }
@@ -376,9 +366,18 @@ class TimeEntry extends SaleEntry {
         }
     }
 
+    public static function calcIsInternal($self) {
+        $result = [];
+        $self->read(['project_id' => ['is_internal'], 'inventory_product_id' => ['is_internal']]);
+        foreach($self as $id => $entry) {
+            $result[$id] = ($entry['project_id']['is_internal'] ?? false) || ($entry['inventory_product_id']['is_internal'] ?? false);
+        }
+        return $result;
+    }
+
     public static function calcName($self) {
         $result = [];
-        $self->read(['state', 'project_id' => ['name'], 'origin', 'reference', 'description']);
+        $self->read(['project_id' => ['name'], 'origin', 'reference', 'description']);
         foreach($self as $id => $entry) {
             $result[$id] = $entry['project_id']['name'];
             if(isset($entry['reference']) && strlen($entry['reference']) > 0) {
