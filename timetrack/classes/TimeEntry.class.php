@@ -69,12 +69,6 @@ class TimeEntry extends SaleEntry {
                 'readonly'       => true
             ],
 
-            'object_class' => [
-                'type'           => 'string',
-                'description'    => 'Class of the object object_id points to.',
-                'default'        => 'timetrack\Project'
-            ],
-
             'product_id' => [
                 'type'           => 'computed',
                 'result_type'    => 'many2one',
@@ -357,18 +351,20 @@ class TimeEntry extends SaleEntry {
     }
 
     public static function onupdateProjectId($self): void {
-        $self->read(['object_id', 'object_class', 'project_id']);
+        $self->read(['project_id' => ['name', 'receivable_queue_id']]);
         foreach($self as $id => $entry) {
-            if($entry['object_id'] != $entry['project_id'] || $entry['object_class'] != Project::getType()) {
-                self::id($id)->update([
-                        'object_id'     => $entry['project_id'],
-                        'object_class'  => Project::getType()
-                    ]);
+            if(!$entry['project_id']) {
+                continue;
             }
+            if($entry['project_id']['receivable_queue_id']) {
+                self::id($id)->update(['receivable_queue_id' => $entry['project_id']['receivable_queue_id']]);
+            }
+            // #memo - by convention we group sales from a same project when invoicing
+            self::id($id)->update(['invoice_group' => $entry['project_id']['name']]);
         }
     }
 
-    public static function onupdateTicketId($self) : void {
+    public static function onupdateTicketId($self): void {
         $self->read(['ticket_id']);
         foreach($self as $id => $entry) {
             self::id($id)->update(['reference' => 'ticket '.$entry['ticket_id']]);
