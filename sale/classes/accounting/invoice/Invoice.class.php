@@ -251,14 +251,17 @@ class Invoice extends \finance\accounting\Invoice {
 
     public static function calcPaymentReference($self): array {
         $result = [];
-        $self->read(['invoice_number']);
+        $self->read(['status', 'invoice_number']);
         foreach($self as $id => $invoice) {
-            $invoice_number = intval($invoice['invoice_number']);
+            // #memo - prevent generating a payment reference for a proforma
+            if($invoice['status'] == 'invoice') {
+                $invoice_number = intval($invoice['invoice_number']);
 
-            // arbitrary value for balance (final) invoice
-            $code_ref = 200;
+                // arbitrary value for balance (final) invoice
+                $code_ref = 500;
 
-            $result[$id] = self::computePaymentReference($code_ref, $invoice_number);
+                $result[$id] = self::computePaymentReference($code_ref, $invoice_number);
+            }
         }
 
         return $result;
@@ -312,7 +315,7 @@ class Invoice extends \finance\accounting\Invoice {
     }
 
     public static function onbeforeInvoice($self) {
-        $self->read(['id','organisation_id']);
+        $self->read(['organisation_id']);
         // generate the accounting entries according to the invoices lines.
         $self->do('generate_accounting_entries');
         foreach($self as $id => $invoice) {
