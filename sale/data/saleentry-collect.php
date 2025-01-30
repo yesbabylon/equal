@@ -7,7 +7,7 @@
 
 use equal\orm\Domain;
 
-list($params, $providers) = eQual::announce([
+[$params, $providers] = eQual::announce([
     'description'   => 'Advanced search for Sale Entry: returns a collection of Sale Entries according to extra parameters.',
     'extends'       => 'core_model_collect',
     'params'        => [

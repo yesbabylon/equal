@@ -7,13 +7,6 @@
         "items": [
             {
                 "type": "field",
-                "value": "id",
-                "width": "10%",
-                "sortable": true,
-                "readonly": true
-            },
-            {
-                "type": "field",
                 "value": "name",
                 "width": "25%",
                 "sortable": true
@@ -44,7 +37,7 @@
                 "type": "field",
                 "value": "qty",
                 "label": "Quantity",
-                "width": "15%",
+                "width": "10%",
                 "sortable": true
             },
             {

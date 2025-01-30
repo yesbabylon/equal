@@ -11,7 +11,7 @@ use sale\accounting\invoice\InvoiceLineGroup;
 use sale\receivable\Receivable;
 
 list($params, $providers) = eQual::announce([
-    'description'   => 'Invoice one or more receivables.',
+    'description'   => 'Invoice one or more receivables. Fill in for specific invoice or leave empty to create a new one.',
     'help'          => 'A default invoice can be selected, all receivables from that invoice\'s customer will be added to it.',
     'params'        => [
         'id' =>  [
@@ -30,12 +30,12 @@ list($params, $providers) = eQual::announce([
         'invoice_id' => [
             'type'              => 'many2one',
             'foreign_object'    => 'sale\accounting\invoice\Invoice',
-            'description'       => 'If left empty a new invoice proforma will be created.',
+            'description'       => 'Proforma will be created (leave empty to create a new one).',
             'domain'            => ['status', '=', 'proforma'],
         ],
 
         'invoice_line_group_name' =>  [
-            'description'       => 'Name of the invoice line group.',
+            'description'       => 'Label for grouping on the invoice (leave empty for preset).',
             'type'              => 'string'
         ]
     ],

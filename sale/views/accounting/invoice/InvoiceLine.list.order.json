@@ -22,9 +22,6 @@
         "view": "list.default"
     },
     "layout": {
-        "remove": [
-            "item.name"
-        ],
         "update": {
             "item.group": {
                 "after": [
