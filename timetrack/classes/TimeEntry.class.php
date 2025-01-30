@@ -397,7 +397,9 @@ class TimeEntry extends SaleEntry {
         $result = [];
         $self->read(['project_id' => ['time_entry_sale_model_id' => 'price_id']]);
         foreach($self as $id => $entry) {
-            $result[$id] = $entry['project_id']['time_entry_sale_model_id']['price_id'] ?? null;
+            if($entry['project_id']['time_entry_sale_model_id']['price_id']) {
+                $result[$id] = $entry['project_id']['time_entry_sale_model_id']['price_id'];
+            }
         }
         return $result;
     }
