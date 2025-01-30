@@ -255,12 +255,10 @@ class Invoice extends \finance\accounting\Invoice {
         foreach($self as $id => $invoice) {
             // #memo - prevent generating a payment reference for a proforma
             if($invoice['status'] == 'invoice') {
-                $invoice_number = intval($invoice['invoice_number']);
-
                 // arbitrary value for balance (final) invoice
                 $code_ref = 500;
 
-                $result[$id] = self::computePaymentReference($code_ref, preg_replace('/\D/', '', $invoice_number));
+                $result[$id] = self::computePaymentReference($code_ref, preg_replace('/\D/', '', $invoice['number']));
             }
         }
 
@@ -280,7 +278,7 @@ class Invoice extends \finance\accounting\Invoice {
         $a = intval($prefix);
         $b = intval($suffix);
         $control = ((76*$a) + $b ) % 97;
-        $control = ($control == 0)?97:$control;
+        $control = ($control == 0) ? 97 : $control;
         return sprintf("%3d%04d%03d%02d", $a, $b / 1000, $b % 1000, $control);
     }
 

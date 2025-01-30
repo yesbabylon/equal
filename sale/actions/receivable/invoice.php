@@ -10,8 +10,8 @@ use sale\accounting\invoice\InvoiceLine;
 use sale\accounting\invoice\InvoiceLineGroup;
 use sale\receivable\Receivable;
 
-list($params, $providers) = announce([
-    'description'   => 'Invoice given receivables.',
+list($params, $providers) = eQual::announce([
+    'description'   => 'Invoice one or more receivables.',
     'help'          => 'A default invoice can be selected, all receivables from that invoice\'s customer will be added to it.',
     'params'        => [
         'id' =>  [
@@ -53,21 +53,22 @@ $context = $providers['context'];
 
 if(empty($params['ids'])) {
     if(!isset($params['id']) || $params['id'] <= 0) {
-        throw new Exception('receivable_invalid_id', QN_ERROR_INVALID_PARAM);
+        throw new Exception('receivable_invalid_id', EQ_ERROR_INVALID_PARAM);
     }
 
     $params['ids'][] = $params['id'];
 }
 
 $receivables = Receivable::search([
-    ['id', 'in', $params['ids']],
-    ['status', '=', 'pending']
-])
+        ['id', 'in', $params['ids']],
+        ['status', '=', 'pending']
+    ])
     ->read([
         'id',
+        'name',
         'description',
         'customer_id',
-        'product_id',
+        'product_id' => ['id', 'name'],
         'price_id',
         'unit_price',
         'vat_rate',
@@ -102,48 +103,50 @@ foreach($receivables as $receivable) {
     }
     else {
         $invoice = Invoice::search([
-            ['customer_id', '=', $receivable['customer_id']],
-            ['status', '=', 'proforma']
-        ])
+                ['customer_id', '=', $receivable['customer_id']],
+                ['status', '=', 'proforma']
+            ])
             ->read(['status'])
             ->first();
 
         if(!isset($invoice)) {
             $invoice = Invoice::create([
-                'customer_id' => $receivable['customer_id']
-            ])
+                    'customer_id' => $receivable['customer_id']
+                ])
                 ->first();
         }
     }
 
     $invoice_line_group = InvoiceLineGroup::search([
-        ['invoice_id', '=', $invoice['id']],
-        ['name', '=', $params['invoice_line_group_name']]
-    ])
+            ['invoice_id', '=', $invoice['id']],
+            ['name', '=', $params['invoice_line_group_name']]
+        ])
         ->read(['id'])
         ->first();
 
     if(!isset($invoice_line_group)) {
         $invoice_line_group = InvoiceLineGroup::create([
-            'invoice_id' => $invoice['id'],
-            'name'       => $params['invoice_line_group_name']
-        ])
+                'invoice_id' => $invoice['id'],
+                'name'       => $params['invoice_line_group_name']
+            ])
             ->first();
     }
 
     $invoice_line = InvoiceLine::create([
-        'description'           => $receivable['description'],
-        'invoice_line_group_id' => $invoice_line_group['id'],
-        'invoice_id'            => $invoice['id'],
-        'product_id'            => $receivable['product_id'],
-        'price_id'              => $receivable['price_id'],
-        'unit_price'            => $receivable['unit_price'],
-        'vat_rate'              => $receivable['vat_rate'],
-        'qty'                   => $receivable['qty'],
-        'free_qty'              => $receivable['free_qty'],
-        'discount'              => $receivable['discount'],
-        'receivable_id'         => $receivable['id']
-    ])
+            //#memo - force name to receivable name instead of computed value
+            'name'                  => $receivable['name'],
+            'description'           => implode(' - ', array_filter([$receivable['product_id']['name'], $receivable['product_id']['description']])),
+            'invoice_line_group_id' => $invoice_line_group['id'],
+            'invoice_id'            => $invoice['id'],
+            'product_id'            => $receivable['product_id']['id'],
+            'price_id'              => $receivable['price_id'],
+            'unit_price'            => $receivable['unit_price'],
+            'vat_rate'              => $receivable['vat_rate'],
+            'qty'                   => $receivable['qty'],
+            'free_qty'              => $receivable['free_qty'],
+            'discount'              => $receivable['discount'],
+            'receivable_id'         => $receivable['id']
+        ])
         ->do('reset_invoice_prices')
         ->first();
 
