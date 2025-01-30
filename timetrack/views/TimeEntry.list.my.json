@@ -3,7 +3,6 @@
     "description": "Time entries created by current user during month in progress.",
     "controller": "timetrack_timeentry-collect",
     "domain": [
-        ["object_class", "=", "timetrack\\TimeEntry"],
         ["creator", "=", "user.id"],
         ["status", "<>", "billed"]
     ],

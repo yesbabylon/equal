@@ -90,7 +90,7 @@ list($params, $providers) = eQual::announce([
  */
 $context = $providers['context'];
 
-$domain = [ ['object_class', '=', 'timetrack\Project'] ];
+$domain = [ ['object_class', '=', 'timetrack\TimeEntry'] ];
 
 if(isset($params['description']) && strlen($params['description']) > 0) {
     $domain[] = ['description', 'ilike', '%'.$params['description'].'%'];

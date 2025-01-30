@@ -2,7 +2,6 @@
     "name": "Time entries",
     "description": "Default listing of all time entries.",
     "controller": "timetrack_timeentry-collect",
-    "domain": ["object_class", "=", "timetrack\\TimeEntry"],
     "order": "date,time_start",
     "sort": "desc",
     "limit": 100,
