@@ -269,6 +269,7 @@ $createInvoicePaymentQrCodeUri = function($invoice) {
     }
     catch(Exception $e) {
         // ignore
+        trigger_error('APP::unable to generate QR code:' . $e->getMessage(), EQ_REPORT_WARNING);
     }
     return $result;
 };
