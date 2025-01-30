@@ -260,7 +260,7 @@ class Invoice extends \finance\accounting\Invoice {
                 // arbitrary value for balance (final) invoice
                 $code_ref = 500;
 
-                $result[$id] = self::computePaymentReference($code_ref, $invoice_number);
+                $result[$id] = self::computePaymentReference($code_ref, preg_replace('/\D/', '', $invoice_number));
             }
         }
 
