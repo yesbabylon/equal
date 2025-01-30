@@ -5,7 +5,7 @@
     Licensed under GNU AGPL 3 license <http://www.gnu.org/licenses/>
 */
 
-use Endroid\QrCode\ErrorCorrectionLevel;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelMedium;
 use Endroid\QrCode\QrCode;
 use SepaQr\Data;
 
@@ -64,7 +64,7 @@ $payment_data = Data::create()
 $qr_code = new QrCode($payment_data);
 
 // required by EPC standard
-$qr_code->setErrorCorrectionLevel(ErrorCorrectionLevel::MEDIUM());
+$qr_code->setErrorCorrectionLevel(new ErrorCorrectionLevelMedium());
 
 $context->httpResponse()
         ->body($qr_code->writeString())
