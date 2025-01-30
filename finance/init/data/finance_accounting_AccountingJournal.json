@@ -11,5 +11,27 @@
                 "description": "Sales Accounting Journal"
             }
         ]
+    },
+    {
+        "name": "finance\\accounting\\AccountingJournal",
+        "lang": "fr",
+        "data": [
+            {
+                "id": 1,
+                "name": "Journal comptable des ventes (SALE)",
+                "description": "Journal comptable des ventes"
+            }
+        ]
+    },
+    {
+        "name": "finance\\accounting\\AccountingJournal",
+        "lang": "nl",
+        "data": [
+            {
+                "id": 1,
+                "name": "Verkoopboekhoudkundig journaal (SALE)",
+                "description": "Verkoopboekhoudkundig journaal"
+            }
+        ]
     }
 ]
