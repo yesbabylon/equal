@@ -27,6 +27,12 @@ class TimeEntry extends SaleEntry {
              * Override SaleEntry columns
              */
 
+            'object_class' => [
+                'type'           => 'string',
+                'description'    => 'Class of the object.',
+                'default'        => 'timetrack\TimeEntry'
+            ],
+
             'name' => [
                 'type'              => 'computed',
                 'result_type'       => 'string',

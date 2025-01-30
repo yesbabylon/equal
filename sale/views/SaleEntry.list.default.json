@@ -14,7 +14,7 @@
             },
             {
                 "type": "field",
-                "value": "description",
+                "value": "name",
                 "width": "25%",
                 "sortable": true
             },
@@ -71,22 +71,6 @@
                 "value": "receivable_id",
                 "label": "Receivable",
                 "width": "15%",
-                "sortable": true,
-                "readonly": true
-            },
-            {
-                "type": "field",
-                "value": "subscription_id",
-                "label": "Origin Subscription",
-                "width": "20%",
-                "sortable": true,
-                "readonly": true
-            },
-            {
-                "type": "field",
-                "value": "project_id",
-                "label": "Origin Project",
-                "width": "20%",
                 "sortable": true,
                 "readonly": true
             },

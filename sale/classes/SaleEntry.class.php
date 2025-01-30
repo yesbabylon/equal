@@ -12,7 +12,6 @@ use sale\price\Price;
 use sale\price\PriceList;
 use sale\receivable\Receivable;
 use sale\receivable\ReceivablesQueue;
-use timetrack\Project;
 
 class SaleEntry extends Model {
 
@@ -24,6 +23,12 @@ class SaleEntry extends Model {
     public static function getColumns() {
 
         return [
+            'object_class' => [
+                'type'              => 'string',
+                'description'       => 'Class name of the object.',
+                'help'              => 'Sale entries can to extended by other classes to enrich logic behavior. This field is used to store the class name of the object.',
+                'default'           => 'sale\SaleEntry'
+            ],
 
             'code' => [
                 'type'              => 'computed',

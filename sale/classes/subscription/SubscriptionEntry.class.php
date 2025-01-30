@@ -31,9 +31,15 @@ class SubscriptionEntry extends SaleEntry {
 
             'object_class' => [
                 'type'           => 'string',
-                'description'    => 'Class of the object object_id points to.',
-                'default'        => 'sale\subscription\Subscription',
-                'dependents'     => ['subscription_id']
+                'description'    => 'Class of the object.',
+                'default'        => 'sale\subscription\Subscription'
+            ],
+
+            'subscription_id' => [
+                'type'           => 'many2one',
+                'foreign_object' => 'sale\subscription\Subscription',
+                'description'    => 'Identifier of the Subscription the sale entry originates from.',
+                'dependents'     => ['product_id', 'customer_id', 'is_billable']
             ],
 
             'product_id' => [
@@ -85,18 +91,18 @@ class SubscriptionEntry extends SaleEntry {
     }
 
     public static function calcIsBillable($self): array {
-        return self::calcFromSubscription($self, 'is_billable');
+        return self::computeFromSubscription($self, 'is_billable');
     }
 
     public static function calcCustomerId($self): array {
-        return self::calcFromSubscription($self, 'customer_id');
+        return self::computeFromSubscription($self, 'customer_id');
     }
 
     public static function calcProductId($self): array {
-        return self::calcFromSubscription($self, 'product_id');
+        return self::computeFromSubscription($self, 'product_id');
     }
 
-    protected static function calcFromSubscription($self, $column): array {
+    protected static function computeFromSubscription($self, $column): array {
         $result = [];
         $self->read(['subscription_id' => [$column]]);
         foreach($self as $id => $subscription_entry) {
