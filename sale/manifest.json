@@ -10,6 +10,11 @@
         "finance",
         "inventory"
     ],
+    "requires": {
+        "dompdf/dompdf": "^2.0.8",
+        "twig/intl-extra": "<=3.11.0",
+        "twig/twig": "<=3.11.0"
+    },
     "apps": [
         "pos",
         {
@@ -35,10 +40,5 @@
                 }
             }
         }
-    ],
-    "requires": {
-        "dompdf/dompdf": "^2.0.8",
-        "twig/intl-extra": "<=3.11.0",
-        "twig/twig": "<=3.11.0"
-    }
+    ]
 }
