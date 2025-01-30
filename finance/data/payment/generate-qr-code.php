@@ -5,11 +5,11 @@
     Licensed under GNU AGPL 3 license <http://www.gnu.org/licenses/>
 */
 
-use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelMedium;
-use Endroid\QrCode\QrCode;
 use SepaQr\Data;
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelMedium;
 
-list($params, $providers) = eQual::announce([
+[$params, $providers] = eQual::announce([
     'description'   => 'Generate a payment qr code with given data.',
     'params'        => [
         'recipient_name' => [
@@ -61,11 +61,12 @@ $payment_data = Data::create()
     ->setRemittanceReference($params['payment_reference'])
     ->setAmount($params['payment_amount']);
 
-$qr_code = new QrCode($payment_data);
-
-// required by EPC standard
-$qr_code->setErrorCorrectionLevel(new ErrorCorrectionLevelMedium());
+$qrCode = Builder::create()
+    ->data($paymentData)
+    // required by EPC standard
+    ->errorCorrectionLevel(new ErrorCorrectionLevelMedium())
+    ->build();
 
 $context->httpResponse()
-        ->body($qr_code->writeString())
+        ->body($qrCode->getString())
         ->send();
