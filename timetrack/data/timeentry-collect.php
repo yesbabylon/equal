@@ -36,7 +36,8 @@ list($params, $providers) = eQual::announce([
         'customer_id' => [
             'description'    => 'Display only entries of selected customer',
             'type'           => 'many2one',
-            'foreign_object' => 'sale\customer\Customer'
+            'foreign_object' => 'sale\customer\Customer',
+            'domain'         => ['is_active', '=', true]
         ],
         'project_id' => [
             'description'    => 'Display only entries of selected project',

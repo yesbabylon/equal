@@ -205,6 +205,13 @@ class Partner extends Model {
                 'type'              => 'string',
                 'usage'             => 'phone',
                 'description'       => "Identity main fax number."
+            ],
+
+            'is_active' => [
+                'type'              => 'boolean',
+                'description'       => "Is the customer still active?",
+                'help'              => "When a customer is not marked as active, it is not displayed amongst the choices when selecting a Customer. However, it is still visible in the list of Customers, and its related informations and documents remain available.",
+                'default'           => true
             ]
 
         ];
