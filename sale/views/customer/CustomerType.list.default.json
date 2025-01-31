@@ -3,21 +3,21 @@
     "description": "This view is intended for displaying the list of customer types.",
     "access": {
         "groups": ["sale.default.users", "order.default.users"]
-     },
+    },
     "layout": {
         "items": [
             {
-                "type": "field",            
-                "value": "code",
+                "type": "field",
+                "value": "name",
                 "width": "20%"
-            }, 
+            },
             {
-                "type": "field",            
+                "type": "field",
                 "value": "description",
                 "width": "50%"
-            },  
+            },
             {
-                "type": "field",            
+                "type": "field",
                 "value": "rate_class_id",
                 "width": "30%",
                 "visible": false
