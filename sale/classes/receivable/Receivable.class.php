@@ -197,11 +197,11 @@ class Receivable extends Model {
         $self->read(['sale_entry_id' => ['name', 'date', 'object_class'], 'product_id' => ['name']]);
         $date_format = Setting::get_value('core', 'locale', 'date_format', 'm/d/Y');
         foreach($self as $id => $receivable) {
-            if(($receivable['sale_entry_id']['object_class'] ?? '') == 'timetrack\Project') {
+            if(($receivable['sale_entry_id']['object_class'] ?? '') == 'timetrack\TimeEntry') {
                 $result[$id] = date($date_format, $receivable['sale_entry_id']['date']).' - '.$receivable['sale_entry_id']['name'];
             }
             else {
-                $result[$id] = $receivable['product_id']['name'] ?? '';
+                $result[$id] = $receivable['sale_entry_id']['name'] ?? '';
             }
         }
         return $result;
