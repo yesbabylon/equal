@@ -83,7 +83,7 @@ class ReceivablesQueue extends Model {
         $self->read(['pending_receivables_ids']);
 
         foreach($self as $id => $queue) {
-            $result[$id] = count($queue['pending_receivables_ids']);
+            $result[$id] = count($queue['pending_receivables_ids'] ?? []);
         }
 
         return $result;
