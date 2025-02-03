@@ -248,7 +248,7 @@ class TimeEntry extends SaleEntry {
         if(substr($result, -1) !== '/') {
             $result .= '/';
         }
-        $result .= 'support/#/ticket/'.$ticket_id;
+        $result .= 'support/#/ticket/' . $ticket_id;
         return $result;
     }
 
@@ -397,7 +397,7 @@ class TimeEntry extends SaleEntry {
         $result = [];
         $self->read(['project_id' => ['time_entry_sale_model_id' => 'price_id']]);
         foreach($self as $id => $entry) {
-            if($entry['project_id']['time_entry_sale_model_id']['price_id']) {
+            if(isset($entry['project_id']['time_entry_sale_model_id']['price_id'])) {
                 $result[$id] = $entry['project_id']['time_entry_sale_model_id']['price_id'];
             }
         }
