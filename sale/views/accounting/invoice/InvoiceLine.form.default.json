@@ -14,7 +14,13 @@
                 "after": [
                     {
                         "width": "50%",
-                        "items": []
+                        "items": [
+                            {
+                                "type": "field",
+                                "label": "Description",
+                                "value": "description"
+                            }
+                        ]
                     },
                     {
                         "width": "50%",
