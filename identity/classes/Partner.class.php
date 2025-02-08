@@ -23,7 +23,7 @@ class Partner extends Model {
             'name' => [
                 'type'              => 'computed',
                 'result_type'       => 'string',
-                'function'          => 'calcName',
+                'relation'          => ['partner_identity_id' => 'name'],
                 'store'             => true,
                 'instant'           => true,
                 'description'       => 'The display name of the partner (related organisation name).',
@@ -86,7 +86,7 @@ class Partner extends Model {
                 'instant'           => true,
                 'readonly'          => true,
                 'description'       => 'Code of the type of identity.',
-                'function'          => 'calcType'
+                'relation'          => ['type_id' => 'code']
             ],
 
             'has_vat' => [
@@ -105,19 +105,22 @@ class Partner extends Model {
             'legal_name' => [
                 'type'              => 'string',
                 'description'       => 'Full name of the Identity.',
-                'visible'           => [ ['type', '<>', 'IN'] ]
+                'visible'           => [ ['type', '<>', 'IN'] ],
+                'dependents'        => ['name']
             ],
 
             'firstname' => [
                 'type'              => 'string',
                 'description'       => "Full name of the contact (must be a person, not a role).",
-                'visible'           => ['type', '=', 'IN']
+                'visible'           => ['type', '=', 'IN'],
+                'dependents'        => ['name']
             ],
 
             'lastname' => [
                 'type'              => 'string',
                 'description'       => 'Reference contact surname.',
-                'visible'           => ['type', '=', 'IN']
+                'visible'           => ['type', '=', 'IN'],
+                'dependents'        => ['name']
             ],
 
             'gender' => [
@@ -215,26 +218,6 @@ class Partner extends Model {
             ]
 
         ];
-    }
-
-    public static function calcType($self) {
-        $result = [];
-        $self->read(['type_id' => ['code']]);
-        foreach($self as $id => $partner) {
-            $result[$id] = $partner['type_id']['code'];
-        }
-        return $result;
-    }
-
-    public static function calcName($self) {
-        $result = [];
-        $self->read(['partner_identity_id' => ['name']]);
-        foreach($self as $id => $partner) {
-            if(isset($partner['partner_identity_id']['name'])) {
-                $result[$id] = $partner['partner_identity_id']['name'];
-            }
-        }
-        return $result;
     }
 
     /**

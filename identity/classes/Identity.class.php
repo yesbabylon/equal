@@ -65,7 +65,7 @@ class Identity extends Model {
                 'instant'           => true,
                 'readonly'          => true,
                 'description'       => 'Code of the type of identity.',
-                'function'          => 'calcType'
+                'relation'          => ['type_id' => 'code']
             ],
 
             'description' => [
@@ -101,7 +101,7 @@ class Identity extends Model {
                 'type'              => 'string',
                 'description'       => 'Full name of the Identity.',
                 'visible'           => [ ['type', '<>', 'IN'] ],
-                'dependents  '      => ['name'],
+                'dependents'        => ['name'],
                 'onupdate'          => 'onupdateLegalName'
             ],
 
@@ -458,15 +458,6 @@ class Identity extends Model {
         ];
     }
 
-    public static function calcType($self) {
-        $result = [];
-        $self->read(['type_id' => ['code']]);
-        foreach($self as $id => $identity) {
-            $result[$id] = $identity['type_id']['code'];
-        }
-        return $result;
-    }
-
     /**
      * For organizations the name is the legal name.
      * For individuals, the name is the concatenation of first and last names.
@@ -497,7 +488,7 @@ class Identity extends Model {
         return $result;
     }
 
-    private static function _updateField($self, $field) {
+    private static function updateField($self, $field) {
         $self->read(['user_id', 'contact_id', 'customer_contact_id', 'employee_id', 'customer_id', 'supplier_id', $field]);
         foreach($self as $id => $identity) {
             if($identity['user_id']) {
@@ -522,67 +513,67 @@ class Identity extends Model {
     }
 
     public static function onupdateTypeId($self) {
-        self::_updateField($self, 'type_id');
+        self::updateField($self, 'type_id');
     }
 
     public static function onupdateLegalName($self) {
-        self::_updateField($self, 'legal_name');
+        self::updateField($self, 'legal_name');
     }
 
     public static function onupdateFirstname($self) {
-        self::_updateField($self, 'firstname');
+        self::updateField($self, 'firstname');
     }
 
     public static function onupdateLastname($self) {
-        self::_updateField($self, 'lastname');
+        self::updateField($self, 'lastname');
     }
 
     public static function onupdateHasVat($self) {
-        self::_updateField($self, 'has_vat');
+        self::updateField($self, 'has_vat');
     }
 
     public static function onupdateVatNumber($self) {
-        self::_updateField($self, 'vat_number');
+        self::updateField($self, 'vat_number');
     }
 
     public static function onupdateEmail($self) {
-        self::_updateField($self, 'email');
+        self::updateField($self, 'email');
     }
 
     public static function onupdatePhone($self) {
-        self::_updateField($self, 'phone');
+        self::updateField($self, 'phone');
     }
 
     public static function onupdateMobile($self) {
-        self::_updateField($self, 'mobile');
+        self::updateField($self, 'mobile');
     }
 
     public static function onupdateLangId($self) {
-        self::_updateField($self, 'lang_id');
+        self::updateField($self, 'lang_id');
     }
 
     public static function onupdateAddressStreet($self) {
-        self::_updateField($self, 'address_street');
+        self::updateField($self, 'address_street');
     }
 
     public static function onupdateAddressDispatch($self) {
-        self::_updateField($self, 'address_dispatch');
+        self::updateField($self, 'address_dispatch');
     }
 
     public static function onupdateAddressCity($self) {
-        self::_updateField($self, 'address_city');
+        self::updateField($self, 'address_city');
     }
 
     public static function onupdateAddressZip($self) {
-        self::_updateField($self, 'address_zip');
+        self::updateField($self, 'address_zip');
     }
 
     public static function onupdateAddressState($self) {
-        self::_updateField($self, 'address_state');
+        self::updateField($self, 'address_state');
     }
 
     public static function onupdateAddressCountry($self) {
-        self::_updateField($self, 'address_country');
+        self::updateField($self, 'address_country');
     }
 
     public static function onupdateUserId($self) {
