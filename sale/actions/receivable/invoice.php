@@ -144,7 +144,7 @@ foreach($receivables as $receivable) {
 
     $invoice_line = InvoiceLine::create([
             //#memo - force name to receivable name instead of computed value
-            'name'                  => $receivable['description'],
+            'name'                  => $receivable['name'],
             'description'           => implode(' - ', array_filter([$receivable['product_id']['name'], $receivable['product_id']['description']])),
             'invoice_line_group_id' => $invoice_line_group['id'],
             'invoice_id'            => $invoice['id'],
