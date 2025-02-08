@@ -35,6 +35,21 @@
                                                 "readonly": true
                                             }
                                         ]
+                                    },
+                                    {
+                                        "width": "50%",
+                                        "items": [
+                                            {
+                                                "type": "label",
+                                                "value": "",
+                                                "width": "50%"
+                                            },
+                                            {
+                                                "type": "field",
+                                                "value": "is_aggregate",
+                                                "width": "50%"
+                                            }
+                                        ]
                                     }
                                 ]
                             }

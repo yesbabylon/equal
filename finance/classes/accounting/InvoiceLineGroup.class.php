@@ -67,6 +67,12 @@ class InvoiceLineGroup extends Model {
                 'store'             => true
             ],
 
+            'is_aggregate' => [
+                'type'              => 'boolean',
+                'description'       => 'Show all lines of the group a as a single line.',
+                'help'              => 'The group can be shown as an aggregate when it holds a series of lines targeting a same product and price.',
+                'default'           => false
+            ],
 
         ];
     }
