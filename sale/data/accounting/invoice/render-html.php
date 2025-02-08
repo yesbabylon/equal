@@ -24,6 +24,7 @@ list($params, $providers) = eQual::announce([
         ],
 
         'mode' => [
+            'deprecated'  => true,
             'description' => 'Mode in which document has to be rendered: grouped (default) or detailed.',
             'help'        => 'Modes: "simple" displays all lines without groups, "detailed" displays all lines by group and "grouped" displays only groups by vat rate.',
             'type'        => 'string',
@@ -111,54 +112,51 @@ $generateInvoiceLines = function($invoice, $mode) {
         // index of the current "group" line
         $pos = count($lines) - 1;
 
-        switch($mode) {
-            case 'simple':
-            case 'detailed':
-                $lines[$pos]['count_lines'] = count($group_lines);
-                $lines = array_merge($lines, $group_lines);
-                break;
-            case 'grouped':
-                $group_lines_taxes = [];
-                $group_lines_prices = [];
+        if(!$group['is_aggregate']) {
+            $lines[$pos]['count_lines'] = count($group_lines);
+            $lines = array_merge($lines, $group_lines);
+        }
+        else {
+            $group_lines_taxes = [];
+            $group_lines_prices = [];
 
-                foreach($group_lines as $line) {
-                    $vat_rate = strval(round($line['vat_rate'], 2));
-                    if(!isset($group_lines_taxes[$vat_rate])) {
-                        $group_lines_taxes[$vat_rate] = [];
-                    }
-                    $group_lines_taxes[$vat_rate][] = $line;
-                    $unit_price = strval(round($line['unit_price'], 2));
-                    if(!isset($group_lines_prices[$unit_price])) {
-                        $group_lines_prices[$unit_price] = [];
-                    }
-                    $group_lines_prices[$unit_price][] = $line;
+            foreach($group_lines as $line) {
+                $vat_rate = strval(round($line['vat_rate'], 2));
+                if(!isset($group_lines_taxes[$vat_rate])) {
+                    $group_lines_taxes[$vat_rate] = [];
                 }
+                $group_lines_taxes[$vat_rate][] = $line;
+                $unit_price = strval(round($line['unit_price'], 2));
+                if(!isset($group_lines_prices[$unit_price])) {
+                    $group_lines_prices[$unit_price] = [];
+                }
+                $group_lines_prices[$unit_price][] = $line;
+            }
 
-                $nb_taxes = count(array_keys($group_lines_taxes));
-                $nb_prices = count(array_keys($group_lines_prices));
-                $lines[$pos]['count_lines'] = $nb_taxes;
-                if($nb_taxes == 1 && $nb_prices == 1) {
-                    foreach($group_lines_taxes as $vat_rate => $tax_lines) {
-                        $lines[$pos]['qty'] = array_reduce($group_lines, function($c, $line) {return $c + $line['qty'];}, 0);
-                        $lines[$pos]['unit_price'] = array_keys($group_lines_prices)[0];
-                        $lines[$pos]['vat_rate'] = $vat_rate;
-                        $lines[$pos]['price'] = $group['price'];
-                        $lines[$pos]['total'] = $group['total'];
-                    }
+            $nb_taxes = count(array_keys($group_lines_taxes));
+            $nb_prices = count(array_keys($group_lines_prices));
+            $lines[$pos]['count_lines'] = $nb_taxes;
+            if($nb_taxes == 1 && $nb_prices == 1) {
+                foreach($group_lines_taxes as $vat_rate => $tax_lines) {
+                    $lines[$pos]['qty'] = array_reduce($group_lines, function($c, $line) {return $c + $line['qty'];}, 0);
+                    $lines[$pos]['unit_price'] = array_keys($group_lines_prices)[0];
+                    $lines[$pos]['vat_rate'] = $vat_rate;
+                    $lines[$pos]['price'] = $group['price'];
+                    $lines[$pos]['total'] = $group['total'];
                 }
-                elseif($nb_taxes > 1) {
-                    // append virtual lines for each VAT rate
-                    foreach($group_lines_taxes as $vat_rate => $tax_lines) {
-                        $lines[] = [
-                            'name'     => 'VAT '.($vat_rate * 100).'%',
-                            'qty'      => 1,
-                            'vat_rate' => $vat_rate,
-                            'price'    => round(array_sum(array_column($tax_lines, 'price')), 2),
-                            'total'    => round(array_sum(array_column($tax_lines, 'total')), 2)
-                        ];
-                    }
+            }
+            elseif($nb_taxes > 1) {
+                // append virtual lines for each VAT rate
+                foreach($group_lines_taxes as $vat_rate => $tax_lines) {
+                    $lines[] = [
+                        'name'     => 'VAT '.($vat_rate * 100).'%',
+                        'qty'      => 1,
+                        'vat_rate' => $vat_rate,
+                        'price'    => round(array_sum(array_column($tax_lines, 'price')), 2),
+                        'total'    => round(array_sum(array_column($tax_lines, 'total')), 2)
+                    ];
                 }
-                break;
+            }
         }
     }
 
@@ -309,6 +307,7 @@ $invoice = Invoice::id($params['id'])
             'name',
             'total',
             'price',
+            'is_aggregate',
             'invoice_lines_ids' => [
                 'name', 'product_id', 'description', 'qty', 'unit_price',
                 'discount', 'free_qty', 'vat_rate', 'total', 'price'
