@@ -75,7 +75,7 @@ class InvoiceLineGroup extends Model {
         $result = [];
         $self->read(['invoice_lines_ids' => ['total']]);
         foreach($self as $id => $group) {
-            $result[$id] = array_reduce($group['invoice_lines_ids'], function($c, $line) { return $c + $line['total'];}, 0);
+            $result[$id] = array_reduce($group['invoice_lines_ids']->toArray(), function($c, $line) { return $c + $line['total'];}, 0);
         }
         return $result;
     }
@@ -84,7 +84,7 @@ class InvoiceLineGroup extends Model {
         $result = [];
         $self->read(['invoice_lines_ids' => ['price']]);
         foreach($self as $id => $group) {
-            $result[$id] = array_reduce($group['invoice_lines_ids'], function($c, $line) { return $c + $line['price'];}, 0);
+            $result[$id] = array_reduce($group['invoice_lines_ids']->toArray(), function($c, $line) { return $c + $line['price'];}, 0);
         }
         return $result;
     }
