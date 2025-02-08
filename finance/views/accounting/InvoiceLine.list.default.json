@@ -32,7 +32,8 @@
                 "type": "field",
                 "label": "Group",
                 "value": "invoice_line_group_id",
-                "width": "25%"
+                "width": "0%",
+                "visible": false
             },
             {
                 "type": "field",
