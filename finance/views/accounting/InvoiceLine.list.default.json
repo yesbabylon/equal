@@ -22,16 +22,16 @@
     "layout": {
         "items": [
             {
+                "id": "item.name",
+                "type": "field",
+                "value": "name",
+                "width": "25%"
+            },
+            {
                 "id": "item.group",
                 "type": "field",
                 "label": "Group",
                 "value": "invoice_line_group_id",
-                "width": "25%"
-            },
-            {
-                "id": "item.name",
-                "type": "field",
-                "value": "name",
                 "width": "25%"
             },
             {

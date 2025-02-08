@@ -383,10 +383,10 @@
                             <td style="width: 13%; text-align: right;"></td>
                             {% else %}
                             <td style="width: 45%;">
-                                {{ line.name }}
                                 {% if ( line.description | length ) > 0 %}
-                                    <br />{{ line.description }}
+                                    {{ line.description }}<br />
                                 {% endif %}
+                                <small>{{ line.name }}</small>
                             </td>
                             <td style="width: 8%; text-align: center;">
                                 {{ line.qty | format_number({ 'fraction_digit': 2 }) }}
