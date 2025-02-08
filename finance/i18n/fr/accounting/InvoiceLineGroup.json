@@ -1,30 +1,35 @@
 {
-	"name": "Groupe de lignes de facture",
-	"plural": "Groupes de lignes de facture",
-	"description": "Les lignes de facture décrivent les produits et les quantités qui font partie d'une facture.",
-	"model": {
-		"name": {
-			"label": "Nom",
-			"description": "Étiquette pour le groupe.",
-			"help": ""
-		},
-		"invoice_id": {
-			"label": "Facture",
-			"description": "Facture à laquelle la ligne est liée.",
-			"help": ""
-		}
-	},
-	"view": {
-		"form.default": {
-			"name": "Groupe de lignes de facture",
-			"description": "Les groupes de lignes de facture sont liés à une facture et sont destinés à joindre plusieurs lignes de facture.",
-			"layout": {}
-		},
-		"list.default": {
-			"name": "Groupes de lignes de facture",
-			"description": "Cette vue est destinée à afficher les groupes de lignes de facture.",
-			"layout": {}
-		}
-	},
-	"error": {}
+    "name": "Groupe de lignes de facture",
+    "plural": "Groupes de lignes de facture",
+    "description": "Les lignes de facture décrivent les produits et les quantités qui font partie d'une facture.",
+    "model": {
+        "name": {
+            "label": "Nom",
+            "description": "Étiquette pour le groupe.",
+            "help": ""
+        },
+        "invoice_id": {
+            "label": "Facture",
+            "description": "Facture à laquelle la ligne est liée.",
+            "help": ""
+        },
+        "is_aggregate": {
+            "label": "Fusionner les lignes",
+            "description": "Présenter le groupe comme une seule ligne.",
+            "help": ""
+        }
+    },
+    "view": {
+        "form.default": {
+            "name": "Groupe de lignes de facture",
+            "description": "Les groupes de lignes de facture sont liés à une facture et sont destinés à joindre plusieurs lignes de facture.",
+            "layout": {}
+        },
+        "list.default": {
+            "name": "Groupes de lignes de facture",
+            "description": "Cette vue est destinée à afficher les groupes de lignes de facture.",
+            "layout": {}
+        }
+    },
+    "error": {}
 }
