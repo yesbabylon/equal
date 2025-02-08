@@ -48,20 +48,52 @@ class InvoiceLineGroup extends Model {
                 'description'       => 'Detailed lines of the group.',
                 'ondetach'          => 'delete',
                 'onupdate'          => 'onupdateInvoiceLinesIds'
-            ]
+            ],
+
+            'total' => [
+                'type'              => 'computed',
+                'result_type'       => 'float',
+                'usage'             => 'amount/money:4',
+                'description'       => 'Total tax-excluded price for all lines (computed).',
+                'function'          => 'calcTotal',
+                'store'             => true
+            ],
+
+            'price' => [
+                'type'              => 'computed',
+                'result_type'       => 'float',
+                'description'       => 'Final tax-included price for all lines (computed).',
+                'function'          => 'calcPrice',
+                'store'             => true
+            ],
+
 
         ];
     }
 
-    public static function onupdateInvoiceLinesIds($om, $oids, $values, $lang) {
-        $groups = $om->read(__CLASS__, $oids, ['invoice_id']);
-        if($groups) {
-            $invoices_ids = [];
-            foreach($groups as $gid => $group) {
-                $invoices_ids[] = $group['invoice_id'];
-            }
-            $om->write('finance\accounting\Invoice', $invoices_ids, ['price' => null, 'total' => null]);
-        }        
+    public static function calcTotal($self) {
+        $result = [];
+        $self->read(['invoice_lines_ids' => ['total']]);
+        foreach($self as $id => $group) {
+            $result[$id] = array_reduce($group['invoice_lines_ids'], function($c, $line) { return $c + $line['total'];}, 0);
+        }
+        return $result;
+    }
+
+    public static function calcPrice($self) {
+        $result = [];
+        $self->read(['invoice_lines_ids' => ['price']]);
+        foreach($self as $id => $group) {
+            $result[$id] = array_reduce($group['invoice_lines_ids'], function($c, $line) { return $c + $line['price'];}, 0);
+        }
+        return $result;
+    }
+
+    public static function onupdateInvoiceLinesIds($self) {
+        $self->read(['invoice_id']);
+        foreach($self as $id => $group) {
+            Invoice::id($group['invoice_id'])->update(['price' => null, 'total' => null]);
+        }
     }
 
 }
