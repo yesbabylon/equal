@@ -134,7 +134,7 @@ $generateInvoiceLines = function($invoice, $mode) {
                 $lines[$pos]['count_lines'] = $nb_taxes;
                 if($nb_taxes == 1) {
                     foreach($group_tax_lines as $vat_rate => $tax_lines) {
-                        $lines[$pos]['qty'] = 1;
+                        $lines[$pos]['qty'] = array_reduce($group_lines, function($c, $line) {return $c + $line['qty'];}, 0);
                         $lines[$pos]['vat_rate'] = $vat_rate;
                         $lines[$pos]['price'] = $group['price'];
                         $lines[$pos]['total'] = $group['total'];
