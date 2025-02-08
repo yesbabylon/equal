@@ -370,21 +370,37 @@
                     <tbody>
                     {% for line in lines %}
                         <tr valign="top">
+                            <!-- group line -->
                             {% if line.is_group %}
                             <td style="width: 45%;">
                                 <b>{{ line.name }}</b>
                                 <br />{{ line.description }}
                             </td>
-                            <td style="width: 8%; text-align: center;"></td>
+                            <td style="width: 8%; text-align: center;">
+                                {% if lines|length == 1 %}
+                                    {% if line.qty is not null %}
+                                        {{ line.qty | format_number({ 'fraction_digit': 2 }) }}
+                                    {% endif %}
+                                {% endif %}
+                            </td>
                             <td style="width: 8%; text-align: center;"></td>
                             <td style="width: 10%; text-align: right;"></td>
                             <td style="width: 8%; text-align: right;"></td>
-                            <td style="width: 8%; text-align: right;"></td>
-                            <td style="width: 13%; text-align: right;">
-                                {% if line.total is not null %}
-                                    {{ line.total | format_money() }}
+                            <td style="width: 8%; text-align: right;">
+                                {% if lines|length == 1 %}
+                                    {% if line.vat_rate is not null %}
+                                        {{ line.vat_rate | format_number(style='percent') }}
+                                    {% endif %}
                                 {% endif %}
                             </td>
+                            <td style="width: 13%; text-align: right;">
+                                {% if lines|length == 1 %}
+                                    {% if line.total is not null %}
+                                        {{ line.total | format_money() }}
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                            <!-- regular line -->
                             {% else %}
                             <td style="width: 45%;">
                                 {% if ( line.name | length ) > 0 %}

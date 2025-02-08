@@ -67,6 +67,8 @@ $context = $providers['context'];
 $generateInvoiceLines = function($invoice, $mode) {
     $lines = [];
 
+    $map_processed_lines_ids = [];
+
     foreach($invoice['invoice_line_groups_ids'] as $group) {
         if(count($group['invoice_lines_ids']) <= 0) {
             continue;
@@ -76,8 +78,8 @@ $generateInvoiceLines = function($invoice, $mode) {
             $lines[] = [
                 'name'        => $group['name'] ?? '',
                 'description' => '',
-                'price'       => $group['price'],
-                'total'       => $group['total'],
+                'price'       => null,
+                'total'       => null,
                 'unit_price'  => null,
                 'vat_rate'    => null,
                 'qty'         => null,
@@ -88,12 +90,8 @@ $generateInvoiceLines = function($invoice, $mode) {
 
         $group_lines = [];
         foreach($group['invoice_lines_ids'] as $line) {
-            foreach($invoice['invoice_lines_ids'] as $i => $l) {
-                if($l['id'] === $line['id']) {
-                    unset($invoice['invoice_lines_ids'][$i]);
-                    break;
-                }
-            }
+
+            $map_processed_lines_ids[$line['id']] = true;
 
             $group_lines[] = [
                 'name'        => $line['name'],
@@ -133,10 +131,8 @@ $generateInvoiceLines = function($invoice, $mode) {
                     foreach($group_tax_lines as $vat_rate => $tax_lines) {
                         $lines[$pos]['qty'] = 1;
                         $lines[$pos]['vat_rate'] = $vat_rate;
-                        foreach($tax_lines as $tax_line) {
-                            $lines[$pos]['total'] += $tax_line['total'];
-                            $lines[$pos]['price'] += $tax_line['price'];
-                        }
+                        $lines[$pos]['price'] = $group['price'];
+                        $lines[$pos]['total'] = $group['total'];
                     }
                 }
                 elseif($nb_taxes > 1) {
@@ -155,6 +151,9 @@ $generateInvoiceLines = function($invoice, $mode) {
     }
 
     foreach($invoice['invoice_lines_ids'] as $line) {
+        if(isset($map_processed_lines_ids[$line['id']])) {
+            continue;
+        }
         $lines[] = [
             'name'       => (strlen($line['description']) > 0) ? $line['description'] : $line['name'],
             'price'      => round(($invoice['invoice_type'] == 'credit_note') ? (-$line['price']) : $line['price'], 2),
