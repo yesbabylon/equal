@@ -28,6 +28,12 @@
                 "width": "25%"
             },
             {
+                "id": "item.description",
+                "type": "field",
+                "value": "description",
+                "width": "25%"
+            },
+            {
                 "id": "item.group",
                 "type": "field",
                 "label": "Group",
