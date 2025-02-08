@@ -76,8 +76,8 @@ $generateInvoiceLines = function($invoice, $mode) {
             $lines[] = [
                 'name'        => $group['name'] ?? '',
                 'description' => '',
-                'price'       => null,
-                'total'       => null,
+                'price'       => $group['price'],
+                'total'       => $group['total'],
                 'unit_price'  => null,
                 'vat_rate'    => null,
                 'qty'         => null,
@@ -296,6 +296,8 @@ $invoice = Invoice::id($params['id'])
         ],
         'invoice_line_groups_ids' => [
             'name',
+            'total',
+            'price',
             'invoice_lines_ids' => [
                 'name', 'product_id', 'description', 'qty', 'unit_price',
                 'discount', 'free_qty', 'vat_rate', 'total', 'price'

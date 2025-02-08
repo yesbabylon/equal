@@ -380,7 +380,11 @@
                             <td style="width: 10%; text-align: right;"></td>
                             <td style="width: 8%; text-align: right;"></td>
                             <td style="width: 8%; text-align: right;"></td>
-                            <td style="width: 13%; text-align: right;"></td>
+                            <td style="width: 13%; text-align: right;">
+                                {% if line.total is not null %}
+                                    {{ line.total | format_money() }}
+                                {% endif %}
+                            </td>
                             {% else %}
                             <td style="width: 45%;">
                                 {% if ( line.name | length ) > 0 %}
