@@ -377,7 +377,7 @@
                                 <br />{{ line.description }}
                             </td>
                             <td style="width: 8%; text-align: center;">
-                                {% if lines|length == 1 %}
+                                {% if line.count_lines == 1 %}
                                     {% if line.qty is not null %}
                                         {{ line.qty | format_number({ 'fraction_digit': 2 }) }}
                                     {% endif %}
@@ -387,14 +387,14 @@
                             <td style="width: 10%; text-align: right;"></td>
                             <td style="width: 8%; text-align: right;"></td>
                             <td style="width: 8%; text-align: right;">
-                                {% if lines|length == 1 %}
+                                {% if line.count_lines == 1 %}
                                     {% if line.vat_rate is not null %}
                                         {{ line.vat_rate | format_number(style='percent') }}
                                     {% endif %}
                                 {% endif %}
                             </td>
                             <td style="width: 13%; text-align: right;">
-                                {% if lines|length == 1 %}
+                                {% if line.count_lines == 1 %}
                                     {% if line.total is not null %}
                                         {{ line.total | format_money() }}
                                     {% endif %}
