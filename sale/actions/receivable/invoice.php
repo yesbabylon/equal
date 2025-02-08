@@ -144,7 +144,7 @@ foreach($receivables as $receivable) {
 
     $invoice_line = InvoiceLine::create([
             //#memo - force name to receivable name instead of computed value
-            'name'                  => $receivable['name'],
+            'name'                  => $receivable['description'],
             'description'           => implode(' - ', array_filter([$receivable['product_id']['name'], $receivable['product_id']['description']])),
             'invoice_line_group_id' => $invoice_line_group['id'],
             'invoice_id'            => $invoice['id'],
@@ -155,6 +155,7 @@ foreach($receivables as $receivable) {
             'qty'                   => $receivable['qty'],
             'free_qty'              => $receivable['free_qty'],
             'discount'              => $receivable['discount'],
+            'has_receivable'        => true,
             'receivable_id'         => $receivable['id']
         ])
         ->do('reset_invoice_prices')
