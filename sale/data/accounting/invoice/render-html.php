@@ -118,23 +118,29 @@ $generateInvoiceLines = function($invoice, $mode) {
                 $lines = array_merge($lines, $group_lines);
                 break;
             case 'grouped':
-                $group_tax_lines = [];
+                $group_lines_taxes = [];
+                $group_lines_prices = [];
 
                 foreach($group_lines as $line) {
                     $vat_rate = strval(round($line['vat_rate'], 2));
-
-                    if(!isset($group_tax_lines[$vat_rate])) {
-                        $group_tax_lines[$vat_rate] = [];
+                    if(!isset($group_lines_taxes[$vat_rate])) {
+                        $group_lines_taxes[$vat_rate] = [];
                     }
-
-                    $group_tax_lines[$vat_rate][] = $line;
+                    $group_lines_taxes[$vat_rate][] = $line;
+                    $unit_price = strval(round($line['unit_price'], 2));
+                    if(!isset($group_lines_prices[$unit_price])) {
+                        $group_lines_prices[$unit_price] = [];
+                    }
+                    $group_lines_prices[$unit_price][] = $line;
                 }
 
-                $nb_taxes = count(array_keys($group_tax_lines));
+                $nb_taxes = count(array_keys($group_lines_taxes));
+                $nb_prices = count(array_keys($group_lines_prices));
                 $lines[$pos]['count_lines'] = $nb_taxes;
-                if($nb_taxes == 1) {
-                    foreach($group_tax_lines as $vat_rate => $tax_lines) {
+                if($nb_taxes == 1 && $nb_prices == 1) {
+                    foreach($group_lines_taxes as $vat_rate => $tax_lines) {
                         $lines[$pos]['qty'] = array_reduce($group_lines, function($c, $line) {return $c + $line['qty'];}, 0);
+                        $lines[$pos]['unit_price'] = array_keys($group_lines_prices)[0];
                         $lines[$pos]['vat_rate'] = $vat_rate;
                         $lines[$pos]['price'] = $group['price'];
                         $lines[$pos]['total'] = $group['total'];
@@ -142,7 +148,7 @@ $generateInvoiceLines = function($invoice, $mode) {
                 }
                 elseif($nb_taxes > 1) {
                     // append virtual lines for each VAT rate
-                    foreach($group_tax_lines as $vat_rate => $tax_lines) {
+                    foreach($group_lines_taxes as $vat_rate => $tax_lines) {
                         $lines[] = [
                             'name'     => 'VAT '.($vat_rate * 100).'%',
                             'qty'      => 1,
