@@ -92,11 +92,9 @@ class InvoiceLine extends \finance\accounting\InvoiceLine {
             ],
 
             'has_receivable' => [
-                'type'        => 'computed',
-                'result_type' => 'boolean',
-                'description' => 'Was the line generated from a receivable.',
-                'function'    => 'calcHasReceivable',
-                'store'       => true
+                'type'              => 'boolean',
+                'description'       => 'Was the line generated from a receivable.',
+                'default'           => false
             ]
 
         ];
@@ -170,16 +168,6 @@ class InvoiceLine extends \finance\accounting\InvoiceLine {
             if(isset($line['price_id']['vat_rate'])) {
                 $result[$id] = floatval($line['price_id']['vat_rate']);
             }
-        }
-
-        return $result;
-    }
-
-    public static function calcHasReceivable($self): array {
-        $result = [];
-        $self->read(['receivable_id']);
-        foreach($self as $id => $invoice_line) {
-            $result[$id] = !is_null($invoice_line['receivable_id']);
         }
 
         return $result;
