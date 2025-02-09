@@ -27,8 +27,7 @@ list($params, $providers) = eQual::announce([
         ],
         'filename' => [
             'description'       => 'Name given to the generated pdf file.',
-            'type'              => 'string',
-            'default'           => 'invoice'
+            'type'              => 'string'
         ],
         'lang' =>  [
             'description'       => 'Language in which labels and multilang field have to be returned (2 letters ISO 639-1).',
@@ -64,7 +63,7 @@ if(empty($invoice)) {
 $lang = $params['lang'] ?? null;
 
 if(!$lang) {
-    $invoice = Invoice::id($params['id'])->read(['customer_id' => ['lang_id' => ['code']]])->first();
+    $invoice = Invoice::id($params['id'])->read(['name', 'customer_id' => ['lang_id' => ['code']]])->first();
     $lang = $invoice['customer_id']['lang_id']['code'];
 }
 
@@ -92,7 +91,13 @@ $canvas->page_text(530, $canvas->get_height() - 35, $page_label, $font, 9);
 
 $output = $dompdf->output();
 
+$filename = $params['filename'] ?? null;
+
+if(!$filename) {
+    $filename = $invoice['name'];
+}
+
 $context->httpResponse()
-        ->header('Content-Disposition', 'inline; filename="'.$params['filename'].'.pdf"')
+        ->header('Content-Disposition', 'inline; filename="'.$filename.'.pdf"')
         ->body($output)
         ->send();
