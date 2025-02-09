@@ -13,31 +13,30 @@ list($params, $providers) = eQual::announce([
     'description'   => 'Generate a pdf view of given invoice.',
     'params'        => [
         'id' => [
-            'description' => 'Identifier of the targeted invoice.',
-            'type'        => 'integer',
-            'min'         => 1,
-            'required'    => true
+            'description'       => 'Identifier of the targeted invoice.',
+            'type'              => 'many2one',
+            'foreign_object'    => 'sale\accounting\invoice\Invoice',
+            'required'          => true
         ],
         'mode' => [
-            'description' => 'Mode in which document has to be rendered: simple, grouped or detailed.',
-            'help'        => 'Modes: "simple" displays all lines without groups, "detailed" displays all lines by group and "grouped" displays only groups by vat rate.',
-            'type'        => 'string',
-            'selection'   => ['simple', 'grouped', 'detailed'],
-            'default'     => 'simple'
+            'description'       => 'Mode in which document has to be rendered: simple, grouped or detailed.',
+            'help'              => 'Modes: "simple" displays all lines without groups, "detailed" displays all lines by group and "grouped" displays only groups by vat rate.',
+            'type'              => 'string',
+            'selection'         => ['simple', 'grouped', 'detailed'],
+            'default'           => 'simple'
         ],
         'filename' => [
-            'description' => 'Name given to the generated pdf file.',
-            'type'        => 'string',
-            'default'     => 'invoice'
+            'description'       => 'Name given to the generated pdf file.',
+            'type'              => 'string',
+            'default'           => 'invoice'
         ],
         'lang' =>  [
-            'description' => 'Language in which labels and multilang field have to be returned (2 letters ISO 639-1).',
-            'type'        => 'string',
-            'default'     => constant('DEFAULT_LANG')
+            'description'       => 'Language in which labels and multilang field have to be returned (2 letters ISO 639-1).',
+            'type'              => 'string'
         ],
         'debug' => [
-            'type'        => 'boolean',
-            'default'     => false
+            'type'              => 'boolean',
+            'default'           => false
         ]
     ],
     'access'        => [
@@ -62,11 +61,18 @@ if(empty($invoice)) {
     throw new Exception('invoice_unknown', QN_ERROR_UNKNOWN_OBJECT);
 }
 
+$lang = $params['lang'] ?? null;
+
+if(!$lang) {
+    $invoice = Invoice::id($params['id'])->read(['customer_id' => ['lang_id' => ['code']]])->first();
+    $lang = $invoice['customer_id']['lang_id']['code'];
+}
+
 $html = eQual::run('get', 'sale_accounting_invoice_render-html', [
     'id'      => $params['id'],
     'mode'    => $params['mode'],
     'view_id' => 'print.default',
-    'lang'    => $params['lang'],
+    'lang'    => $lang,
     'debug'   => $params['debug']
 ]);
 
@@ -78,7 +84,7 @@ $dompdf->setPaper('A4');
 $dompdf->loadHtml($html, 'UTF-8');
 $dompdf->render();
 
-$page_label = Setting::get_value('sale', 'invoice', 'labels.pdf-page', 'p. {PAGE_NUM} / {PAGE_COUNT}', [], $params['lang']);
+$page_label = Setting::get_value('sale', 'invoice', 'labels.pdf-page', 'p. {PAGE_NUM} / {PAGE_COUNT}', [], $lang);
 
 $canvas = $dompdf->getCanvas();
 $font = $dompdf->getFontMetrics()->getFont('helvetica', 'regular');
