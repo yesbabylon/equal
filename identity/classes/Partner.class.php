@@ -242,6 +242,9 @@ class Partner extends Model {
         return $result;
     }
 
+    /**
+     * Upon creation of the Partner, copy fields values from the identity.
+     */
     public static function oncreate($self, $values) {
         if(isset($values['partner_identity_id'])) {
             $fields = [
@@ -255,12 +258,17 @@ class Partner extends Model {
                 ->first();
             $map_fields = [];
             foreach($fields as $field) {
-                $map_fields[$field] = $identity[$field];
+                if(!isset($values[$field])) {
+                    $map_fields[$field] = $identity[$field];
+                }
             }
             $self->update($map_fields);
         }
     }
 
+    /**
+     * Upon update of the Partner, update related identity or create one if partner_identity_id is not set.
+     */
     public static function onafterupdate($self, $values) {
         $fields = [
                 'type_id','has_vat','vat_number','legal_name','firstname','lastname','lang_id',
