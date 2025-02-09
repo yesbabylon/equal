@@ -508,7 +508,9 @@
                 </div>
             </div>
         <!-- payment-qr-code end -->
-        {% else %}
+        {% endif %}
+
+        {% if invoice.status == 'proforma' %}
             <div style="width: 100%; text-align: center;">
                 {{ labels.proforma_notice }}
             </div>
