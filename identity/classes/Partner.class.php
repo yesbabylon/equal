@@ -270,14 +270,14 @@ class Partner extends Model {
      * Upon update of the Partner, update related identity or create one if partner_identity_id is not set.
      */
     public static function onafterupdate($self, $values) {
-        $fields = [
+        $common_fields = [
                 'type_id','has_vat','vat_number','legal_name','firstname','lastname','lang_id',
                 'email','phone','mobile','fax',
                 'address_street','address_dispatch','address_zip',
                 'address_city','address_state','address_country'
             ];
 
-        $self->read(array_merge($fields, ['partner_identity_id', 'state']));
+        $self->read(array_merge($common_fields, ['partner_identity_id', 'state']));
 
         foreach($self as $id => $partner) {
             if($partner['state'] == 'draft') {
@@ -285,7 +285,7 @@ class Partner extends Model {
             }
             if(is_null($partner['partner_identity_id'])) {
                 $map_fields = [];
-                foreach($fields as $field) {
+                foreach($common_fields as $field) {
                     $map_fields[$field] = $partner[$field];
                 }
 
@@ -296,11 +296,10 @@ class Partner extends Model {
                 self::id($id)->update(['partner_identity_id' => $identity['id']]);
             }
             else {
-                $identity = Identity::id($partner['partner_identity_id'])->read($fields)->first();
-                foreach($values as $field => $value) {
-                    $non_editable_fields = ['user_id', 'contact_id', 'customer_contact_id', 'employee_id', 'supplier_id', 'customer_id'];
-                    if(!in_array($field, $non_editable_fields) && strlen(strval($value)) > 0 && $value !== $identity[$field]) {
-                        Identity::id($partner['partner_identity_id'])->update([$field => $value]);
+                $identity = Identity::id($partner['partner_identity_id'])->read($common_fields)->first();
+                foreach($common_fields as $field) {
+                    if(isset($values[$field]) && $values[$field] !== $identity[$field]) {
+                        Identity::id($partner['partner_identity_id'])->update([$field => $values[$field]]);
                     }
                 }
             }
