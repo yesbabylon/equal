@@ -3,7 +3,7 @@
     "description": "This view is intended for displaying the invoice line groups.",
     "access": {
         "groups": ["finance.default.users"]
-     },
+    },
     "layout": {
         "items": [
             {

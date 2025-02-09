@@ -10,6 +10,8 @@
             "open": true
         }
     ],
+    "order": "invoice_line_group_id.order",
+    "sort": "asc",
     "operations": {
         "total": {
             "price": {
