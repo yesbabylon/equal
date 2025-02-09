@@ -69,8 +69,9 @@ class Receivable extends Model {
                 'help'              => 'Sale entries can to extended by other classes to enrich logic behavior. This field is used to store the class name of the object. Selection is provided as a memo but is non-exhaustive.',
                 'default'           => 'sale\SaleEntry',
                 'selection'         => [
+                    'sale\SaleEntry',
                     'timetrack\TimeEntry',
-                    'sale\subscription\SubscriptionEntry',
+                    'sale\subscription\SubscriptionEntry'
                 ]
             ],
 
