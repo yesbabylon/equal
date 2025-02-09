@@ -151,11 +151,11 @@ class Price extends Model {
         return $result;
     }
 
-    public function computePriceVatIncluded($price, $vat_rate) {
+    public static function computePriceVatIncluded($price, $vat_rate) {
         return round($price * (1.0 + $vat_rate), 2);
     }
 
-    public function computePriceVatExcluded($price_vat, $vat_rate) {
+    public static function computePriceVatExcluded($price_vat, $vat_rate) {
         return $price_vat / (1.0 + $vat_rate);
     }
 
