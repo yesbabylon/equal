@@ -45,23 +45,17 @@ list($params, $providers) = eQual::announce([
 $context = $providers['context'];
 
 $domain = [
-    [
-        ['status', '=', 'validated'],
-        ['is_billable', '=', true],
-        ['has_receivable', '=', false]
-    ]
+    ['status', '=', 'validated'],
+    ['is_billable', '=', true],
+    ['has_receivable', '=', false]
 ];
 
 if(isset($params['customer_id']) && $params['customer_id'] > 0) {
-    for($i = 0; $i < 3; $i++) {
-        $domain[$i][] = ['customer_id', '=', $params['customer_id']];
-    }
+    $domain[] = ['customer_id', '=', $params['customer_id']];
 }
 
 if(isset($params['product_id']) && $params['product_id'] > 0) {
-    for($i = 0; $i < 3; $i++) {
-        $domain[$i][] = ['product_id', '=', $params['product_id']];
-    }
+    $domain[] = ['product_id', '=', $params['product_id']];
 }
 
 $params['domain'] = (new Domain($params['domain']))
