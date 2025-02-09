@@ -134,8 +134,7 @@ class SaleEntry extends Model {
                 'usage'             => 'amount/money:4',
                 'description'       => 'Unit price of the product related to the entry.',
                 'relation'          => ['price_id' => ['price']],
-                'store'             => true,
-                'readonly'          => true
+                'store'             => true
             ],
 
             'vat_rate' => [
@@ -144,8 +143,7 @@ class SaleEntry extends Model {
                 'usage'             => 'amount/rate',
                 'description'       => 'VAT rate to be applied.',
                 'relation'          => ['price_id' => ['vat_rate']],
-                'store'             => true,
-                'readonly'          => true
+                'store'             => true
             ],
 
             'qty' => [
