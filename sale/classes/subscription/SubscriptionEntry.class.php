@@ -35,6 +35,14 @@ class SubscriptionEntry extends SaleEntry {
                 'default'        => 'sale\subscription\SubscriptionEntry'
             ],
 
+            'name' => [
+                'type'              => 'computed',
+                'result_type'       => 'string',
+                'description'       => 'Short readable identifier of the entry.',
+                'store'             => true,
+                'function'          => 'calcName'
+            ],
+
             'subscription_id' => [
                 'type'           => 'many2one',
                 'foreign_object' => 'sale\subscription\Subscription',
@@ -49,7 +57,7 @@ class SubscriptionEntry extends SaleEntry {
                 'description'    => 'Product of the catalog sale.',
                 'store'          => true,
                 'instant'        => true,
-                'function'       => 'calcProductId'
+                'relation'       => ['subscription_id' => 'product_id']
             ],
 
             'customer_id' => [
@@ -59,7 +67,7 @@ class SubscriptionEntry extends SaleEntry {
                 'description'    => 'The Customer to who refers the item.',
                 'store'          => true,
                 'instant'        => true,
-                'function'       => 'calcCustomerId'
+                'relation'       => ['subscription_id' => 'customer_id']
             ],
 
             'is_billable' => [
@@ -68,7 +76,7 @@ class SubscriptionEntry extends SaleEntry {
                 'description'    => 'Can be billed to the customer.',
                 'store'          => true,
                 'instant'        => true,
-                'function'       => 'calcIsBillable'
+                'relation'       => ['subscription_id' => 'is_billable']
             ],
 
             /**
@@ -90,27 +98,13 @@ class SubscriptionEntry extends SaleEntry {
         ];
     }
 
-    public static function calcIsBillable($self): array {
-        return self::computeFromSubscription($self, 'is_billable');
-    }
-
-    public static function calcCustomerId($self): array {
-        return self::computeFromSubscription($self, 'customer_id');
-    }
-
-    public static function calcProductId($self): array {
-        return self::computeFromSubscription($self, 'product_id');
-    }
-
-    protected static function computeFromSubscription($self, $column): array {
+    public static function calcName($self) {
         $result = [];
-        $self->read(['subscription_id' => [$column]]);
+        $self->read(['subscription_id' => ['name'], 'date_from', 'date_to']);
         foreach($self as $id => $entry) {
-            if(isset($entry['subscription_id'][$column])) {
-                $result[$id] = $entry['subscription_id'][$column];
-            }
+            $result[$id] = $entry['subscription_id']['name'] . ' - ' . date('Y-m-d', $entry['date_from']) . '-' . date('Y-m-d', $entry['date_to']);
         }
-
         return $result;
     }
+
 }
