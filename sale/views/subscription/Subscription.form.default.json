@@ -206,8 +206,7 @@
                                                 "type": "field",
                                                 "value": "customer_id",
                                                 "label": "Customer",
-                                                "width": "33%",
-                                                "readonly": true
+                                                "width": "33%"
                                             }
                                         ]
                                     }
