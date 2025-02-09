@@ -64,7 +64,7 @@ list($params, $providers) = eQual::announce([
 /** @var \equal\php\Context $context */
 $context = $providers['context'];
 
-$generateInvoiceLines = function($invoice, $mode) {
+$getInvoiceLines = function($invoice) {
     $lines = [];
 
     $map_processed_lines_ids = [];
@@ -74,19 +74,17 @@ $generateInvoiceLines = function($invoice, $mode) {
             continue;
         }
 
-        if($mode !== 'simple') {
-            $lines[] = [
-                'name'        => $group['name'] ?? '',
-                'description' => '',
-                'price'       => null,
-                'total'       => null,
-                'unit_price'  => null,
-                'vat_rate'    => null,
-                'qty'         => null,
-                'free_qty'    => null,
-                'is_group'    => true
-            ];
-        }
+        $lines[] = [
+            'name'        => $group['name'] ?? '',
+            'description' => '',
+            'price'       => null,
+            'total'       => null,
+            'unit_price'  => null,
+            'vat_rate'    => null,
+            'qty'         => null,
+            'free_qty'    => null,
+            'is_group'    => true
+        ];
 
         $group_lines = [];
         foreach($group['invoice_lines_ids'] as $line) {
@@ -254,7 +252,7 @@ $getLabels = function($lang) {
     ];
 };
 
-$createInvoicePaymentQrCodeUri = function($invoice) {
+$getInvoicePaymentQrCodeUri = function($invoice) {
     // default to blank image (empty 1x1)
     $result = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8Xw8AAoMBgDTD2qgAAAAASUVORK5CYII=';
     try {
@@ -339,9 +337,9 @@ $values = [
     'invoice'             => $invoice,
     'organisation'        => $invoice['organisation_id'],
     'customer'            => $invoice['customer_id'],
-    'lines'               => $generateInvoiceLines($invoice, $params['mode']),
+    'lines'               => $getInvoiceLines($invoice),
     'organisation_logo'   => $getOrganisationLogo($invoice),
-    'payment_qr_code_uri' => $createInvoicePaymentQrCodeUri($invoice),
+    'payment_qr_code_uri' => $getInvoicePaymentQrCodeUri($invoice),
     'timezone'            => constant('L10N_TIMEZONE'),
     'locale'              => constant('L10N_LOCALE'),
     'date_format'         => Setting::get_value('core', 'locale', 'date_format', 'm/d/Y'),
