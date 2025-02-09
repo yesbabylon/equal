@@ -303,13 +303,13 @@
                         <div style="margin-bottom: 5px; text-transform: uppercase;">
                             {{ labels.status }}:
                             <b>
-                                {% if invoice.payment_status in ['balanced', 'credit_balance'] %}
+                                {% if invoice.payment_status == 'balanced' %}
                                     {{ labels.status_paid }}
                                 {% else %}
-                                    {% if invoice.invoice_type == 'invoice' %}
-                                        {{ labels.status_to_pay }}
-                                    {% else %}
+                                    {% if invoice.payment_status == 'credit_balance' %}
                                         {{ labels.status_to_refund }}
+                                    {% else %}
+                                        {{ labels.status_to_pay }}
                                     {% endif %}
                                 {% endif %}
                             </b>
