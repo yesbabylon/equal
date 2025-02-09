@@ -202,7 +202,22 @@
                                                 "type": "field",
                                                 "label": "Sale entry",
                                                 "value": "sale_entry_id",
-                                                "width": "25%"
+                                                "width": "25%",
+                                                "visible": ["sale_entry_class", "=", "sale\\SaleEntry"]
+                                            },
+                                            {
+                                                "type": "field",
+                                                "label": "Sale entry",
+                                                "value": "time_entry_id",
+                                                "width": "25%",
+                                                "visible": ["sale_entry_class", "=", "timetrack\\TimeEntry"]
+                                            },
+                                            {
+                                                "type": "field",
+                                                "label": "Sale entry",
+                                                "value": "subscription_entry_id",
+                                                "width": "25%",
+                                                "visible": ["sale_entry_class", "=", "sale\\subscription\\SubscriptionEntry"]
                                             }
                                         ]
                                     }

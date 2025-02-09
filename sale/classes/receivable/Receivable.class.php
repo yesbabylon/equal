@@ -63,6 +63,17 @@ class Receivable extends Model {
                 'default'           => 'pending'
             ],
 
+            'sale_entry_class' => [
+                'type'              => 'string',
+                'description'       => 'Children class of the Sale Entry the Receivable originates from.',
+                'help'              => 'Sale entries can to extended by other classes to enrich logic behavior. This field is used to store the class name of the object. Selection is provided as a memo but is non-exhaustive.',
+                'default'           => 'sale\SaleEntry',
+                'selection'         => [
+                    'timetrack\TimeEntry',
+                    'sale\subscription\SubscriptionEntry',
+                ]
+            ],
+
             'sale_entry_id' => [
                 'type'              => 'many2one',
                 'foreign_object'    => 'sale\SaleEntry',
@@ -70,6 +81,20 @@ class Receivable extends Model {
                 'dependents'        => ['name', 'description', 'product_id', 'price_id', 'unit_price', 'vat_rate', 'qty', 'free_qty', 'discount', 'total', 'price'],
                 'required'          => true,
                 'readonly'          => true
+            ],
+
+            'time_entry_id' => [
+                'type'              => 'computed',
+                'result_type'       => 'many2one',
+                'foreign_object'    => 'timetrack\TimeEntry',
+                'relation'          => ['sale_entry_id']
+            ],
+
+            'subscription_entry_id' => [
+                'type'              => 'computed',
+                'result_type'       => 'many2one',
+                'foreign_object'    => 'sale\subscription\SubscriptionEntry',
+                'relation'          => ['sale_entry_id']
             ],
 
             'invoice_group' => [

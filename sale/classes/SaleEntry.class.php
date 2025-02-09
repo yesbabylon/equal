@@ -26,8 +26,13 @@ class SaleEntry extends Model {
             'object_class' => [
                 'type'              => 'string',
                 'description'       => 'Class name of the object.',
-                'help'              => 'Sale entries can to extended by other classes to enrich logic behavior. This field is used to store the class name of the object.',
-                'default'           => 'sale\SaleEntry'
+                'help'              => 'Sale entries can to extended by other classes to enrich logic behavior. This field is used to store the class name of the object. Selection is provided as a memo but is non-exhaustive.',
+                'default'           => 'sale\SaleEntry',
+                'selection'         => [
+                    'sale\SaleEntry',
+                    'timetrack\TimeEntry',
+                    'sale\subscription\SubscriptionEntry',
+                ]
             ],
 
             'code' => [
@@ -272,7 +277,7 @@ class SaleEntry extends Model {
     }
 
     public static function doCreateReceivable($self) {
-        $self->read(['id', 'is_internal', 'date', 'invoice_group']);
+        $self->read(['id', 'is_internal', 'date', 'invoice_group', 'object_class']);
         foreach($self as $id => $entry) {
             if($entry['is_internal']) {
                 continue;
@@ -286,7 +291,8 @@ class SaleEntry extends Model {
                     'receivables_queue_id' => $receivables_queue_id,
                     'sale_entry_id'        => $id,
                     'date'                 => $entry['date'],
-                    'invoice_group'        => $entry['invoice_group']
+                    'invoice_group'        => $entry['invoice_group'],
+                    'sale_entry_class'     => $entry['object_class']
                 ])
                 ->read(['id'])
                 ->first();
