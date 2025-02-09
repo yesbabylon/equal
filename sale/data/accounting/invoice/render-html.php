@@ -45,8 +45,7 @@ list($params, $providers) = eQual::announce([
 
         'lang' =>  [
             'description' => 'Language in which labels and multilang field have to be returned (2 letters ISO 639-1).',
-            'type'        => 'string',
-            'default'     => constant('DEFAULT_LANG')
+            'type'        => 'string'
         ]
     ],
     'access'        => [
@@ -283,6 +282,14 @@ $createInvoicePaymentQrCodeUri = function($invoice) {
     return $result;
 };
 
+
+$lang = $params['lang'] ?? null;
+
+if(!$lang) {
+    $invoice = Invoice::id($params['id'])->read(['customer_id' => ['lang_id' => ['code']]])->first();
+    $lang = $invoice['customer_id']['lang_id']['code'];
+}
+
 $invoice = Invoice::id($params['id'])
     ->read([
         'invoice_number', 'date', 'due_date', 'status', 'invoice_type', 'payment_reference', 'total', 'price', 'payment_status',
@@ -313,7 +320,7 @@ $invoice = Invoice::id($params['id'])
                 'discount', 'free_qty', 'vat_rate', 'total', 'price'
             ]
         ]
-    ], $params['lang'])
+    ], $lang)
     ->first(true);
 
 
@@ -339,7 +346,7 @@ $values = [
     'locale'              => constant('L10N_LOCALE'),
     'date_format'         => Setting::get_value('core', 'locale', 'date_format', 'm/d/Y'),
     'currency'            => $getTwigCurrency(Setting::get_value('core', 'units', 'currency', '€')),
-    'labels'              => $getLabels($params['lang']),
+    'labels'              => $getLabels($lang),
     'debug'               => $params['debug'],
     'tax_lines'           => [],
 ];
