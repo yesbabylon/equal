@@ -181,22 +181,6 @@
                                 "columns": [
                                     {
                                         "width": "100%",
-                                        "items": []
-                                    }
-                                ]
-                            },
-                            {
-                                "columns": [
-                                    {
-                                        "width": "100%",
-                                        "items": []
-                                    }
-                                ]
-                            },
-                            {
-                                "columns": [
-                                    {
-                                        "width": "100%",
                                         "items": [
                                             {
                                                 "type": "field",
