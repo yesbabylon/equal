@@ -27,6 +27,13 @@ class Invoice extends \finance\accounting\Invoice {
     public static function getColumns() {
 
         return [
+            'name' => [
+                'type'              => 'computed',
+                'result_type'       => 'string',
+                'store'             => true,
+                'function'          => 'calcName',
+                'description'       => 'Label of the invoice, depending on its status'
+            ],
 
             'organisation_id' => [
                 'type'              => 'many2one',
@@ -129,7 +136,8 @@ class Invoice extends \finance\accounting\Invoice {
                 'type'              => 'many2one',
                 'foreign_object'    => 'sale\customer\Customer',
                 'description'       => 'The counter party organization the invoice relates to.',
-                'required'          => true
+                'required'          => true,
+                'dependents'        => ['name']
             ],
 
             'customer_ref' => [
@@ -246,6 +254,15 @@ class Invoice extends \finance\accounting\Invoice {
             $result['invoice_number'] = '[proforma]['.$customer['name'].']['.date('Y-m-d').']';
         }
 
+        return $result;
+    }
+
+    public static function calcName($self): array {
+        $result = [];
+        $self->read(['invoice_number',  'customer_id' => ['name']]);
+        foreach($self as $id => $invoice) {
+            $result[$id] = $invoice['invoice_number'].' - '.$invoice['customer_id']['name'];
+        }
         return $result;
     }
 

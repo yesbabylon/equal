@@ -23,8 +23,11 @@ class Invoice extends Model {
 
         return [
             'name' => [
-                'type'              => 'alias',
-                'alias'             => 'invoice_number'
+                'type'              => 'computed',
+                'result_type'       => 'string',
+                'store'             => true,
+                'relation'          => ['invoice_number'],
+                'description'       => 'Label of the invoice, depending on its status'
             ],
 
             'reference' => [
@@ -74,7 +77,8 @@ class Invoice extends Model {
             'invoice_number' => [
                 'type'              => 'string',
                 'description'       => 'Number of the invoice, according to organization logic.',
-                'required'          => true
+                'required'          => true,
+                'dependents'        => ['name']
             ],
 
             'reversed_invoice_id' => [
