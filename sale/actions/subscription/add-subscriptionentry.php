@@ -76,6 +76,7 @@ if(!$subscription_entry) {
             'subscription_id' => $subscription['id'],
             'unit_price'      => $subscription['price']
         ])
+        ->transition('validate')
         ->first();
 }
 
