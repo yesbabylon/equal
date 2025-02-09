@@ -483,8 +483,7 @@
             </div>
         <!-- invoice-lines end -->
 
-
-        {% if invoice.status != 'proforma' %}
+        {% if invoice.status != 'proforma' and invoice.payment_status != 'balanced' %}
         <!-- payment-qr-code start -->
             <div class="invoice-payment-info" style="height: 180px;">
                 <div style="padding-left: 15px; padding-top: 15px;">
