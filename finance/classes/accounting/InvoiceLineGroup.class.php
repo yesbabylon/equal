@@ -33,6 +33,12 @@ class InvoiceLineGroup extends Model {
                 'description'       => 'Short description of the group (displayed on invoice).'
             ],
 
+            'order' => [
+                'type'              => 'integer',
+                'description'       => 'Order by which the group has to be sorted when presented.',
+                'default'           => 0
+            ],
+
             'invoice_id' => [
                 'type'              => 'many2one',
                 'foreign_object'    => 'finance\accounting\Invoice',

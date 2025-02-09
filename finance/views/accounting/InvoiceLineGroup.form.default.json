@@ -40,8 +40,8 @@
                                         "width": "50%",
                                         "items": [
                                             {
-                                                "type": "label",
-                                                "value": "",
+                                                "type": "field",
+                                                "value": "order",
                                                 "width": "50%"
                                             },
                                             {
