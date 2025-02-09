@@ -32,7 +32,7 @@ class SubscriptionEntry extends SaleEntry {
             'object_class' => [
                 'type'           => 'string',
                 'description'    => 'Class of the object.',
-                'default'        => 'sale\subscription\Subscription'
+                'default'        => 'sale\subscription\SubscriptionEntry'
             ],
 
             'subscription_id' => [
