@@ -200,6 +200,11 @@
                                         "items": [
                                             {
                                                 "type": "field",
+                                                "value": "sale_entry_class",
+                                                "visible": false
+                                            },
+                                            {
+                                                "type": "field",
                                                 "label": "Sale entry",
                                                 "value": "sale_entry_id",
                                                 "width": "25%",
