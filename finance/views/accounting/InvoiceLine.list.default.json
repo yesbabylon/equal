@@ -10,8 +10,6 @@
             "open": true
         }
     ],
-    "order": "invoice_line_group_id.order",
-    "sort": "asc",
     "operations": {
         "total": {
             "price": {
@@ -20,6 +18,8 @@
             }
         }
     },
+    "order": "invoice_line_group_id.order",
+    "sort": "asc",
     "limit": 100,
     "layout": {
         "items": [
