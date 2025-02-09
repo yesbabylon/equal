@@ -82,7 +82,8 @@ class Invoice extends \finance\accounting\Invoice {
             'invoice_number' => [
                 'type'              => 'string',
                 'description'       => 'Number of the invoice, according to organization logic.',
-                'default'           => '[proforma]'
+                'default'           => '[proforma]',
+                'dependents'        => ['name']
             ],
 
             'payment_reference' => [
