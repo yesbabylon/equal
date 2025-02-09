@@ -246,13 +246,6 @@ class Invoice extends \finance\accounting\Invoice {
 
     public static function onchange($event, $values): array {
         $result = [];
-        if(isset($event['customer_id'], $values['status']) && $values['status'] == 'proforma'){
-            $customer = Customer::search(['id', '=', $event['customer_id']])
-                ->read(['name'])
-                ->first();
-
-            $result['invoice_number'] = '[proforma]['.$customer['name'].']['.date('Y-m-d').']';
-        }
 
         return $result;
     }
