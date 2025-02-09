@@ -46,7 +46,7 @@ $context = $providers['context'];
 
 $domain = [
     [
-        ['status', '<>', 'billed'],
+        ['status', '=', 'validated'],
         ['is_billable', '=', true],
         ['has_receivable', '=', false]
     ]
