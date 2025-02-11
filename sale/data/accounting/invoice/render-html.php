@@ -259,13 +259,11 @@ $getInvoicePaymentQrCodeUri = function($invoice) {
         if(!isset($invoice['payment_reference'])) {
             throw new Exception('missing_payment_reference', EQ_ERROR_INVALID_PARAM);
         }
-        // #todo - use a TXT adapter
-        $payment_reference = DataFormatter::format($invoice['payment_reference'], 'scor');
         $image = eQual::run('get', 'finance_payment_generate-qr-code', [
                 'recipient_name'    => $invoice['organisation_id']['legal_name'],
                 'recipient_iban'    => $invoice['organisation_id']['bank_account_iban'],
                 'recipient_bic'     => $invoice['organisation_id']['bank_account_bic'],
-                'payment_reference' => $payment_reference,
+                'payment_reference' => $invoice['payment_reference'],
                 'payment_amount'    => $invoice['price']
             ]);
         $result = sprintf('data:%s;base64,%s',
