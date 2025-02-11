@@ -35,8 +35,10 @@
                 "id": "item.emission.date",
                 "type": "field",
                 "value": "emission_date",
-                "usage": "date/plain.short",
-                "width": "20%"
+                "width": "20%",
+                "widget": {
+                    "usage": "date/plain.short"
+                }
             },
             {
                 "type": "field",
