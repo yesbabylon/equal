@@ -35,6 +35,7 @@
                 "id": "item.emission.date",
                 "type": "field",
                 "value": "emission_date",
+                "usage": "date/short",
                 "width": "20%"
             },
             {
