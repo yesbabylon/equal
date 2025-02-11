@@ -35,7 +35,15 @@ class User extends \core\User {
                 'foreign_object'    => 'identity\Identity',
                 'description'       => "The organization the user relates to (defaults to current).",
                 'default'           => 1
+            ],
+
+            'organisation_id' => [
+                'type'              => 'many2one',
+                'foreign_object'    => 'identity\Organisation',
+                'description'       => 'The organisation the user belongs to.',
+                'default'           => 1
             ]
+
         ];
     }
 
